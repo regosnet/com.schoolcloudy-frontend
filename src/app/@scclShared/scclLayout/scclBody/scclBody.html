@@ -1,0 +1,10 @@
+<section [ngStyle]="getContentStyle()">
+	<sccl-user-greeting-bar *ngIf="isLoggedIn"></sccl-user-greeting-bar>
+	<div>
+		<sccl-left-side-menu-bar *ngIf="isLoggedIn"></sccl-left-side-menu-bar>
+		<sccl-content-section>
+		</sccl-content-section>
+		<sccl-widget-bar *ngIf="isLoggedIn"></sccl-widget-bar>
+		<sccl-rsh-panel id="rshPanel"></sccl-rsh-panel>
+	</div>
+</section>

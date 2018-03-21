@@ -1,0 +1,150 @@
+$sccl-regomic-primary: color("grey", "darken-1") !default;
+$sccl-regomic-primary-lighten: color("grey", "base") !default;;
+$sccl-regomic-primary-darken: color("grey", "darken-3") !default;
+$sccl-regomic-text: color("grey", "base") !default;
+$sccl-regomic-text-darken: darken($sccl-regomic-text, 30%);
+$sccl-regomic-white: #fff !important;
+$sccl-regomic-text-lighten: lighten($sccl-regomic-text, 16%);
+$sccl-regomic-secondary: color("blue", "accent-2") !default;
+$sccl-regomic-secondary-hover: lighten($sccl-regomic-secondary, 5%);;
+$sccl-regomic-success: color("green", "lighten-3") !default; 
+$sccl-regomic-error: color("red", "base") !default;
+$sccl-regomic-link: color("light-blue", "darken-1") !default;
+$sccl-regomic-primary-transparent: rgba($sccl-regomic-primary, .25);
+
+//======= MAIN LAYOUT BACKGROUND COLORS ===============
+$sccl-regomic-layout-background: color("grey", "lighten-4") !default;
+
+//======= BUTTON COLORS ===============
+$sccl-regomic-button-secondary: $sccl-regomic-secondary;
+$sccl-regomic-button-secondary-hover: $sccl-regomic-secondary-hover;
+$sccl-regomic-button-text: $sccl-regomic-text;
+$sccl-regomic-button-text-darken: $sccl-regomic-text-darken;
+$sccl-regomic-button-white: $sccl-regomic-white;
+$sccl-regomic-button-text-lighten: $sccl-regomic-text-lighten;
+
+//======= SIDE BARS COLORS ===============
+
+$sccl-regomic-sidebar-primary-darken: $sccl-regomic-primary-darken;
+$sccl-regomic-sidebar-primary: $sccl-regomic-primary;
+$sccl-regomic-sidebar-primary-lighten: $sccl-regomic-primary-lighten;
+$sccl-regomic-sidebar-text: $sccl-regomic-text;
+$sccl-regomic-sidebar-text-darken: $sccl-regomic-text-darken;
+$sccl-regomic-sidebar-text-lighten: $sccl-regomic-text-lighten;
+$sccl-regomic-sidebar-secondary: $sccl-regomic-secondary;
+
+//=========== HEADER COLORS ==============
+$sccl-regomic-header-primary-darken: $sccl-regomic-primary-darken;
+$sccl-regomic-header-primary: $sccl-regomic-primary;
+$sccl-regomic-header-primary-lighten: $sccl-regomic-primary-lighten;
+$sccl-regomic-header-text: $sccl-regomic-text;
+$sccl-regomic-header-text-darken: $sccl-regomic-text-darken;
+$sccl-regomic-header-text-lighten: $sccl-regomic-text-lighten;
+$sccl-regomic-header-secondary: $sccl-regomic-secondary;
+
+//======= TABS COLORS ===============
+$sccl-regomic-tabs-primary-darken: $sccl-regomic-primary-darken;
+$sccl-regomic-tabs-primary: $sccl-regomic-primary;
+$sccl-regomic-tabs-primary-lighten: $sccl-regomic-primary-lighten;
+$sccl-regomic-tabs-text: $sccl-regomic-text;
+$sccl-regomic-tabs-text-darken: $sccl-regomic-text-darken;
+$sccl-regomic-tabs-text-lighten: $sccl-regomic-text-lighten;
+$sccl-regomic-tabs-secondary: $sccl-regomic-secondary;
+
+//======= CARD COLORS ===============
+$sccl-regomic-card-primary-darken: $sccl-regomic-primary-darken;
+$sccl-regomic-card-primary: $sccl-regomic-primary;
+$sccl-regomic-card-primary-lighten: $sccl-regomic-primary-lighten;
+$sccl-regomic-card-text: $sccl-regomic-text;
+$sccl-regomic-card-text-darken: $sccl-regomic-text-darken;
+$sccl-regomic-card-text-lighten: $sccl-regomic-text-lighten;
+$sccl-regomic-card-secondary: $sccl-regomic-secondary;
+
+//=========== SELECT COLORS ==============
+$sccl-regomic-select-primary-darken: $sccl-regomic-primary-darken;
+$sccl-regomic-select-primary: $sccl-regomic-primary;
+$sccl-regomic-select-primary-lighten: $sccl-regomic-primary-lighten;
+$sccl-regomic-select-text: $sccl-regomic-text;
+$sccl-regomic-select-text-darken: $sccl-regomic-text-darken;
+$sccl-regomic-select-text-lighten: $sccl-regomic-text-lighten;
+$sccl-regomic-select-secondary: $sccl-regomic-secondary;
+
+
+$sccl-regomic-theme: (
+	sccl-primary: $sccl-regomic-primary,
+	sccl-primary-lighten: $sccl-regomic-primary-lighten,
+	sccl-primary-darken: $sccl-regomic-primary-darken,
+	sccl-primary-transparent: $sccl-regomic-primary-transparent,
+	sccl-white: $sccl-regomic-white,
+	sccl-text: $sccl-regomic-text,
+	sccl-text-darken: $sccl-regomic-text-darken,
+	sccl-text-lighten: $sccl-regomic-text-lighten,
+	sccl-secondary: $sccl-regomic-secondary,
+	sccl-secondary-hover: $sccl-regomic-secondary-hover,
+	sccl-success: $sccl-regomic-success,
+	sccl-error: $sccl-regomic-error,
+	sccl-link: $sccl-regomic-link,
+	
+	//======= HEADER COLORS ===============
+	sccl-header-primary-darken: $sccl-regomic-header-primary-darken,
+	sccl-header-primary: $sccl-regomic-header-primary,
+	sccl-header-primary-lighten: $sccl-regomic-header-primary-lighten,
+	sccl-header-text: $sccl-regomic-header-text,
+	sccl-header-text-lighten: $sccl-regomic-header-text-lighten,
+	sccl-header-text-darken: $sccl-regomic-header-text-darken,
+	sccl-header-secondary: $sccl-regomic-header-secondary,
+	sccl-header-white: $sccl-regomic-white,
+	
+	//======= SELECT COLORS ===============
+	sccl-select-primary-darken: $sccl-regomic-select-primary-darken,
+	sccl-select-primary: $sccl-regomic-select-primary,
+	sccl-select-primary-lighten: $sccl-regomic-select-primary-lighten,
+	sccl-select-text: $sccl-regomic-select-text,
+	sccl-select-text-lighten: $sccl-regomic-select-text-lighten,
+	sccl-select-text-darken: $sccl-regomic-select-text-darken,
+	sccl-select-secondary: $sccl-regomic-select-secondary,
+	sccl-select-white: $sccl-regomic-white,
+	
+	//======= DROPDOWN MENU COLORS ===============
+	
+	
+	//======= MAIN LAYOUT ===============
+	sccl-layout-background: $sccl-regomic-layout-background,
+	
+	//======= SIDE BARS COLORS ===============
+	sccl-sidebar-primary-darken: $sccl-regomic-header-primary-darken,
+	sccl-sidebar-primary: $sccl-regomic-sidebar-primary,
+	sccl-sidebar-primary-lighten: $sccl-regomic-header-primary-lighten,
+	sccl-sidebar-text: $sccl-regomic-sidebar-text,
+	sccl-sidebar-text-darken: $sccl-regomic-sidebar-text-darken,
+	sccl-sidebar-text-lighten: $sccl-regomic-sidebar-text-lighten,
+	sccl-sidebar-secondary: $sccl-regomic-sidebar-secondary,
+	
+	//======= BUTTON COLORS ===============
+	sccl-button-secondary: $sccl-regomic-button-secondary,
+	sccl-button-secondary-hover: $sccl-regomic-button-secondary-hover,
+	sccl-button-white: $sccl-regomic-button-white,
+	sccl-button-text: $sccl-regomic-button-text,
+	sccl-button-text-darken: $sccl-regomic-button-text-darken,
+	sccl-button-text-lighten: $sccl-regomic-button-text-lighten,
+
+	
+	//======= TABS COLORS ===============
+	sccl-tabs-primary-darken: $sccl-regomic-tabs-primary-darken,
+	sccl-tabs-primary: $sccl-regomic-tabs-primary,
+	sccl-tabs-primary-lighten: $sccl-regomic-tabs-primary-lighten,
+	sccl-tabs-text: $sccl-regomic-tabs-text,
+	sccl-tabs-text-darken: $sccl-regomic-tabs-text-darken,
+	sccl-tabs-text-lighten: $sccl-regomic-tabs-text-lighten,
+	sccl-tabs-secondary: $sccl-regomic-tabs-secondary,
+	
+	//======= CARD COLORS ===============
+	sccl-card-primary-darken: $sccl-regomic-card-primary-darken,
+	sccl-card-primary: $sccl-regomic-card-primary,
+	sccl-card-primary-lighten: $sccl-regomic-card-primary-lighten,
+	sccl-card-text: $sccl-regomic-card-text,
+	sccl-card-text-darken: $sccl-regomic-card-text-darken,
+	sccl-card-text-lighten: $sccl-regomic-card-text-lighten,
+	sccl-card-secondary: $sccl-regomic-card-secondary,
+);
+

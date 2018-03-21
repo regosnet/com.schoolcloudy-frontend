@@ -1,0 +1,84 @@
+{
+  "sccl": {
+  	"settings": {
+  		"title": "Settings",
+  		"language": {
+  			"select": {
+  				"label": {
+  					"title": "Select Language"
+  				}
+  			}
+  		},
+  		"theme": {
+  			"select": {
+  				"label": {
+  					"title": "Select Theme"
+  				}
+  			}
+  		}
+  	},
+  	"home": "Home",
+  	"exit": "Exit",
+	"profile": "Profile",
+  	"languages":{
+  		"title": "languages",
+  		"en": "English",
+  		"lv": "Latviešu",
+  		"de": "Deutsche",
+  		"fr": "Français",
+  		"ar": "عربى"
+  	},
+  	"login": {
+  		"title": "Login",
+  		"username": "Username",
+  		"password": "Password",
+  		"lastLogin": "Last Login",
+  		"sign_out": "Sign Out"
+  	},
+  	"tab": {
+  		"news_feed": "News Feed",
+  		"gallery": "Gallery",
+  		"messages": "Messages"
+  	},
+	"administrator_menu": {
+		"title": "Administrator",
+		"dashboard_menu": {
+		 	"title": "Dashboard"
+		}
+	},
+	"calendar": {
+		"month": {
+			"0": "January",
+			"1": "February",
+			"2": "March",
+			"3": "April",
+			"4": "May",
+			"5": "June",
+			"6": "July",
+			"7": "August",
+			"8": "September",
+			"9": "October",
+			"10": "November",
+			"11": "December"
+		},
+		"day": {
+			"1": "Monday",
+			"2": "Tuesday",
+			"3": "Wednesday",
+			"4": "Thursday",
+			"5": "Friday",
+			"6": "Saturday",
+			"7": "Sunday"
+		},
+		"week": "Week",
+		"semester": "Semester"
+	 },
+	 
+	 "message": {
+	 	"instant": "Messages",
+	 	"inbox": "Inbox",
+	 	"notification": "Notifications",
+	 	"mark_all_read": "Mark All as Read"
+	 }
+  }
+}

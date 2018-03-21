@@ -1,0 +1,15 @@
+<div class="card" *ngFor="let cconf of cardConfig">
+	<div class="card-content">
+		<div *ngIf="cconf.chead.show" class="card-header">
+			<div class="row">
+				<div class="card-title col s10">{{cconf.title}}</div>
+				<div class="material-icons col s2">more_horiz</div>
+			</div>
+		</div>
+		<div class="card-body">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>
+
+<!-- *ngIf="ddMenu" -->

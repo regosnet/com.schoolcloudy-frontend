@@ -1,0 +1,139 @@
+@import '../../../../scclCommon/scclComponents/scclDropDownMenu/scclDropDownMenu';
+@import '../../../../scclCommon/scclComponents/scclButtons/scclBButton/scclBButton';
+
+@mixin sccl-mid-head($theme) {
+	sccl-mid-head {
+		> nav {
+			min-height: 30px;
+			height: 35px;
+			>.nav-wrapper {
+				background: map-get($theme, 'sccl-header-primary');
+				@include display-flex(none, center);
+				padding: 0 20px;
+				.left-sidebar-toggle {
+					@include flex-width(1);
+					height: 35px;
+					line-height: 35px;
+					> a {
+						@include sccl-rounded-btn($theme);
+						margin-top: -3px;
+					}	
+				}
+				.sccl-logo {
+					@include flex-width(10);
+					font-size: 23px;
+					font-weight: bold;
+					height: 31px;
+					line-height: 35px;
+					a {
+						text-decoration: none;
+						color: map-get($theme, 'sccl-header-white');
+						span {
+							color: map-get($theme, 'sccl-header-secondary');	
+						}
+						&:hover {
+							color: map-get($theme, 'sccl-text-hover');	
+						}	
+					}
+					img {
+						width: 25px;
+						position: relative;
+						top: -12px;
+						left: -14px;
+					}	
+				}
+				.user {
+					height: 35px;
+					line-height: 35px;
+					margin-right: 5%;
+					> a {
+						height: 35px;
+						line-height: 35px;
+						@include display-flex(none, center);
+						> .avatar {
+							height: 35px;
+							> img {
+								width: 35px;
+								height: 35px;
+								margin-right: 3px;
+								border: 2px solid map-get($theme, 'sccl-header-secondary');
+							}	
+						}
+						> .user-name {
+								height: 35px;
+							> i {
+								padding:0 1px;
+								height: 35px;
+								line-height: 35px;
+								color: map-get($theme, 'sccl-header-secondary');
+							}
+						}	
+						
+					}
+				}
+				sccl-dropdown-menu {
+					@include sccl-drop-down-menu(
+						$theme, map-get($theme, 'sccl-header-primary-darken'),
+						$width + 150, $top + 35, $margin-left + 10,
+						$margin-right, $caret-position + 8,
+						$margin-top+8, $margin-bottom+8, 38px, $caret-move-or-down + 16.5
+						); 
+				}
+				 
+				 @media #{$medium-and-down} {
+				 	.sccl-logo {
+						@include flex-width(8);
+						font-size: 19px;
+						img {
+							width: 20px;
+							position: relative;
+							top: -11px;
+							left: -14px;
+						}	
+					}
+				 	.user {
+				 		@include flex-width(1);
+    					height: 35px;
+    					a {
+    						> .avatar {
+								> img {
+									width: 37px;
+									height: 37px;
+									margin-bottom: -12px;	
+								}	
+							}
+							> .user-name {
+								>span {
+									display: none;	
+								}
+							}	
+    					}	
+    				}
+  				}
+				 @media #{$small-and-down} {
+    				.user {
+    					height: 35px;
+    					float: right;
+    					@include flex-width(0);
+    					a {
+    						> .avatar {
+								> img {
+									width: 37px;
+									height: 37px;
+									margin-bottom: -12px;	
+								}	
+							}
+							> .status {
+								display: none;
+							}	
+    					}	
+    				}
+    				.sccl-logo {
+    					font-size: 18px;
+						@include flex-width(2);			
+    				}
+  				}
+			}
+		}
+	}
+}

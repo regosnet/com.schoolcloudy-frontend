@@ -1,0 +1,10 @@
+<ul class="collapsible" data-collapsible="accordion">
+	<li *ngFor="let item of items"> 
+		<div class="collapsible-header {{item.active}}">
+			<i class="material-icons">place</i>{{item.title}}
+		</div>
+		<div class="collapsible-body">
+			<span><ng-content></ng-content></span>
+		</div>
+	</li>
+</ul>

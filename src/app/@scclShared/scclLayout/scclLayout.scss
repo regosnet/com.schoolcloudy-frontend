@@ -1,0 +1,19 @@
+@import 'scclHeader/scclHeader';
+@import 'scclBody/scclBody';
+
+@mixin sccl-layout($theme) {
+	sccl-header {
+		@include scclHeader($theme);
+	}
+	sccl-body {
+		@include sccl-body($theme)
+	}
+	width: 100%;
+	background: red; //map-get($theme, 'sccl-layout-background');
+	.sccl-sticky {
+		position: fixed;
+		top: 24px;
+		z-index: 1000;
+		transition: .5s;
+	}
+}

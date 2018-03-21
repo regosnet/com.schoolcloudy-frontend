@@ -1,0 +1,1 @@
+export * from './scclInboxMessage.model';

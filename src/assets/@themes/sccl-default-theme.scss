@@ -1,0 +1,175 @@
+$sccl-default-primary: color("blue-grey", "darken-2") !default;
+$sccl-default-primary-lighten: color("blue-grey", "darken-1") !default;;
+$sccl-default-primary-darken: color("blue-grey", "darken-3") !default;
+$sccl-default-primary-deep-darken: color("blue-grey", "darken-4") !default;
+$sccl-default-text: color("blue-grey", "lighten-3") !default;
+$sccl-default-text-darken: darken($sccl-default-text, 30%);
+$sccl-default-white: #fff !important;
+$sccl-default-text-lighten: lighten($sccl-default-text, 16%);
+$sccl-default-secondary: color("teal", "accent-4") !default;
+$sccl-default-secondary-hover: lighten($sccl-default-secondary, 5%);;
+$sccl-default-success: color("green", "lighten-3") !default; 
+$sccl-default-error: color("red", "base") !default;
+$sccl-default-link: color("light-blue", "darken-1") !default;
+$sccl-default-primary-transparent: rgba($sccl-default-primary, .25);
+
+//======= MAIN LAYOUT BACKGROUND COLORS ===============
+$sccl-default-layout-background: color("blue-grey", "base") !default;
+
+//======= BUTTON COLORS ===============
+$sccl-default-button-secondary: $sccl-default-secondary;
+$sccl-default-button-secondary-hover: $sccl-default-secondary-hover;
+$sccl-default-button-text: $sccl-default-text;
+$sccl-default-button-text-darken: $sccl-default-text-darken;
+$sccl-default-button-white: $sccl-default-white;
+$sccl-default-button-text-lighten: $sccl-default-text-lighten;
+
+//======= SIDE BARS COLORS ===============
+
+$sccl-default-sidebar-primary-darken: $sccl-default-primary-darken;
+$sccl-default-sidebar-primary: $sccl-default-primary;
+$sccl-default-sidebar-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-sidebar-text: $sccl-default-text;
+$sccl-default-sidebar-text-darken: $sccl-default-text-darken;
+$sccl-default-sidebar-text-lighten: $sccl-default-text-lighten;
+$sccl-default-sidebar-secondary: $sccl-default-secondary;
+
+//=========== HEADER COLORS ==============
+$sccl-default-header-primary-darken: $sccl-default-primary-darken;
+$sccl-default-header-primary-deep-darken: $sccl-default-primary-deep-darken;
+$sccl-default-header-primary: $sccl-default-primary;
+$sccl-default-header-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-header-text: $sccl-default-text;
+$sccl-default-header-text-darken: $sccl-default-text-darken;
+$sccl-default-header-text-lighten: $sccl-default-text-lighten;
+$sccl-default-header-secondary: $sccl-default-secondary;
+
+//=========== DROP DOWN MENU COLORS ==============
+$sccl-default-dropdown-menu-primary-darken: $sccl-default-primary-darken;
+$sccl-default-dropdown-menu-primary-deep-darken: $sccl-default-primary-deep-darken;
+$sccl-default-dropdown-menu-primary: $sccl-default-primary;
+$sccl-default-dropdown-menu-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-dropdown-menu-text: $sccl-default-text;
+$sccl-default-dropdown-menu-text-darken: $sccl-default-text-darken;
+$sccl-default-dropdown-menu-text-lighten: $sccl-default-text-lighten;
+$sccl-default-dropdown-menu-secondary: $sccl-default-secondary;
+
+
+//======= TABS COLORS ===============
+$sccl-default-tabs-primary-darken: $sccl-default-primary-darken;
+$sccl-default-tabs-primary: $sccl-default-primary;
+$sccl-default-tabs-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-tabs-text: $sccl-default-text;
+$sccl-default-tabs-text-darken: $sccl-default-text-darken;
+$sccl-default-tabs-text-lighten: $sccl-default-text-lighten;
+$sccl-default-tabs-secondary: $sccl-default-secondary;
+
+//======= CARD COLORS ===============
+$sccl-default-card-primary-darken: $sccl-default-primary-darken;
+$sccl-default-card-primary: $sccl-default-primary;
+$sccl-default-card-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-card-text: $sccl-default-text;
+$sccl-default-card-text-darken: $sccl-default-text-darken;
+$sccl-default-card-text-lighten: $sccl-default-text-lighten;
+$sccl-default-card-secondary: $sccl-default-secondary;
+
+//=========== SELECT COLORS ==============
+$sccl-default-select-primary-darken: $sccl-default-primary-darken;
+$sccl-default-select-primary: $sccl-default-primary;
+$sccl-default-select-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-select-text: $sccl-default-text;
+$sccl-default-select-text-darken: $sccl-default-text-darken;
+$sccl-default-select-text-lighten: $sccl-default-text-lighten;
+$sccl-default-select-secondary: $sccl-default-secondary;
+
+
+$sccl-default-theme: (
+	sccl-primary: $sccl-default-primary,
+	sccl-primary-lighten: $sccl-default-primary-lighten,
+	sccl-primary-darken: $sccl-default-primary-darken,
+	sccl-primary-transparent: $sccl-default-primary-transparent,
+	sccl-white: $sccl-default-white,
+	sccl-text: $sccl-default-text,
+	sccl-text-darken: $sccl-default-text-darken,
+	sccl-text-lighten: $sccl-default-text-lighten,
+	sccl-secondary: $sccl-default-secondary,
+	sccl-secondary-hover: $sccl-default-secondary-hover,
+	sccl-success: $sccl-default-success,
+	sccl-error: $sccl-default-error,
+	sccl-link: $sccl-default-link,
+	
+	//======= HEADER COLORS ===============
+	sccl-header-primary-darken: $sccl-default-header-primary-darken,
+	sccl-header-primary-deep-darken: $sccl-default-header-primary-deep-darken,
+	sccl-header-primary: $sccl-default-header-primary,
+	sccl-header-primary-lighten: $sccl-default-header-primary-lighten,
+	sccl-header-text: $sccl-default-header-text,
+	sccl-header-text-lighten: $sccl-default-header-text-lighten,
+	sccl-header-text-darken: $sccl-default-header-text-darken,
+	sccl-header-secondary: $sccl-default-header-secondary,
+	sccl-header-white: $sccl-default-white,
+	
+	//======= DROP DOWN COLORS ===============
+	sccl-dropdown-menu-primary-darken: $sccl-default-dropdown-menu-primary-darken,
+	sccl-dropdown-menu-primary-deep-darken: $sccl-default-dropdown-menu-primary-deep-darken,
+	sccl-dropdown-menu-primary: $sccl-default-dropdown-menu-primary,
+	sccl-dropdown-menu-primary-lighten: $sccl-default-dropdown-menu-primary-lighten,
+	sccl-dropdown-menu-text: $sccl-default-dropdown-menu-text,
+	sccl-dropdown-menu-text-lighten: $sccl-default-dropdown-menu-text-lighten,
+	sccl-dropdown-menu-text-darken: $sccl-default-dropdown-menu-text-darken,
+	sccl-dropdown-menu-secondary: $sccl-default-dropdown-menu-secondary,
+	sccl-dropdown-menu-white: $sccl-default-white,
+	
+	//======= SELECT COLORS ===============
+	sccl-select-primary-darken: $sccl-default-select-primary-darken,
+	sccl-select-primary: $sccl-default-select-primary,
+	sccl-select-primary-lighten: $sccl-default-select-primary-lighten,
+	sccl-select-text: $sccl-default-select-text,
+	sccl-select-text-lighten: $sccl-default-select-text-lighten,
+	sccl-select-text-darken: $sccl-default-select-text-darken,
+	sccl-select-secondary: $sccl-default-select-secondary,
+	sccl-select-white: $sccl-default-white,
+	
+	//======= DROPDOWN MENU COLORS ===============
+	
+	
+	//======= MAIN LAYOUT ===============
+	sccl-layout-background: $sccl-default-layout-background,
+	
+	//======= SIDE BARS COLORS ===============
+	sccl-sidebar-primary-darken: $sccl-default-header-primary-darken,
+	sccl-sidebar-primary: $sccl-default-sidebar-primary,
+	sccl-sidebar-primary-lighten: $sccl-default-header-primary-lighten,
+	sccl-sidebar-text: $sccl-default-sidebar-text,
+	sccl-sidebar-text-darken: $sccl-default-sidebar-text-darken,
+	sccl-sidebar-text-lighten: $sccl-default-sidebar-text-lighten,
+	sccl-sidebar-secondary: $sccl-default-sidebar-secondary,
+	
+	//======= BUTTON COLORS ===============
+	sccl-button-secondary: $sccl-default-button-secondary,
+	sccl-button-secondary-hover: $sccl-default-button-secondary-hover,
+	sccl-button-white: $sccl-default-button-white,
+	sccl-button-text: $sccl-default-button-text,
+	sccl-button-text-darken: $sccl-default-button-text-darken,
+	sccl-button-text-lighten: $sccl-default-button-text-lighten,
+
+	
+	//======= TABS COLORS ===============
+	sccl-tabs-primary-darken: $sccl-default-tabs-primary-darken,
+	sccl-tabs-primary: $sccl-default-tabs-primary,
+	sccl-tabs-primary-lighten: $sccl-default-tabs-primary-lighten,
+	sccl-tabs-text: $sccl-default-tabs-text,
+	sccl-tabs-text-darken: $sccl-default-tabs-text-darken,
+	sccl-tabs-text-lighten: $sccl-default-tabs-text-lighten,
+	sccl-tabs-secondary: $sccl-default-tabs-secondary,
+	
+	//======= CARD COLORS ===============
+	sccl-card-primary-darken: $sccl-default-card-primary-darken,
+	sccl-card-primary: $sccl-default-card-primary,
+	sccl-card-primary-lighten: $sccl-default-card-primary-lighten,
+	sccl-card-text: $sccl-default-card-text,
+	sccl-card-text-darken: $sccl-default-card-text-darken,
+	sccl-card-text-lighten: $sccl-default-card-text-lighten,
+	sccl-card-secondary: $sccl-default-card-secondary,
+);
+

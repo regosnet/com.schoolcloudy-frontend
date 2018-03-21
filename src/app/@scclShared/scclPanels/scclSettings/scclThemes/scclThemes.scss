@@ -1,0 +1,9 @@
+@import '../../../scclCommon/scclComponents/scclSelect/scclSelect.scss';
+@mixin sccl-themes($theme) {
+	> div {
+		margin-top: 40px;
+		sccl-select {
+			@include sccl-select($theme);	
+		}	
+	}
+}

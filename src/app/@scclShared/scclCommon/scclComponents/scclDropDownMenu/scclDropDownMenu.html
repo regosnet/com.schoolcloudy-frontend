@@ -1,0 +1,39 @@
+
+<div class="divider"></div>
+<ul *ngIf="menuHeader.length != 0">
+	<span *ngFor="let item of menuHeader" class="dd-menu-header">
+		<li><a href="#!">{{item.type | translate}}</a></li>
+		<li><a href="{{item.url}}">{{'sccl.message.mark_all_read' | translate}}</a></li>
+		<li><a href="{{item.url}}">{{'sccl.settings.title'| translate}}</a></li>
+		<li><a href="{{item.url}}" *ngIf="item.new"> <i
+				class="fa fa-pencil-square-o" aria-hidden="true"></i>
+		</a></li>
+	</span>
+</ul>
+<ul>
+	<li *ngFor="let item of listItems"><a href="#!"> 
+		<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i> 
+		<span *ngIf="item.title">{{item.title | translate}}</span> 
+				<div *ngIf="item.sender" class="message-box">
+					<div class="sender-avatar">
+						<img src="{{ ('profile/' + item.sender.username | scclPngExt) }}"
+							class="circle">
+					</div>
+					<div class="message-content">
+						<div *ngIf="item.sender" class="c-head">
+							<span>{{item.sender.firstName}} {{item.sender.lastName}};</span>
+							<span *ngIf="item.subject">Subject: {{item.subject}}</span>
+						</div>
+						<div class="c-body">{{item.text}}</div>
+						<div class="time">
+							<span class="{{item.typeIcon}}"></span><span><em><strong>{{item.time}}</strong></em></span>
+						</div>
+					</div>
+					<div class="message-badge"><em><strong><span *ngIf="item.isRead">new</span></strong></em></div>
+				</div>
+	</a></li>
+</ul>
+<ul *ngIf="menuHeader.length != 0" class="dd-footer">
+	<li *ngFor="let item of menuHeader">
+	<a href="{{item.seeAll}}">{{'sccl.message.see_all' | translate}}</a></li>
+</ul>

@@ -1,0 +1,14 @@
+@import '../../../../scclHome/scclHome.scss';
+
+@mixin sccl-content-section($theme) {
+	@include flex-width(1);
+	> section {
+		background: map-get($theme, 'sccl-layout-background');
+		sccl-home {
+			@include sccl-home($theme);
+		}		
+	}
+	@media #{$small-and-down} {
+		
+	}
+}

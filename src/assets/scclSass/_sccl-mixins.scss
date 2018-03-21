@@ -1,0 +1,44 @@
+@mixin border-radius($values...){
+  @if length($values) == 1  {
+  	-moz-border-radius: $values;
+  	-webkit--radius: $values;
+  	border-radius: $values;
+  	}@else {
+  		-moz-border-radius: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 4);
+  		-webkit--radius: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 4);
+  		border-radius: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 4);	
+  	}
+}
+
+@mixin display-flex($justify-content, $align-items) {
+	display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  	display: -ms-flexbox;  /* TWEENER - IE 10 */
+  	display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  	display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  	justify-content: $justify-content;
+  	align-items: $align-items;	
+}
+
+@mixin flex-width($value) {
+	-webkit-box-flex: $value;   /* OLD - iOS 6-, Safari 3.1-6 */
+  	-webkit-flex: $value;       /* Safari 6.1+. iOS 7.1+, BB10 */
+  	-ms-flex: $value;           /* IE 10 */
+  	flex: $value;               /* NEW, Spec - Firefox, Chrome, Opera */	
+}
+
+@mixin sccl-transform($transforms) {
+   -moz-transform: $transforms;
+   -o-transform: $transforms;
+   -ms-transform: $transforms;
+   -webkit-transform: $transforms;
+   transform: $transforms;
+}
+@mixin sccl-transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin sccl-translate ($x, $y) {
+   @include sccl-transform(translate($x, $y));
+}

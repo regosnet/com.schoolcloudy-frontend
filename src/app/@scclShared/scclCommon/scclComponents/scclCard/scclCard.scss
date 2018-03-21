@@ -1,0 +1,30 @@
+@mixin sccl-card($theme) {
+	.card {
+		background: map-get($theme, 'sccl-card-primary');
+		@include border-radius($border-radius);
+		> .card-content {
+			> .card-header > div  {
+				color: map-get($theme, 'sccl-card-text-lighten');
+				height: $head-height;
+				text-transform: uppercase;
+				background: map-get($theme, 'sccl-card-primary-darken');
+				@include border-radius($border-radius, $border-radius, 0, 0)
+				> .card-title {
+					font-weight: $font-weight;
+					font-size: $font-size;
+					padding: 0 30px;
+					line-height: $head-height;	
+				}
+				> .material-icons {
+					color: map-get($theme, 'sccl-card-text-darken');	
+					line-height: $head-height;
+					text-align: center;
+				}
+			}
+		
+			> .card-body {
+					
+			}
+		}
+	}
+}

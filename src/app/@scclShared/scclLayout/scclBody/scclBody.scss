@@ -1,0 +1,32 @@
+@import './scclUserGreetingBar/scclUserGreetingBar';
+@import './scclLeftSideMenuBar/scclLeftSideMenuBar';
+@import './scclContentSection/scclContentSection';
+@import './scclWidgetBar/scclWidgetBar';
+@import './scclRSHPanel/scclRSHPanel';
+
+@mixin sccl-body($theme) {
+	$bg: map-get($theme, 'sccl-layout-background');
+	> section {
+		background-color: blue; //$bg;
+		height: 1000px;
+		> div {
+			@include display-flex(space-between, none);
+		}
+		sccl-user-greeting-bar {
+			@include sccl-user-greeting-bar($theme);	
+		}
+		
+		sccl-left-side-menu-bar {
+			@include sccl-left-side-menu-bar($theme);	
+		}
+		sccl-content-section {
+			@include sccl-content-section($theme);	
+		}
+		sccl-widget-bar {
+			@include sccl-widget-bar($theme);	
+		}
+		sccl-rsh-panel {
+			@include sccl-rsh-panel($theme);	
+		}
+	}
+}

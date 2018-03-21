@@ -1,0 +1,63 @@
+$resXXL: 1280px;
+$resXL: 1170px;
+$resL: 991px;
+$resM: 768px;
+$resS: 660px;
+$resXS: 500px;
+$resXXS: 435px;
+$resMin: 320px;
+
+$font-size: 1rem;
+$font-weight: 400;
+
+
+//======= GENERIC VARIABLES =========
+$margin-left:0px; 
+$margin-right: 0px;
+$margin-top: 0px;
+$margin-bottom: 0px;
+$caret-position: 0px;
+$top: 0px; 
+$width: 0px;
+$border-radius: 5px;
+$height: 23px;
+$padding-left: 3px;
+$icon-font-size:$font-size + .3;
+$sccl-border: 1px;
+$z-index-lay-1: 1000;
+
+
+//======= SIDE BARS ==================
+$sidebar-width: 250px;
+
+//======= FOOT HEAD ======================
+$foot-head-height: $height; 
+
+//======= HOME PANELS ================
+$max-width: $width + 340;
+$login-panel-max-width: $max-width;
+
+//======= SCCL BUTTONS ===============
+$sccl-buttons-weight: $font-weight;
+$sccl-button-height: $height;
+
+//======= SCCL FORMS ===============
+$sccl-form-input-border: $sccl-border; 
+
+//======= SCCL CARDS ===============
+$head-height: $height + 12;
+
+//======= DROP DOWN MENU =============
+$dd-menu-width: $width + 450;
+$dd-menu-menu-top: $top + 33;
+$dd-items-height: 50px;
+$caret-move-or-down: -37px;
+$shift-box: 2; // use for moving the dd menu box together with caret
+$dd-menu-caret-position: $caret-position  + 40 + $shift-box;
+$dd-menu-margin-left: $margin-left + $shift-box;
+
+//======= SCCL TAB ===============
+$sccl-tab-border-raidus:$border-radius;
+
+//======= SCCL SELECT ==================
+$sccl-select-input-border: $sccl-border;

@@ -1,0 +1,11 @@
+<a href="javascript:"  *ngFor="let scclBtn of scclBtns" (click)="emitBtnActions(el)" #el
+	id="{{scclBtn.id}}" class="waves-effect waves-light {{scclBtn.smd}}" data-toggle="tooltip"
+					data-placement="bottom" title="{{scclBtn.title | translate}}">
+	<!-- smd -- small devices. Shows some buttons on small screen --> 
+	<span class="{{scclBtn.class}} shortcut-btn">
+		<span class="material-icons icon">{{scclBtn.icon}}</span> 
+		<span class="title">{{scclBtn.title | translate}}</span> 
+	</span>
+</a>
+
+

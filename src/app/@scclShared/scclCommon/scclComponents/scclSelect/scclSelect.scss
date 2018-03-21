@@ -1,0 +1,48 @@
+@mixin sccl-select($theme) {
+	$_2nd-color: map-get($theme, 'sccl-select-secondary');
+	.select-wrapper {
+  		input.select-dropdown {
+    		height: 20px;
+    		line-height: 20px;
+    		margin-top: 10px;
+    		border-bottom: solid $_2nd-color $sccl-select-input-border;
+  		}
+
+  		span.caret {
+    		color: $_2nd-color;
+  		}
+
+  		& + label {
+    		color: $_2nd-color;
+    		top: -27px;
+  		}
+
+		.dropdown-content {
+			background: map-get($theme, 'sccl-primary-darken');
+			 li {
+    			min-height: 10px;
+
+ 				&:hover, &.active, &.selected {
+      				background-color: map-get($theme, 'sccl-primary-lighten');
+    			}
+
+    			&.active.selected {
+      				background-color: darken($dropdown-hover-bg-color, 0%);
+    			}
+    	
+    			& > a, & > span {
+      				font-size: 16px;
+      				color: map-get($theme, 'sccl-select-text');
+      				padding: (($dd-items-height - 41) / 2) 16px;
+    			}
+  			}
+		}
+		
+		.select-dropdown li {
+  			img {
+    			height:$dd-items-height - 35;
+    			width: $dd-items-height - 25;
+  			}
+		}	
+	}
+}

@@ -1,0 +1,11 @@
+ <div class="row">
+	<div class="input-field col s12">
+		<select class="selector">
+			<option *ngFor="let option of selectConfigs.options"
+			class="opts" [value]="option.value"
+			attr.data-icon="{{url + option.icon + '.svg'}}">
+		 {{option.title}}</option>
+		</select><label>{{selectConfigs.label.title | translate}}</label>
+	</div>
+</div>
+

@@ -1,0 +1,24 @@
+@mixin sccl-B-button($theme) {
+	>button {
+		background: map-get($theme, 'sccl-button-secondary');
+		color: map-get($theme, 'sccl-button-white');
+		float: right;
+		font-weight: $sccl-buttons-weight;
+		margin-bottom: 10px;
+		width: 100%;
+		text-transform: none;
+	}
+}
+
+@mixin sccl-rounded-btn($theme) {
+	background: map-get($theme, 'sccl-header-secondary');
+	width: 27px;
+	height: 27px;
+	margin-top: 6px;
+	> i.material-icons {
+		height: 27px;
+		line-height: 27px;
+		font-size: 19px;
+		color: map-get($theme, 'sccl-button-white');
+	}		
+}

@@ -1,0 +1,22 @@
+<div>
+	<sccl-card [cardConfig]="cardConfig">
+		<div class="row">
+    		<form class="col s12" #scclForm="ngForm"
+				(ngSubmit)="(submitForm(scclForm.value, $event))">
+    			<div class="image_placeholder">
+    				<img src="{{ 'avatar/image_placeholder' | scclPngExt }}" alt="image_placeholder" class="circle">
+    			</div>
+        		<div class="row" *ngFor="let fconfig of formConfig">
+        			<div *ngFor="let felement of fconfig.formElements" class="input-field col s12">
+          				<i class="fa fa-{{felement.icon}}"></i><input type="{{felement.type}}" class="validate" required pattern=.*\S.*
+						name="{{felement.title | lowercase}}" (ngModel)="felement.title">
+          				<label for="{{felement.title | lowercase}}">{{felement.title | translate}}</label> 
+        			</div>
+      			</div>
+      			<div class="form-action" *ngFor="let fconfig of formConfig"> 
+					<sccl-B-button [scclBtns]="fconfig.buttonElements"></sccl-B-button> 
+				</div>
+    		</form>
+  		</div>
+	</sccl-card>
+</div>

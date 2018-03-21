@@ -1,0 +1,36 @@
+@mixin sccl-top-head($theme) {
+	sccl-top-head {
+		nav {
+			min-height: 10px;
+			background: map-get($theme, 'sccl-header-primary-darken');
+			height: 20px;
+			.nav-wrapper{
+				background: map-get($theme, 'sccl-header-primary-darken');
+				color: map-get($theme, 'sccl-header-text');
+				@include display-flex(space-between, center);
+				padding: 0 20px;
+				.session, .last-login, .date-today {
+					@include display-flex(none, none);
+					padding: 0 ;
+					font-weight: bold;
+					font-size: 11px;
+					.material-icons {
+						font-size: .8rem;	
+					}
+					> div {
+						margin-left: 2px;	
+					}
+				}
+				@media #{$medium-and-down} {
+    				
+  				}
+				@media #{$small-and-down} {	
+					.last-login {
+						display: none;	
+					}
+				}
+				
+			}
+		}
+	}
+}

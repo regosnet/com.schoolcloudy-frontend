@@ -1,0 +1,76 @@
+{
+  "sccl": {
+  	"settings": {
+  		"title": "Iestatījumi",
+  		"language": {
+  			"select": {
+  				"label": {
+  					"title": "Izvēlēties valodu"
+  				}
+  			}
+  		},
+  		"theme": {
+	  		"select": {
+	  				"label": {
+	  					"title": "Izvēlieties motīvu"
+	  				}
+	  			}
+	  		}
+  		},
+  	"home": "Mājas",
+  	"turn_off": "Izslēgt",
+  	"languages":{
+  		"title": "Valodas",
+  		"en": "English",
+  		"lv": "Latviešu",
+  		"de": "Deutsch",
+  		"fr": "Français",
+  		"ar": "عربى"
+  	},
+  	"login": {
+  		"title": "Pieslēgties",
+  		"username": "Lietotājvārds",
+  		"password": "Parole",
+  		"lastLogin": "Pēdējā pierakstīšanās"
+  	},
+  	"tab": {
+  		"news_feed": "Jaunumi",
+  		"gallery": "Galerija",
+  		"messages": "Ziņojumi"
+  	},
+  	
+  	"administrator_menu": {
+		"title": "Administrators",
+		"dashboard_menu": {
+			"title": "Mērinstrumentu Panelis"
+		}
+	},
+	"calendar": {
+		"month": {
+			"0": "Janvāris",
+  			"1": "Februāris",
+  			"2": "Marts",
+			"3": "Aprīlis",
+			"4": "Maijs",
+			"5": "Jūnijs",
+			"6": "Jūlijs",
+			"7": "Augusts",
+			"8": "Septembris",
+			"9": "Oktobris",
+			"10": "Novembris",
+			"11": "Decembris"
+		},
+		"day": {
+			"1": "Pirmdiena",
+			"2": "Otrdiena",
+			"3": "Wednesday",
+			"4": "Ceturtdiena",
+			"5": "Piektdiena",
+			"6": "Sestdiena",
+			"7": "Svētdiena"
+		},
+		"week": "Nedēļa",
+		"semester": "Semestris"
+	}
+  }
+}

@@ -1,0 +1,16 @@
+@import './scclLanguage/scclLanguage';
+@import './scclThemes/scclThemes';
+
+@mixin sccl-settings($theme) {
+	#settings-tab-container {
+		margin: 10px;
+		padding-top: 20px;	
+	}
+	sccl-language {
+		@include sccl-language($theme);	
+	}
+
+	sccl-themes {
+		@include sccl-themes($theme);	
+	}
+}

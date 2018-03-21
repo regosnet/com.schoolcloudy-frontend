@@ -1,0 +1,1 @@
+export * from './scclForm.component';

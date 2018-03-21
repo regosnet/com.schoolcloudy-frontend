@@ -1,0 +1,29 @@
+<nav *ngIf="isLoggedIn">
+	<div class="nav-wrapper">
+		<div class="session">
+			<div class="session-icon">
+				<i class="material-icons">pie_chart_outlined</i>
+			</div>
+			<div class="calendar-icon">
+				<span>{{week | translate}}: {{academicWeek}}, {{semester | translate}}: {{schoolSemester}}</span>
+			</div>
+		</div>
+		<div class="date-today">
+			<div class="clock-icon">
+				<i class="material-icons">date_range</i>
+			</div>
+			<div class="today">
+				<span>{{month | translate}} {{date}}, {{day | translate}} {{year}}</span>
+			</div>
+		</div>
+		<div class="last-login">
+			<div class="clock-icon">
+				<i class="material-icons">access_time</i>
+			</div>
+			<div class="last-login-date">
+				<span>{{lastLogin | translate}}:</span>
+				<span>{{dateLastLogin}}</span>
+			</div>
+		</div>
+	</div>
+</nav>
