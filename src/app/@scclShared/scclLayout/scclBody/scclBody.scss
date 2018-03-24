@@ -7,8 +7,7 @@
 @mixin sccl-body($theme) {
 	$bg: map-get($theme, 'sccl-layout-background');
 	> section {
-		background-color: blue; //$bg;
-		height: 1000px;
+		background-color: $bg;
 		> div {
 			@include display-flex(space-between, none);
 		}

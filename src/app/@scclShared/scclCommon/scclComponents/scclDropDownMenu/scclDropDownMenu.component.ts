@@ -6,25 +6,25 @@ declare var $: any
    templateUrl: './scclDropDownMenu.html',
    styleUrls: ['./scclDropDownMenu.scss']
 })
-export class ScclDropDownMenu implements AfterViewInit{
-    
+export class ScclDropDownMenuComponent implements AfterViewInit {
+
     @Input()
     public listItems;
-    
+
     @Input()
     public menuHeader = [];
-    
-    constructor() {   
+
+    constructor() {
     }
-    
+
     ngAfterViewInit(): void {
         $('.dropdown-button').dropdown({
             inDuration: 300,
             outDuration: 225,
             constrainWidth: false,
-            hover: false, 
-            gutter: 0, 
-            belowOrigin: true, 
+            hover: false,
+            gutter: 0,
+            belowOrigin: true,
             alignment: 'right',
             stopPropagation: false
           }

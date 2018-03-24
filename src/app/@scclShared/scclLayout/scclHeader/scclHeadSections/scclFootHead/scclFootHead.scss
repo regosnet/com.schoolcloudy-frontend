@@ -34,6 +34,12 @@
 							}
 						}
 					}
+				
+					.dropdown-button {
+						> a {
+  							@include sccl-rounded-btn($theme)
+  						}
+					}
 					.tbar-shortcuts-dd-menu-none {
 						height: $foot-head-height;
 						overflow: hidden;

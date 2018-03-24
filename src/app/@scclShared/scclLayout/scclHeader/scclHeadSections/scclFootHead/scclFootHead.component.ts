@@ -14,10 +14,10 @@ declare var $: any;
     templateUrl: './scclFootHead.html',
     styleUrls: ['./scclFootHead.scss'],
 })
-export class ScclFootHeadComponent implements AfterViewInit{
+export class ScclFootHeadComponent implements AfterViewInit {
     @Input()
     footHeadConfig;
-
+    dd_menu_sm: boolean;
     inboxMessage: IScclInboxMessage[] = [];
     inboxMsg_box = [];
     notificationMessage: IScclNotificationMessage[] = [];
@@ -49,44 +49,44 @@ export class ScclFootHeadComponent implements AfterViewInit{
 
     ngAfterViewInit(): void {
         this.scclGlobalService.subscribe('active-page.title', (pageTitle) => {
-            this.activePageTitle = pageTitle
-        })
-        
+            this.activePageTitle = pageTitle;
+        });
+
         this.scclGlobalService.subscribe('message.instant', (instantMsg) => {
             this.instantMessage = instantMsg;
-            this.instantMsg_box = instantMsg[0].body
-            this.def.detectChanges()
-        })
-        
+            this.instantMsg_box = instantMsg[0].body;
+            this.def.detectChanges();
+        });
+
         this.scclGlobalService.subscribe('message.inbox', (inboxMsg) => {
-            this.inboxMessage = inboxMsg
-            this.inboxMsg_box = inboxMsg[0].body
-            this.def.detectChanges()
-        })
-        
+            this.inboxMessage = inboxMsg;
+            this.inboxMsg_box = inboxMsg[0].body;
+            this.def.detectChanges();
+        });
+
         this.scclGlobalService.subscribe('message.notification', (notificationMsg: any[]) => {
             this.notificationMessage = notificationMsg;
             setTimeout(() => {
                 this.notificationMsg_box = notificationMsg[0].body;
             }, 5000);
             this.def.detectChanges();
-        })
+        });
     }
-    
+
     public btnActions(e): void {
         const btnId = $(e).attr('id');
-        switch(btnId) {
+        switch (btnId) {
         case 'settings-btn':
-            this.toggleRSHPanel()
+            this.toggleRSHPanel();
             break;
         case 'turn_off':
-            console.log('Turning Off')
+            console.log('Turning Off');
             break;
         default:
-            console.log('None clicked')
+            console.log('None clicked');
         }
     }
-    
+
     toggleRSHPanel() {
         this.isRSHPanelOpen = !this.isRSHPanelOpen;
         this.scclGlobalService.notifyDataChanged('isRSHPanelOpen', {isRSHPanelOpen: this.isRSHPanelOpen});

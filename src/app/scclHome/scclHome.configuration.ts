@@ -4,8 +4,7 @@ import { ScclGalleryComponent } from '../@scclShared/scclPanels/scclGallery/sccl
 import { ScclSettingsComponent, ScclSystemComponent } from '../@scclShared/scclPanels';
 import { scclContants } from '../@scclShared/scclCommon/scclContants/sccl.constants';
 
-const layoutHeight = scclContants.layoutHeight;
-const tabHeight = layoutHeight - 120;
+const tabHeight = 120;
 
 export const SCCL_HOME_CONFIG = {
              headerConfig: {
@@ -24,6 +23,14 @@ export const SCCL_HOME_CONFIG = {
                                 route: '/settings',
                                 class: 'loggedIn settings',
                                 id: 'settings-btn',
+                                type: 'a-link'
+                            },
+                            {
+                                title: 'sccl.search',
+                                icon: 'search',
+                                route: 'search &#xE8B6;',
+                                class: 'loggedIn settings',
+                                id: 'search-btn',
                                 type: 'a-link'
                             }
                           ],
@@ -76,9 +83,9 @@ export const SCCL_HOME_CONFIG = {
                          ],
 
                          heightConfigs: [
-                             {layout: {height: layoutHeight - 1}},
-                             {body: {height: layoutHeight - 70}},
-                             {content: {height: layoutHeight - 100}}
+                             {layout: {height: 0}},
+                             {body: {height: 60}},
+                             {content: {height: 85}}
                          ]
                 }
             };

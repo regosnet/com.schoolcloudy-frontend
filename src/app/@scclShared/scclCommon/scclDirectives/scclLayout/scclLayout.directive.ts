@@ -10,7 +10,7 @@ export class ScclLayoutDirective {
 
 
     constructor(private scclLayoutService: ScclLayoutService,
-            private scclGlobalService: ScclGlobalService) {
+      private scclGlobalService: ScclGlobalService) {
     }
 
     @HostListener('window:resize')

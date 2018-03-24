@@ -9,7 +9,7 @@
 			</ul>
 		</div>
 		<div 
-			[ngStyle]="{'height': tab.tabHeight + 'px'}" [tab-body]=tb #tb
+			[ngStyle]="{'height': (winHeight - tab.tabHeight) + 'px'}" [tab-body]=tb #tb
 			*ngFor="let tabb of tab.tabBody" id="{{tabb.id}}"
 			class="col s12 tab-body-wrapper {{tabb.class}}">
 		</div>

@@ -10,6 +10,7 @@ declare var $: any;
 })
 export class ScclBodyComponent implements AfterViewInit {
     public height;
+    HEIGHT_CONSTANT: number;
     public isLoggedIn;
     isRSHPanelOpen = false;
     tabs: IScclTab;
@@ -24,15 +25,21 @@ export class ScclBodyComponent implements AfterViewInit {
             this.isLoggedIn = res.isLoggedIn;
             this.cdRef.detectChanges();
         });
+
         this.scclGlobalService.subscribe('heightConfigs', (heightConfig: any[]) => {
-            this.height = heightConfig.find((x => x['body'])).body.height;
+            this.HEIGHT_CONSTANT = heightConfig.find((x => x['body'])).body.height;
             this.cdRef.detectChanges();
         });
-        this.scclGlobalService.subscribe('isRSHPanelOpen',
-                (res) => {
-                    this.isRSHPanelOpen = res.isRSHPanelOpen;
-                    this.cdRef.detectChanges();
-                });
+
+       this.scclGlobalService.subscribe('window.current-height', (windowHeight) => {
+            this.height = windowHeight.height - this.HEIGHT_CONSTANT;
+            this.cdRef.detectChanges();
+        });
+
+        this.scclGlobalService.subscribe('isRSHPanelOpen', (res) => {
+            this.isRSHPanelOpen = res.isRSHPanelOpen;
+            this.cdRef.detectChanges();
+        });
     }
 
     getContentStyle() {
@@ -46,6 +53,5 @@ export class ScclBodyComponent implements AfterViewInit {
                 height: this.height + 'px'
             };
         }
-
     }
 }

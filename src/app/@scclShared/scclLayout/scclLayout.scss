@@ -9,7 +9,7 @@
 		@include sccl-body($theme)
 	}
 	width: 100%;
-	background: red; //map-get($theme, 'sccl-layout-background');
+	background: map-get($theme, 'sccl-layout-background');
 	.sccl-sticky {
 		position: fixed;
 		top: 24px;

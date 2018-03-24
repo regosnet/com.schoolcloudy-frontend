@@ -35,8 +35,18 @@
 				</div>
 			</div><!-- tbar shortcuts with drop down menu -->
 			
+			<div *ngIf="dd_menu_sm" class='dropdown-button' data-activates='dd-menu-sm'>
+				<a class="btn-floating btn waves-effect waves-light"><i class="material-icons">menu</i></a>
+					<sccl-dropdown-menu 
+						id='dd-menu-sm' 
+						class='dropdown-content'
+						[listItems]="shortcutBtns"
+						[menuHeader]="[]">
+					</sccl-dropdown-menu>
+			</div>
+			
 			<!-- these tbar shortcuts are without drop down menu -->
-			<div class="tbar-shortcuts-dd-menu-none">
+			<div *ngIf="!dd_menu_sm" class="tbar-shortcuts-dd-menu-none">
 				<sccl-A-button [scclBtns]="shortcutBtns" (btnActions)="btnActions($event)"></sccl-A-button>
 			</div><!-- tbar shortcuts without drop down menu -->
 		</div>

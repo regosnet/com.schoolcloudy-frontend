@@ -9,7 +9,8 @@ import { scclContants } from '../scclCommon/scclContants/sccl.constants';
     styleUrls: ['./scclLayout.scss']
 })
 export class ScclLayoutComponent implements AfterViewInit, OnInit {
-    height;
+    height: number;
+    HEIGHT_CONSTANT: number;
     resizeWidth: boolean;
     scclTheme = 'sccl-default-theme';
     constructor(private scclGlobalService: ScclGlobalService,
@@ -25,7 +26,11 @@ export class ScclLayoutComponent implements AfterViewInit, OnInit {
            this.scclTheme = this.switchTheme(theme);
         });
         this.scclGlobalService.subscribe('heightConfigs', (heightConfig) => {
-            this.height = heightConfig.find((x => x['layout'])).layout.height;
+          this.HEIGHT_CONSTANT = heightConfig.find((x => x['layout'])).layout.height;
+        });
+
+       this.scclGlobalService.subscribe('window.current-height', (windowHeight) => {
+            this.height = windowHeight.height - this.HEIGHT_CONSTANT;
             this.cdRef.detectChanges();
         });
     }
@@ -42,5 +47,5 @@ export class ScclLayoutComponent implements AfterViewInit, OnInit {
             break;
         }
         return this.scclTheme;
-}
+    }
 }

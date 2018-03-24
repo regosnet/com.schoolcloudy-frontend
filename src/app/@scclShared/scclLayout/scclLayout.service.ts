@@ -14,7 +14,7 @@ export class ScclLayoutService {
     }
 
     setHeight() {
-        this.scclGlobalService.notifyDataChanged('setHeight', {height: scclContants.layoutHeight});
+        this.scclGlobalService.notifyDataChanged('window.current-height', {height: window.innerHeight});
     }
 
 }

@@ -36,7 +36,7 @@ import {
 
 import {
     ScclCardComponent,
-    ScclDropDownMenu,
+    ScclDropDownMenuComponent,
     ScclAButtonComponent,
     ScclBButtonComponent,
     ScclCollapsibleComponent,
@@ -82,7 +82,7 @@ const SCCL_DIRECTIVES =
 
 const SCCL_COMPONENTS =
     [ScclCardComponent,
-     ScclDropDownMenu,
+     ScclDropDownMenuComponent,
      ScclAButtonComponent,
      ScclBButtonComponent,
      ScclSlimScrollDirective,

@@ -84,7 +84,7 @@ export const SCCL_ADMINISTRATOR_CONFIG = {
                       scclTabs: [
                               {
                                   tabName: 'aside-togglable-tab',
-                                  tabHeight: scclContants.layoutHeight ,
+                                  tabHeight: 120,
                                   tabHeader: [
                                      {title: 'sccl.settings.title', class: 's6 tab-one active', ref: 'settings', id: 'sm-tab'},
                                      {title: 'sccl.tab.messages', class: 's6 tab-two', ref: 'system', id: 'sm-tab'},
