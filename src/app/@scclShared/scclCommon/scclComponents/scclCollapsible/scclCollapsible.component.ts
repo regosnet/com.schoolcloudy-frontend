@@ -5,7 +5,6 @@ import { Component,
          ComponentFactory, ComponentRef,
          QueryList, ViewChildren
 } from '@angular/core';
-import { ScclLoginComponent } from '../../../scclPanels/scclLogin/scclLogin.component';
 declare var $: any;
 
 @Component({

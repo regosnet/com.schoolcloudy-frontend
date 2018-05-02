@@ -33,15 +33,15 @@
     			& > a, & > span {
       				font-size: 16px;
       				color: map-get($theme, 'sccl-select-text');
-      				padding: (($dd-items-height - 41) / 2) 16px;
+      				padding: (($sccl-select-items-height - 41) / 2) 16px;
     			}
   			}
 		}
 		
 		.select-dropdown li {
   			img {
-    			height:$dd-items-height - 35;
-    			width: $dd-items-height - 25;
+    			height:$sccl-select-items-height - 35;
+    			width: $sccl-select-items-height - 25;
   			}
 		}	
 	}

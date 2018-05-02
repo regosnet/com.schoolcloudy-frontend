@@ -10,11 +10,11 @@
         			<div *ngFor="let felement of fconfig.formElements" class="input-field col s12">
           				<i class="fa fa-{{felement.icon}}"></i><input type="{{felement.type}}" class="validate" required pattern=.*\S.*
 						name="{{felement.title | lowercase}}" (ngModel)="felement.title">
-          				<label for="{{felement.title | lowercase}}">{{felement.title | translate}}</label> 
+          				<label for="{{felement.label | lowercase}}">{{felement.label | translate}}</label> 
         			</div>
       			</div>
       			<div class="form-action" *ngFor="let fconfig of formConfig"> 
-					<sccl-B-button [scclBtns]="fconfig.buttonElements"></sccl-B-button> 
+					<sccl-button-b [scclBtns]="fconfig.buttonElements"></sccl-button-b> 
 				</div>
     		</form>
   		</div>

@@ -1,0 +1,10 @@
+@mixin sccl-widget-bar($theme) {
+	> div {
+		background: map-get($theme, 'sccl-header-primary');
+		position: fixed;
+	width: $sidebar-width;
+	@include border-radius($border-radius, 0, 0, $border-radius);
+	right: 1px;
+	height: 800px;
+	}
+}

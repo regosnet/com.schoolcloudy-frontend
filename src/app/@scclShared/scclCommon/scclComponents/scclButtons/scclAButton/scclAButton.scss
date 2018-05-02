@@ -1,16 +1,2 @@
 @mixin sccl-A-button($theme) {
-	
-}
-
-@mixin sccl-rounded-btn($theme) {
-	background: map-get($theme, 'sccl-header-secondary');
-	width: 22px;
-	height: 22px;
-	margin-top: -2px;
-	> i.material-icons {
-		height: 22px;
-		line-height: 22px;
-		font-size: 16px;
-		color: map-get($theme, 'sccl-button-white');
-	}		
 }

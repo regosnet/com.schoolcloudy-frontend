@@ -1,7 +1,0 @@
-@import '../../scclCommon/scclComponents/scclForm/scclForm';
-
-@mixin sccl-login($theme) {
-	sccl-form {
-		@include sccl-form($theme);	
-	}
-}

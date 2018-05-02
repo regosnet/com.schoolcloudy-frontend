@@ -1,33 +1,30 @@
-import { Component, Input, AfterViewInit} from '@angular/core';
-import {
-    IScclTab,
-} from '../../../../scclModels';
+import { Component, Input, AfterViewInit, ChangeDetectorRef, OnChanges} from '@angular/core';
 import { ScclGlobalService } from '../../scclServices';
-import { ScclTabService } from './scclTab.service';
 declare var $: any;
 
 @Component({
     selector: 'sccl-tab',
     templateUrl: './scclTab.html',
-    styleUrls: ['./scclTab.scss'],
-    providers: [ScclTabService]
+    styleUrls: ['./scclTab.scss']
 })
-export class ScclTabComponent implements AfterViewInit {
-    @Input() tab: IScclTab;
-    winHeight: number;
+export class ScclTabComponent implements AfterViewInit, OnChanges {
+    @Input() tab;
+    winHeight = window.innerHeight;
 
-    constructor(private scclTabService: ScclTabService,
-                private scclGlobalService: ScclGlobalService) {
-
+    constructor(private scclGlobalService: ScclGlobalService,
+        private cdRef: ChangeDetectorRef) {
     }
 
     ngAfterViewInit() {
         setTimeout(() => {
             $('ul.tabs').tabs();
-        }, 200);
+        }, 300);
+    }
 
-      this.scclGlobalService.subscribe('window.current-height', (windowHeight) => {
-            this.winHeight = windowHeight.height;
-        });
+    ngOnChanges(): void {
+        this.scclGlobalService.subscribe('screen-dimension', (windowHeight) => {
+              this.winHeight = windowHeight.height;
+              this.cdRef.detectChanges();
+          });
     }
 }

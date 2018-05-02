@@ -1,24 +1,24 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
-declare var $: any
+import { Component, Input, AfterViewInit, OnChanges } from '@angular/core';
+declare var $: any;
 
 @Component({
    selector: 'sccl-dropdown-menu',
    templateUrl: './scclDropDownMenu.html',
    styleUrls: ['./scclDropDownMenu.scss']
 })
-export class ScclDropDownMenuComponent implements AfterViewInit {
+export class ScclDropDownMenuComponent implements AfterViewInit, OnChanges {
 
     @Input()
-    public listItems;
+    public ddMenuConfig;
 
     @Input()
-    public menuHeader = [];
+    itemsContainer;
 
     constructor() {
     }
 
     ngAfterViewInit(): void {
-        $('.dropdown-button').dropdown({
+       /* $('.dropdown-button').dropdown({
             inDuration: 300,
             outDuration: 225,
             constrainWidth: false,
@@ -28,6 +28,12 @@ export class ScclDropDownMenuComponent implements AfterViewInit {
             alignment: 'right',
             stopPropagation: false
           }
-        );
+        );*/
+    }
+
+    ngOnChanges(): void {
+        $('.dropdown-button').dropdown({
+            alignment: 'left',
+        });
     }
 }

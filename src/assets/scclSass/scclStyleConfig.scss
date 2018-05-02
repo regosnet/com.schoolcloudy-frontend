@@ -6,6 +6,7 @@
 @import '../../assets/@themes/sccl-default-theme';
 @import '../../assets/@themes/sccl-regomic-theme';
 @import '../../app/@scclShared/scclLayout/scclLayout';
+@import '../../app/scclStarter/scclStarter';
 
 @mixin sccl-component-themes($theme) {
 	@include sccl-layout($theme);

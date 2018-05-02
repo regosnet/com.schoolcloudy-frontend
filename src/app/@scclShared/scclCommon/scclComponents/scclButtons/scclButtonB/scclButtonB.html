@@ -1,0 +1,9 @@
+<button *ngFor="let scclBtn of scclBtns" [disabled]="" (click)="emitBtnActions(el)" #el
+	id="{{scclBtn.id}}"
+	data-toggle="tooltip" attr.data-placement="{{scclBtn.tool_tip.d_p}}" 
+	title="{{scclBtn.tool_tip.title | translate}}"
+	class="waves-effect waves-light btn"
+	id="search-btn">
+	<span *ngIf="scclBtn.icon" class="material-icons">{{scclBtn.icon}}</span>
+	<span class="btn-title" *ngIf="scclBtn.title" translate>{{scclBtn.title}}</span>
+</button>

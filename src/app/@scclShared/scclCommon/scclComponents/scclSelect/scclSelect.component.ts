@@ -30,6 +30,5 @@ export class ScclSelectComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        $('select').material_select('destroy');
     }
 }

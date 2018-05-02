@@ -1,20 +1,11 @@
-import { ScclUserContactsComponent } from '../scclLayout/scclBody/scclWidgetBar/scclUserContacts';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 import 'hammerjs';
-
-import {
-    ScclGalleryComponent,
-    ScclLanguageComponent,
-    ScclNewsFeedComponent,
-    ScclSettingsComponent,
-    ScclSystemComponent,
-    ScclThemesComponent
-} from '../scclPanels';
 
 import {
     MalihuScrollbarModule,
@@ -31,34 +22,31 @@ import {
 import {
     ScclAuthenticationService,
     ScclMessageService,
-    ScclGlobalService
+    ScclGlobalService,
+    ScclAuthGuard
 } from './scclServices';
 
 import {
     ScclCardComponent,
     ScclDropDownMenuComponent,
     ScclAButtonComponent,
-    ScclBButtonComponent,
     ScclCollapsibleComponent,
     ScclFormComponent,
     ScclTabComponent,
-    ScclSelectComponent
+    ScclSelectComponent,
+    ScclTabDirective
 } from './scclComponents';
 
 import {
     ScclSlimScrollDirective,
-    ScclLayoutDirective,
     ScclCollapsibleDirective,
-    ScclTabDirective,
     ScclSelectDirective,
     ScclHeaderDirective
 } from './scclDirectives';
+import { ScclTranslationModule } from '../scclLayout/scclTechnicalPanel/scclSettings/scclLanguage/translator/scclTranslatingModule';
+import { ScclButtonBComponent } from './scclComponents/scclButtons/scclButtonB';
 
-import {
-    ScclTranslationModule
-} from '../scclPanels/scclSettings/scclLanguage/translator/scclTranslatingModule';
-import { ScclLanguageService } from '../scclPanels/scclSettings/scclLanguage/scclLanguage.service';
-import { ScclThemesService } from '../scclPanels/scclSettings/scclThemes/scclThemes.service';
+
 
 
 const SCCL_SHARED_SERVICE =
@@ -66,37 +54,29 @@ const SCCL_SHARED_SERVICE =
      MalihuScrollbarService,
      ScclAuthenticationService,
      ScclMessageService,
-     ScclLanguageService,
-     ScclThemesService,
-     ScclGlobalService
+     ScclGlobalService,
+     ScclAuthGuard
      ];
 
 const SCCL_DIRECTIVES =
     [
-     ScclLayoutDirective,
      ScclCollapsibleDirective,
-     ScclTabDirective,
      ScclSelectDirective,
-     ScclHeaderDirective
+     ScclHeaderDirective,
+     ScclTabDirective
      ];
 
 const SCCL_COMPONENTS =
     [ScclCardComponent,
      ScclDropDownMenuComponent,
      ScclAButtonComponent,
-     ScclBButtonComponent,
+     ScclButtonBComponent,
      ScclSlimScrollDirective,
      ScclFormComponent,
      ScclCollapsibleComponent,
      ScclTabComponent,
-     ScclGalleryComponent,
-     ScclLanguageComponent,
-     ScclNewsFeedComponent,
-     ScclUserContactsComponent,
-     ScclSettingsComponent,
-     ScclSystemComponent,
      ScclSelectComponent,
-     ScclThemesComponent
+
      ];
 
 const SCCL_PIPES =
@@ -116,7 +96,8 @@ const SCCL_PIPES =
       HttpClientModule,
       HttpModule,
       MalihuScrollbarModule.forRoot(),
-      ScclTranslationModule
+      ScclTranslationModule,
+      DeviceDetectorModule.forRoot()
     ],
     declarations: [
       ...SCCL_PIPES,
@@ -137,7 +118,8 @@ const SCCL_PIPES =
          HttpClientModule,
          HttpModule,
          MalihuScrollbarModule,
-         ScclTranslationModule
+         ScclTranslationModule,
+         DeviceDetectorModule
     ]
 })
 export class ScclCommonModule {

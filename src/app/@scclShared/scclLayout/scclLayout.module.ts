@@ -10,13 +10,21 @@ import {
 import {
     ScclBodyComponent,
     ScclContentSectionComponent,
-    ScclLeftSideMenuBarComponent,
-    ScclUserGreetingBarComponent,
+    ScclRightMenuBarComponent,
     ScclWidgetBarComponent,
-    ScclRSHPanelComponent
+    ScclLeftMenuBarComponent,
+    ScclSidebarDirective,
+    ScclUserContactsComponent,
 } from './scclBody';
-import { ScclRSHPanelService } from './scclBody/scclRSHPanel/ScclRSHPanel.service';
-import { ScclLayoutService } from './scclLayout.service';
+
+import { ScclTechnicalPanelModule } from './scclTechnicalPanel/scclTechnicalPanel.module';
+import { ScclLayoutDirective } from './scclLayoutDirectives';
+import {
+    ScclViewResolverService,
+    ScclLayoutService
+} from './scclLayoutServices';
+import { ScclUXComponentsModule } from '../scclUXComponents/scclUXComponents.module';
+
 
 const SCCL_LAYOUT_COMPONENTS =
     [
@@ -24,22 +32,38 @@ const SCCL_LAYOUT_COMPONENTS =
          ScclHeaderComponent,
          ScclBodyComponent,
          ScclContentSectionComponent,
-         ScclLeftSideMenuBarComponent,
-         ScclUserGreetingBarComponent,
+         ScclLeftMenuBarComponent,
+         ScclRightMenuBarComponent,
          ScclWidgetBarComponent,
-         ScclRSHPanelComponent,
          ScclMidHeadComponent,
          ScclFootHeadComponent,
-         ScclTopHeadComponent
+         ScclTopHeadComponent,
+         ScclUserContactsComponent
      ];
+const SCCL_LAYOUT_DIRECTIVES =
+    [
+         ScclSidebarDirective,
+         ScclLayoutDirective
+    ];
+const SCCL_LAYOUT_SERVICE =
+    [
+        ScclViewResolverService,
+        ScclLayoutService
+    ];
 
 
 @NgModule({
-    imports: [ScclCommonModule.forRoot()],
-    declarations:
-        [...SCCL_LAYOUT_COMPONENTS],
-    exports: [ScclLayoutComponent, ScclCommonModule],
-
-    providers: [ScclRSHPanelService, ScclLayoutService]
+    imports: [
+        ScclCommonModule.forRoot(),
+        ScclUXComponentsModule.forRoot(),
+        ScclTechnicalPanelModule
+    ],
+    declarations: [...SCCL_LAYOUT_COMPONENTS, ...SCCL_LAYOUT_DIRECTIVES],
+    exports: [ScclLayoutComponent, ScclCommonModule, ScclTechnicalPanelModule],
+    providers: [...SCCL_LAYOUT_SERVICE],
+    entryComponents: [
+        ScclWidgetBarComponent,
+        ScclUserContactsComponent
+    ]
 })
 export class ScclLayoutModule {}

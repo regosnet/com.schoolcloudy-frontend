@@ -1,5 +1,23 @@
+<section [ngClass]="{'logged-in': isLoggedIn, 'collapseRightSidePanel': isAsidePanelCollapsed, 'collapseLeftSidePanel': isAsidePanelCollapsed}">
+	<aside id="left-side-panel" [ngStyle]="{'height': height + 'px'}">
+		<div class="shift-content-right">
+			<sccl-left-menu-bar [sidebarConfig]="leftSidebarConfig" [isLoggedIn]="isLoggedIn"></sccl-left-menu-bar>
+		</div>
+	</aside>
+	<section id="main-section-panel">
+		<div>
+			<router-outlet></router-outlet>
+		</div>
+	</section>
+	<aside id="right-side-panel" [ngStyle]="{'height': height + 'px'}">
+		<div>
+			<sccl-right-menu-bar #right [sidebarConfig]="rightSidebarConfig" [isLoggedIn]="isLoggedIn"></sccl-right-menu-bar>
+		</div>
+	</aside>
+</section>
+
+<!--
 <section [ngStyle]="getContentStyle()">
-	<sccl-user-greeting-bar *ngIf="isLoggedIn"></sccl-user-greeting-bar>
 	<div>
 		<sccl-left-side-menu-bar *ngIf="isLoggedIn"></sccl-left-side-menu-bar>
 		<sccl-content-section>
@@ -8,3 +26,46 @@
 		<sccl-rsh-panel id="rshPanel"></sccl-rsh-panel>
 	</div>
 </section>
+
+
+<section [ngClass]="{'logged-in': false}">
+	<aside id="left-side-panel" [ngStyle]="{'height': sidebarHeight + 'px'}">
+		<div class="shift-content-right">
+			>
+			<router-outlet name="left-side-panel"></router-outlet>
+		</div>
+	</aside>
+	
+	<section id="main-section-panel">
+		<div class="div-left">
+			sadfasd
+		</div>
+		<div class="div-center">
+			<router-outlet></router-outlet>
+		</div>
+		<div class="div-right"></div>
+	</section>
+	<aside id="right-side-panel" [ngStyle]="{'height': sidebarHeight + 'px'}">
+		<router-outlet name="right-side-panel"></router-outlet>
+	</aside>
+</section>
+
+
+
+
+
+
+<section [ngClass]="{'logged-in': false}">
+	<aside id="left-side-panel" [ngStyle]="{'height': sidebarHeight + 'px', 'width': 20 + '%'}">
+		<div class="shift-content-right">
+			<router-outlet name="left-side-panel"></router-outlet>
+		</div>
+	</aside>
+	<section id="main-section-panel" [ngStyle]="{'width': 55 + '%'}">
+		<router-outlet></router-outlet>
+	</section>
+	<aside id="right-side-panel" [ngStyle]="{'height': sidebarHeight + 'px', 'width': 20 + '%'}">
+		<router-outlet name="right-side-panel"></router-outlet>
+	</aside>
+</section>
+-->

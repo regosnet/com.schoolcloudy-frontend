@@ -1,24 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response} from '@angular/http';
-import { ScclGlobalService } from "../@scclShared/scclCommon/scclServices/index";
-import { SCCL_ADMINISTRATOR_CONFIG } from "./scclAdministrator.configuration";
-import { TranslateService } from "@ngx-translate/core";
+import { ScclGlobalService, ScclMessageService } from '../@scclShared/scclCommon/scclServices';
+import { SCCL_ADMINISTRATOR_CONFIG } from './scclAdministrator.configuration';
+import { ScclLayoutService } from '../@scclShared/scclLayout/scclLayoutServices/scclLayout.service';
+import { IScclUser } from '../scclModels';
 
 @Injectable()
 export class ScclAdmininstratorService {
-   
+
     constructor(private scclGlobalService: ScclGlobalService,
-            private translate: TranslateService) {
-        this.scclGlobalService.subscribe('bodyConfigs', (bodyConfigs) => {
-            if(bodyConfigs !== undefined) {
-                Object.keys(bodyConfigs).forEach((config) => {
-                    this.scclGlobalService.notifyDataChanged(config, bodyConfigs[config]);
-                })
-            }
-        })
-         this.scclGlobalService.subscribe('selected.language', (language) => {
-            this.translate.use(language);
-        })
+                private scclLayoutService: ScclLayoutService,
+                private scclMessageService: ScclMessageService) {
+                    this.initializeModuleConfigurations();
+        this.setCurrentUser();
+        this.getUserMessages();
+    }
+
+
+    private setCurrentUser() {
+        this.scclGlobalService.notifyDataChanged('isLoggedIn', true);
+        this.scclGlobalService.notifyDataChanged('isUser', this.getUser());
+    }
+
+    getUser(): IScclUser {
+        return {
+            firstName: 'Eric',
+            lastName: 'Ihechukwudere'
+        };
+    }
+
+    initializeModuleConfigurations() {
+       this.scclGlobalService.notifyDataChanged('module.configurations', SCCL_ADMINISTRATOR_CONFIG);
+    }
+
+    getUserMessages() {
+        this.scclGlobalService.notifyDataChanged('message.instant', this.scclMessageService.getInstantMessages());
+        this.scclGlobalService.notifyDataChanged('message.notification', this.scclMessageService.getNotificationMessages());
+        this.scclGlobalService.notifyDataChanged('message.inbox', this.scclMessageService.getInboxMessages());
+    }
+
+    setPageTitle(pageTitle) {
+        this.scclLayoutService.setPageTitle(pageTitle);
     }
 /*
     public getAdministrator() {

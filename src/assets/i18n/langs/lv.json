@@ -1,6 +1,6 @@
 {
   "sccl": {
-  	"settings": {
+  	"settingsf": {
   		"title": "Iestatījumi",
   		"language": {
   			"select": {
@@ -16,9 +16,31 @@
 	  				}
 	  			}
 	  		}
-  		},
+		  },
+	"components": {
+       "button": {
+		   "clear": "Aizvērt"
+	   }
+	},
   	"home": "Mājas",
-  	"turn_off": "Izslēgt",
+	"turn_off": "Izslēgt",
+	"search": "Meklēt",
+	"dashboard": "Mērinstrumentu Panelis",
+	"contacts": "Kontakti",
+	"widgets": "Logrīki",
+	"system": "Sistēma",
+	"academics": "Akadēmiķi",
+	"manage_users": "Pārvaldiet lietotājus",
+	"taskboard": "Tastatūras",
+	"news_feed": "Jaunumi",
+	"gallery": "Galerija",
+	"messenger": "Kurjers",
+	"inbox": "E-pasts",
+	"mark_all_read": "Atzīmēt visu kā izlasītu",
+	"see_all": "Redzēt visu",
+	"settings": "Iestatījumi",
+	"menu": "Izvēlne",
+	"myschedule": "Mans grafiks",
   	"languages":{
   		"title": "Valodas",
   		"en": "English",
@@ -34,16 +56,11 @@
   		"lastLogin": "Pēdējā pierakstīšanās"
   	},
   	"tab": {
-  		"news_feed": "Jaunumi",
-  		"gallery": "Galerija",
   		"messages": "Ziņojumi"
   	},
   	
   	"administrator_menu": {
-		"title": "Administrators",
-		"dashboard_menu": {
-			"title": "Mērinstrumentu Panelis"
-		}
+		"title": "Administrators"
 	},
 	"calendar": {
 		"month": {
@@ -71,6 +88,13 @@
 		},
 		"week": "Nedēļa",
 		"semester": "Semestris"
-	}
+	},
+	"message": {
+	 	"instant": "Ziņojumi",
+	 	"inbox": "E-pasts",
+	 	"notification": "Paziņojumi",
+		 "mark_all_read": "Atzīmēt visu kā izlasītu",
+		 "see_all": "Redzēt visu"
+	 }
   }
 }

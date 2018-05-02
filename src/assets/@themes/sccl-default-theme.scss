@@ -1,12 +1,13 @@
-$sccl-default-primary: color("blue-grey", "darken-2") !default;
-$sccl-default-primary-lighten: color("blue-grey", "darken-1") !default;;
-$sccl-default-primary-darken: color("blue-grey", "darken-3") !default;
+$sccl-default-primary: color("blue-grey", "darken-3") !default;
+$sccl-default-primary-lighten: color("blue-grey", "darken-2") !default;;
+$sccl-default-primary-darken: color("blue-grey", "darken-4") !default;
 $sccl-default-primary-deep-darken: color("blue-grey", "darken-4") !default;
 $sccl-default-text: color("blue-grey", "lighten-3") !default;
 $sccl-default-text-darken: darken($sccl-default-text, 30%);
 $sccl-default-white: #fff !important;
 $sccl-default-text-lighten: lighten($sccl-default-text, 16%);
-$sccl-default-secondary: color("teal", "accent-4") !default;
+$sccl-default-secondary: color("teal", "accent-3") !default;
+$sccl-default-secondary-button-bg: color("teal", "base") !default;
 $sccl-default-secondary-hover: lighten($sccl-default-secondary, 5%);;
 $sccl-default-success: color("green", "lighten-3") !default; 
 $sccl-default-error: color("red", "base") !default;
@@ -15,24 +16,6 @@ $sccl-default-primary-transparent: rgba($sccl-default-primary, .25);
 
 //======= MAIN LAYOUT BACKGROUND COLORS ===============
 $sccl-default-layout-background: color("blue-grey", "base") !default;
-
-//======= BUTTON COLORS ===============
-$sccl-default-button-secondary: $sccl-default-secondary;
-$sccl-default-button-secondary-hover: $sccl-default-secondary-hover;
-$sccl-default-button-text: $sccl-default-text;
-$sccl-default-button-text-darken: $sccl-default-text-darken;
-$sccl-default-button-white: $sccl-default-white;
-$sccl-default-button-text-lighten: $sccl-default-text-lighten;
-
-//======= SIDE BARS COLORS ===============
-
-$sccl-default-sidebar-primary-darken: $sccl-default-primary-darken;
-$sccl-default-sidebar-primary: $sccl-default-primary;
-$sccl-default-sidebar-primary-lighten: $sccl-default-primary-lighten;
-$sccl-default-sidebar-text: $sccl-default-text;
-$sccl-default-sidebar-text-darken: $sccl-default-text-darken;
-$sccl-default-sidebar-text-lighten: $sccl-default-text-lighten;
-$sccl-default-sidebar-secondary: $sccl-default-secondary;
 
 //=========== HEADER COLORS ==============
 $sccl-default-header-primary-darken: $sccl-default-primary-darken;
@@ -43,6 +26,33 @@ $sccl-default-header-text: $sccl-default-text;
 $sccl-default-header-text-darken: $sccl-default-text-darken;
 $sccl-default-header-text-lighten: $sccl-default-text-lighten;
 $sccl-default-header-secondary: $sccl-default-secondary;
+
+//======= BODY COLORS ===============
+$sccl-default-body-primary-darken: $sccl-default-primary-darken;
+$sccl-default-body-primary: $sccl-default-primary;
+$sccl-default-body-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-body-deep-darken: $sccl-default-primary-deep-darken;
+
+//======= BUTTON COLORS ===============
+$sccl-default-button-secondary: $sccl-default-secondary;
+$sccl-default-button-secondary-hover: $sccl-default-secondary-hover;
+$sccl-default-button-text: $sccl-default-text;
+$sccl-default-button-text-darken: $sccl-default-text-darken;
+$sccl-default-button-white: $sccl-default-white;
+$sccl-default-button-text-lighten: $sccl-default-text-lighten;
+$sccl-default-button-error: $sccl-default-error;
+$sccl-default-button-primary-deep-darken: $sccl-default-primary-deep-darken;
+$sccl-default-secondary-button-bg: $sccl-default-secondary-button-bg;
+
+//======= SIDE BARS COLORS ===============
+$sccl-default-sidebar-primary-darken: $sccl-default-primary-darken;
+$sccl-default-sidebar-primary: $sccl-default-primary;
+$sccl-default-sidebar-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-sidebar-text: $sccl-default-text;
+$sccl-default-sidebar-text-darken: $sccl-default-text-darken;
+$sccl-default-sidebar-text-lighten: $sccl-default-text-lighten;
+$sccl-default-sidebar-secondary: $sccl-default-secondary;
+$sccl-default-sidebar-white: $sccl-default-white;
 
 //=========== DROP DOWN MENU COLORS ==============
 $sccl-default-dropdown-menu-primary-darken: $sccl-default-primary-darken;
@@ -82,6 +92,15 @@ $sccl-default-select-text-darken: $sccl-default-text-darken;
 $sccl-default-select-text-lighten: $sccl-default-text-lighten;
 $sccl-default-select-secondary: $sccl-default-secondary;
 
+//=========== FORM COLORS ==============
+$sccl-default-form-primary-darken: $sccl-default-primary-darken;
+$sccl-default-form-primary-deep-darken: $sccl-default-primary-deep-darken;
+$sccl-default-form-primary: $sccl-default-primary;
+$sccl-default-form-primary-lighten: $sccl-default-primary-lighten;
+$sccl-default-form-text: $sccl-default-text;
+$sccl-default-form-text-darken: $sccl-default-text-darken;
+$sccl-default-form-text-lighten: $sccl-default-text-lighten;
+$sccl-default-form-secondary: $sccl-default-secondary;
 
 $sccl-default-theme: (
 	sccl-primary: $sccl-default-primary,
@@ -108,6 +127,12 @@ $sccl-default-theme: (
 	sccl-header-text-darken: $sccl-default-header-text-darken,
 	sccl-header-secondary: $sccl-default-header-secondary,
 	sccl-header-white: $sccl-default-white,
+
+	//======= BODY COLORS ===============
+    sccl-body-primary-darken: $sccl-default-body-primary-darken,
+    sccl-body-primary: $sccl-default-body-primary,
+    sccl-body-primary-lighten: $sccl-default-body-primary-lighten,
+	sccl-body-deep-darken: $sccl-default-body-deep-darken,
 	
 	//======= DROP DOWN COLORS ===============
 	sccl-dropdown-menu-primary-darken: $sccl-default-dropdown-menu-primary-darken,
@@ -137,13 +162,14 @@ $sccl-default-theme: (
 	sccl-layout-background: $sccl-default-layout-background,
 	
 	//======= SIDE BARS COLORS ===============
-	sccl-sidebar-primary-darken: $sccl-default-header-primary-darken,
+	sccl-sidebar-primary-darken: $sccl-default-sidebar-primary-darken,
 	sccl-sidebar-primary: $sccl-default-sidebar-primary,
-	sccl-sidebar-primary-lighten: $sccl-default-header-primary-lighten,
+	sccl-sidebar-primary-lighten: $sccl-default-sidebar-primary-lighten,
 	sccl-sidebar-text: $sccl-default-sidebar-text,
 	sccl-sidebar-text-darken: $sccl-default-sidebar-text-darken,
 	sccl-sidebar-text-lighten: $sccl-default-sidebar-text-lighten,
 	sccl-sidebar-secondary: $sccl-default-sidebar-secondary,
+	sccl-sidebar-white: $sccl-default-sidebar-white,
 	
 	//======= BUTTON COLORS ===============
 	sccl-button-secondary: $sccl-default-button-secondary,
@@ -152,6 +178,9 @@ $sccl-default-theme: (
 	sccl-button-text: $sccl-default-button-text,
 	sccl-button-text-darken: $sccl-default-button-text-darken,
 	sccl-button-text-lighten: $sccl-default-button-text-lighten,
+	sccl-button-error: $sccl-default-button-error,
+	sccl-button-primary-deep-darken: $sccl-default-button-primary-deep-darken,
+	sccl-default-secondary-button-bg: $sccl-default-secondary-button-bg,
 
 	
 	//======= TABS COLORS ===============
@@ -171,5 +200,15 @@ $sccl-default-theme: (
 	sccl-card-text-darken: $sccl-default-card-text-darken,
 	sccl-card-text-lighten: $sccl-default-card-text-lighten,
 	sccl-card-secondary: $sccl-default-card-secondary,
-);
+
+	//=========== FORM COLORS ==============
+	sccl-form-primary-darken: $sccl-default-form-primary-darken,
+	sccl-form-primary-deep-darken: $sccl-default-form-primary-deep-darken,
+	sccl-form-primary: $sccl-default-form-primary,
+	sccl-form-primary-lighten: $sccl-default-form-primary-lighten,
+	sccl-form-text: $sccl-default-form-text,
+	sccl-form-text-darken: $sccl-default-form-text-darken,
+	sccl-form-text-lighten: $sccl-default-form-text-lighten,
+	sccl-form-secondary: $sccl-default-form-secondary,
+	);
 

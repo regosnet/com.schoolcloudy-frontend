@@ -1,0 +1,22 @@
+@mixin sccl-button-b(
+	$theme, $bgColor, $foreColor, $sccl-button-height, 
+	$sccl-button-padding-x, $sccl-button-padding-y,
+	$sccl-button-margin-x, $sccl-button-margin-y,
+	$sccl-button-width) {
+	> button {
+		background: $bgColor;
+		width: $sccl-button-width;
+		color: $foreColor;
+		height: $sccl-button-height;
+		line-height: $sccl-button-height;
+		padding: $sccl-button-padding-y $sccl-button-padding-x;
+		margin: $sccl-button-margin-x $sccl-button-margin-y;
+		> span {
+			height: $sccl-button-height;
+			line-height: $sccl-button-height;
+			&.btn-title {
+				font-weight: bold;
+			}
+		}
+	}
+}

@@ -1,6 +1,6 @@
-{
+ {
   "sccl": {
-  	"settings": {
+  	"settingss": {
   		"title": "Settings",
   		"language": {
   			"select": {
@@ -16,10 +16,34 @@
   				}
   			}
   		}
-  	},
+	  },
+	"components": {
+       "button": {
+		   "clear": "Close"
+	   }
+	},
   	"home": "Home",
-  	"exit": "Exit",
+	"exit": "Exit",
+	"dashboard": "Dashboard",
 	"profile": "Profile",
+	"search": "Search",
+	"contacts": "Contacts",
+	"widgets": "Widgets",
+	"system": "System",
+	"academics": "Academics",
+	"manage_users": "Manage users",
+	"taskboard": "Taskboard",
+	"students": "Students",
+	"parents": "Parents",
+	"news_feed": "News Feed",
+	"gallery": "Gallery",
+	"messenger": "Messenger",
+	"inbox": "Inbox",
+	"mark_all_read": "Mark All as Read",
+	"see_all": "See All",
+	"settings": "Settings",
+	"menu": "Menu",
+	"myschedule": "My Schedule",
   	"languages":{
   		"title": "languages",
   		"en": "English",
@@ -36,15 +60,11 @@
   		"sign_out": "Sign Out"
   	},
   	"tab": {
-  		"news_feed": "News Feed",
-  		"gallery": "Gallery",
+  		
   		"messages": "Messages"
   	},
 	"administrator_menu": {
-		"title": "Administrator",
-		"dashboard_menu": {
-		 	"title": "Dashboard"
-		}
+		"title": "Administrator"
 	},
 	"calendar": {
 		"month": {
@@ -78,7 +98,8 @@
 	 	"instant": "Messages",
 	 	"inbox": "Inbox",
 	 	"notification": "Notifications",
-	 	"mark_all_read": "Mark All as Read"
+		 "mark_all_read": "Mark All as Read",
+		 "see_all": "See All"
 	 }
   }
 }

@@ -11,7 +11,7 @@ import { scclContants } from '../../../scclCommon/scclContants/sccl.constants';
 export class ScclContentSectionComponent implements AfterViewInit {
     isSticky: boolean;
     height: number;
-    HEIGHT_CONSTANT
+    HEIGHT_CONSTANT: number;
     overflowY = 'hidden';
     constructor(private scclGlobalService: ScclGlobalService,
                 private cdRef: ChangeDetectorRef,

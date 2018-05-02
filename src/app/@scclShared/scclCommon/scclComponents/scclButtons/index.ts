@@ -1,2 +1,2 @@
 export * from './scclAButton';
-export * from './scclBButton';
+export * from './scclButtonB';

@@ -1,99 +1,53 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SCCL_API_URL } from "../../scclContants/sccl.constants";
+import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import * as auth0 from 'auth0-js';
+import { SCC_AUTH_CONFIG } from './scclAuthVariables';
+import { scclContants } from '../../scclContants/sccl.constants';
 
 @Injectable()
 export class ScclAuthenticationService {
-    
-    constructor(private _http: HttpClient) { 
-    }
-    
-    public authUserLoginCredentials(data): Boolean {
-        this.processRequest(data, 'login/check-get/user/credential').subscribe((res) => {
-            console.log(res)
-            if (res) {
-                return true;
-            }
-        });
-        return false;
-    }
-    
-    public processRequest(data, uri: string): Observable<any>{
-        const body = JSON.stringify(data);
-        var headers = new HttpHeaders();
-        return this._http.post(SCCL_API_URL + uri, data, this.prepareHeader(headers)); 
-    }
-    
-    private prepareHeader(headers: HttpHeaders | null): object {
-        headers = headers || new HttpHeaders();
-        headers = headers.set('Content-Type', 'application/json');
-        headers = headers.set('Accept', 'application/json');
-        return {
-            headers: headers
-        }
-    }
+      httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'my-auth-token'
+        })
+      };
+
+
+      constructor(public router: Router, private _httpClient: HttpClient) {}
+
+
+      public handleAuthentication(input_data): Observable<any> {
+        const body = JSON.stringify(input_data);
+        return this._httpClient.post(scclContants.api_url_path + 'login/auth/user',
+                body, this.httpOptions);
+      }
+
+      private setSession(authResult): void {
+        // Set the time that the access token will expire at
+        const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+        localStorage.setItem('access_token', authResult.accessToken);
+        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('expires_at', expiresAt);
+      }
+
+      public logout(): void {
+        // Remove tokens and expiry time from localStorage
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('expires_at');
+        // Go back to the home route
+        this.router.navigate(['/']);
+      }
+
+      public isAuthenticated(): boolean {
+        // Check whether the current time is past the
+        // access token's expiry time
+        const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+        return new Date().getTime() < expiresAt;
+      }
+
 }
-   
- 
-     /*
-      * 
-      *  public processRequest(data:string, uri: string, headers?: HttpHeaders | null): Observable<any> {
-        const body = JSON.stringify(data);
-        return this._http.post(SCCL_API_URL + uri, body, this.prepareHeader()); 
-    }
-    
-    private prepareHeader(): object {
-        var headers = new HttpHeaders();
-        headers.set('Content-Type', 'application/json');
-        headers.set('Accept', 'application/json');
-
-        return {
-            headers: headers
-        }
-}
-     */   
-
-/*
-    .subscribe(
-            response => {
-                if (response.status === 204) {
-                    this.loginMsg = true;
-                }else {
-                    if (response.status === 202) {
-                        button.addClass('loading');
-                        loginBtn.html('Authenticating');
-                        spinner.addClass('spin');
-                        setTimeout(() => {
-                            if (response.json().user === 'Administrator') {
-                                this._route.navigate(['/administrator']);
-                            }
-                        }, 1000);
-                    }
-                }
-            },
-            error => {
-                console.log(error);
-            }
-    );
-    
-    
-    
-    
-    import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/observable/of';
-
-
-
-
-  createPost() {
-    this.newPost = this.http.post(this.ROOT_URL + '/bad-endpoint', data)
-    
-      .retry(3)
-      .catch(err => {
-        console.log(err)
-        return Observable.of(err)
-      })
-  }
-*/

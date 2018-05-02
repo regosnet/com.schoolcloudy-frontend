@@ -1,15 +1,18 @@
 @mixin sccl-top-head($theme) {
 	sccl-top-head {
-		nav {
+		>nav {
 			min-height: 10px;
 			background: map-get($theme, 'sccl-header-primary-darken');
 			height: 20px;
-			.nav-wrapper{
+			>div.nav-wrapper{
 				background: map-get($theme, 'sccl-header-primary-darken');
 				color: map-get($theme, 'sccl-header-text');
 				@include display-flex(space-between, center);
 				padding: 0 20px;
-				.session, .last-login, .date-today {
+				>div.sccl-logo {
+					display: none;
+				}
+				>div.session, >div.last-login, >div.date-today {
 					@include display-flex(none, none);
 					padding: 0 ;
 					font-weight: bold;
@@ -21,16 +24,54 @@
 						margin-left: 2px;	
 					}
 				}
-				@media #{$medium-and-down} {
+			}
+			@media #{$medium-and-down} {
     				
-  				}
-				@media #{$small-and-down} {	
-					.last-login {
-						display: none;	
-					}
+			}
+		  @media #{$small-and-down} {	
+			> div.nav-wrapper {
+				@include display-flex(space-between, none);
+				>div.sccl-logo {
+					display: block;
+					@include logo-image()
 				}
-				
+				>div.session, div.last-login {
+					display: none;
+				}
+			}
+		  }
+		}
+	}
+
+	/*
+	This class below is responsible for controlling the visibility 
+	of this top bar in different screen sizes. It applied in the nav
+	tag in the scclTopHead.html using ngClass and this class by default 
+	is false but it is activated by any module or component that requires
+	its functionality
+	*/
+	.toggle-topBar-visibility {
+		display: none;
+		@media #{$small-and-down} {
+			display: block;	
+			> div.nav-wrapper {
+				@include display-flex(space-between, none);
+				>div.sccl-logo {
+					@include logo-image()
+				}
+				>div.session, div.last-login {
+					display: none;
+				}
 			}
 		}
 	}
+}
+
+@mixin logo-image {
+	img {
+		width: 20px;
+		position: relative;
+		top: 1px;
+		left: -4px;
+	}	
 }

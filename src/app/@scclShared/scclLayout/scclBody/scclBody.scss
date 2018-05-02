@@ -1,31 +1,115 @@
-@import './scclUserGreetingBar/scclUserGreetingBar';
-@import './scclLeftSideMenuBar/scclLeftSideMenuBar';
+@import './sidebars/scclLeftMenuBar/scclLeftMenuBar';
 @import './scclContentSection/scclContentSection';
-@import './scclWidgetBar/scclWidgetBar';
-@import './scclRSHPanel/scclRSHPanel';
+@import './sidebars/scclRightMenuBar/scclRightMenuBar';
 
 @mixin sccl-body($theme) {
+	sccl-right-menu-bar {
+		@include sccl-right-menu-bar($theme);
+	}
+	sccl-left-menu-bar {
+		@include sccl-left-menu-bar($theme);
+	}
 	$bg: map-get($theme, 'sccl-layout-background');
 	> section {
 		background-color: $bg;
-		> div {
-			@include display-flex(space-between, none);
+		>aside {
+			position: fixed;
+			top: 80px;
+			width: 27%;
 		}
-		sccl-user-greeting-bar {
-			@include sccl-user-greeting-bar($theme);	
+		#main-section-panel{
+			> div {
+				background: map-get($theme, 'sccl-body-primary-lighten');
+			}
+			margin: auto;
+			width: 45%;
+			padding-top: 66px;
+			color: #fff;
+		}
+		> aside#left-side-panel {
+			> div.shift-content-right{
+				float: right;
+			}
+		}
+		> aside#right-side-panel{
+			right: 0;
 		}
 		
-		sccl-left-side-menu-bar {
-			@include sccl-left-side-menu-bar($theme);	
+		@media #{$medium-and-down} {
+			> aside#right-side-panel {
+				display: none;
+			}
+			#main-section-panel{
+				width: 60%;
+			}
+			> aside#left-side-panel {
+				width: 19%;
+				> div.shift-content-right{
+					float: right;
+				}
+			}
 		}
-		sccl-content-section {
-			@include sccl-content-section($theme);	
+		@media #{$small-and-down} {
+			#main-section-panel{
+				width: 100%;
+			}
+			> aside#left-side-panel {
+				display: none;
+			}
 		}
-		sccl-widget-bar {
-			@include sccl-widget-bar($theme);	
+	}
+
+	.logged-in {
+		>aside {
+			width: $sidebar-width;
+			border: solid green 1px;
+			font-size: $font-size + .15;
 		}
-		sccl-rsh-panel {
-			@include sccl-rsh-panel($theme);	
+		#main-section-panel{
+			$w:$sidebar-width + 10;
+			width: 100%;
+			padding: 53px $w 0 $w;
+		}
+
+		> aside#left-side-panel {
+			> div.shift-content-right{
+				float: left;
+			}
+		}
+
+		@media #{$medium-and-down} {
+			> aside#right-side-panel {
+				display: block;
+			}
+			#main-section-panel{
+				width: 100%;
+			}
+			> aside#left-side-panel {
+				width: $sidebar-width;
+				> div.shift-content-right{
+					float: left;
+				}
+			}
+		}
+	}
+	
+	.collapseRightSidePanel {
+		> aside#left-side-panel {
+			width: 70px;
+		}
+		#main-section-panel{
+			$w:$sidebar-width - 170;
+			padding-left: $w;
+		}
+	}
+	.collapseLeftSidePanel {
+		> aside#right-side-panel {
+			width: 70px;
+		}
+		#main-section-panel{
+			$w:$sidebar-width - 170;
+			padding-right: $w;
+			
 		}
 	}
 }

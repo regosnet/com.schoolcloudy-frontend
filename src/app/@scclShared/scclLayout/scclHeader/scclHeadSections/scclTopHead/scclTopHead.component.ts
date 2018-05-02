@@ -7,9 +7,7 @@ import { ScclGlobalService } from '../../../../scclCommon/scclServices/index';
     styleUrls: ['./scclTopHead.scss']
 })
 export class ScclTopHeadComponent implements OnInit {
-
-    @Input()
-    isLoggedIn: boolean;
+    topHeadConfigs = {};
     week: string;
     semester: string;
     today: Date;
@@ -21,6 +19,9 @@ export class ScclTopHeadComponent implements OnInit {
     schoolSemester: number;
     lastLogin: string;
     dateLastLogin = '12/01/2017';
+    toggleTopBarVisibility = false;
+    @Input()
+    isLoggedIn: boolean;
 
     ngOnInit(): void {
         this.today = new Date();
@@ -34,6 +35,11 @@ export class ScclTopHeadComponent implements OnInit {
         this.scclGlobalService.subscribe('academicSession', (academicSession) => {
             this.academicWeek = academicSession.week;
             this.schoolSemester = academicSession.semester;
+        });
+
+        this.scclGlobalService.subscribe('topHeadConfigs', (topHeadConfigs) => {
+            this.topHeadConfigs = topHeadConfigs;
+            this.toggleTopBarVisibility = topHeadConfigs.visible;
         });
     }
 

@@ -1,0 +1,7 @@
+<div *ngIf="sidebarConfig?.menuBarItems" id="right-menu-bar" [ngStyle]="{'height': menuBarHeight + 'px'}">
+    <sccl-tab [tab]="scclTab"></sccl-tab>
+</div>
+<div *ngIf="sidebarConfig?.resolvedComponent" 
+     id="resolved-component-right" 
+     [scclSidebarComponent]=sidebarConfig?.resolvedComponent.component 
+     [scclSidebar]=sidebar #sidebar></div>

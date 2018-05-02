@@ -5,23 +5,9 @@ declare var $: any;
 @Directive({
     selector: '[scclCollapsibleDirective]'
 })
-export class ScclCollapsibleDirective implements AfterViewInit{
-   
-    
-    @Input("scclCollapsibleDirective")
-    containerId
-    
-    @ViewChild("scclCollapsibleDirective") container;
-    constructor(private el: ElementRef) {
-       
-    }
+export class ScclCollapsibleDirective implements AfterViewInit {
 
-    @HostListener('click')
-    setPanelHeight() {
-        console.log(this.container)
-    }
-    
     ngAfterViewInit(): void {
-        
+
     }
 }

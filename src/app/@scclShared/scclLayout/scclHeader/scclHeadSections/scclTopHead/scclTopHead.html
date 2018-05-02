@@ -1,11 +1,14 @@
-<nav *ngIf="isLoggedIn">
+<nav [ngClass]="{'toggle-topBar-visibility': toggleTopBarVisibility}">
 	<div class="nav-wrapper">
-		<div class="session">
+		<div class="sccl-logo">
+			<img alt="sccl" src="{{ 'scclLogo/sccl_logo' | scclPngExt }}">
+		</div>
+		<div  class="session">
 			<div class="session-icon">
-				<i class="material-icons">pie_chart_outlined</i>
+				<i *ngIf="isLoggedIn" class="material-icons">pie_chart_outlined</i>
 			</div>
 			<div class="calendar-icon">
-				<span>{{week | translate}}: {{academicWeek}}, {{semester | translate}}: {{schoolSemester}}</span>
+				<span *ngIf="isLoggedIn" >{{week | translate}}: {{academicWeek}}, {{semester | translate}}: {{schoolSemester}}</span>
 			</div>
 		</div>
 		<div class="date-today">
@@ -18,11 +21,11 @@
 		</div>
 		<div class="last-login">
 			<div class="clock-icon">
-				<i class="material-icons">access_time</i>
+				<i *ngIf="isLoggedIn" class="material-icons">access_time</i>
 			</div>
 			<div class="last-login-date">
-				<span>{{lastLogin | translate}}:</span>
-				<span>{{dateLastLogin}}</span>
+				<span *ngIf="isLoggedIn">{{lastLogin | translate}}:</span>
+				<span *ngIf="isLoggedIn">{{dateLastLogin}}</span>
 			</div>
 		</div>
 	</div>

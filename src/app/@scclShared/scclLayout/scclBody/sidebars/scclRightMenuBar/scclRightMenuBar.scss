@@ -1,0 +1,8 @@
+@import '../../../../scclCommon/scclComponents/scclTab/scclTab';
+@mixin sccl-right-menu-bar($theme){
+	> div {
+		sccl-tab {
+			@include sccl-tab($theme);
+		}
+	}
+}

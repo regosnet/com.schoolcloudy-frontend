@@ -42,3 +42,42 @@
 @mixin sccl-translate ($x, $y) {
    @include sccl-transform(translate($x, $y));
 }
+
+@mixin sccl-preloader-small($theme) {
+	height: 30px;
+	line-height: 30px;
+	width: 10%;
+	margin: auto;
+	> div.preloader-wrapper {
+		&.small {
+			width: 16px;
+			height: 16px;
+			border-color: yellow;
+			}
+		> .spinner-layer {
+			border-color: map-get($theme, 'sccl-dropdown-menu-text-darken');
+			}
+	}
+}
+
+@mixin sccl-caret($x-pos, $y-pos, $content, $color, $size){
+	content: $content;
+	font-family: FontAwesome;
+	position: absolute;
+	color: $color;
+	font-size: $size;
+	top: $y-pos;
+	right: $x-pos;
+}
+
+@mixin sccl-round-b-btn($theme) {
+	background: map-get($theme, 'sccl-header-secondary') !important;
+	width: 26px;
+	height: 26px;
+	> i.material-icons {
+		height: 22px;
+		line-height: 26px;
+		font-size: 18px;
+		color: map-get($theme, 'sccl-button-white');
+	}		
+}
