@@ -1,55 +1,51 @@
 @import '../scclCard/scclCard';
-@import '../scclButtons/scclBButton/scclBButton';
+@import '../scclButtons/scclButtonB/scclButtonB';
 	
 @mixin sccl-form($theme) {
 	$_2nd-color: map-get($theme, 'sccl-secondary'); 
-	$_text-color: map-get($theme, 'sccl-text-darken');
+	$foreColor: map-get($theme, 'sccl-form-primary-deep-darken');
+	$_2nd-bgColor: map-get($theme, 'sccl-default-secondary-button-bg');
 	> div {
 		sccl-card {
 			@include sccl-card($theme);
 			form {
-				height: 50%;
 				.image_placeholder {
 					text-align: center;
-					padding: 20% 0;
+					padding: 10% 0;
 					img {
-						width: 30%;
-						height: 30%;	
+						width: 25%;
+						height: 25%;	
 					}
 				}
 				.input-field {
 					input {
-						border-bottom: $sccl-form-input-border solid $_text-color;
+						border-bottom: $sccl-form-input-border solid map-get($theme, 'sccl-form-text-darken');
 						font-size: $font-size + .3;
-						margin-bottom: 50px;
+						margin-bottom: 10%;
 						height: 30px;
 						color: white;
-						padding-left:  24px;//**
-						width: 93%; //**
-						&:focus{
-								
-						}
-						
+						//padding-left:  24px;//**
 					}
-					i {
-     					color: $_2nd-color;
+					> i {
+     					color: $_2nd-bgColor;
      					font-size: $font-size + .7;
      					position: absolute;
-     					top: 9px;
+						top: 9px;
+						left: 3%; 
    					}
 				}
 		 		.input-field input[type] + label {
 		 			line-height: 20px;
 		 			height: 30px;
-    			 	color: $_text-color;
-    			 	padding-left:  24px; //**
+    			 	color: map-get($theme, 'sccl-form-text-darken');
+    			 	padding-left: 7%; //**
    				}
    				.input-field input[type]:focus + label {
      				color: $_2nd-color;
    				}
    		
    				.input-field input[type]:focus {
-     				border-bottom: $sccl-form-input-border solid $_2nd-color;
+     				border-bottom: .001rem solid $_2nd-color;
    				}
    		
    				.input-field .prefix.active {
@@ -57,9 +53,9 @@
    				}
    			
    				.form-action {
-					sccl-B-button {
-						@include sccl-B-button($theme);
-					}	
+					sccl-button-b {
+						@include sccl-button-b($_2nd-bgColor, white, $sccl-button-height + 20);
+					}
 				}	
    				
 			}

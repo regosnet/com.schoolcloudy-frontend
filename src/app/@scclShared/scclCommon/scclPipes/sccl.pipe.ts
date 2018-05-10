@@ -1,14 +1,14 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import { scclContants } from "../scclContants/sccl.constants";
-import { TranslateService } from "@ngx-translate/core";
-import { Subscriber } from "rxjs/Subscriber";
-import { Subscription } from "rxjs/Subscription";
+import { scclContants } from '../scclContants/sccl.constants';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscriber } from 'rxjs/Subscriber';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Pipe({name: 'scclPngExt'})
 export class ScclPngExtPipe implements PipeTransform {
 
-  transform(input: string, ext = 'png'): string {
+  transform(input: any, ext = 'png'): string {
     return scclContants.srcUrl.root + input + '.' + ext;
   }
 }
@@ -37,7 +37,7 @@ export class ScclSelectPipe implements PipeTransform {
 export class ScclSearchFilterPipe implements PipeTransform {
 
   transform(input: Array<Object>) {
-      console.log(input);
+    
     }
 }
 

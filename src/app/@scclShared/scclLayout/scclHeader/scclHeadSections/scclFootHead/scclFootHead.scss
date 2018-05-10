@@ -34,6 +34,12 @@
 							}
 						}
 					}
+				
+					.dropdown-button {
+						> a {
+  							@include sccl-rounded-btn($theme)
+  						}
+					}
 					.tbar-shortcuts-dd-menu-none {
 						height: $foot-head-height;
 						overflow: hidden;
@@ -65,7 +71,7 @@
 					}
 				}
 				.page-content-nav {
-					padding-left: 20%;
+					padding-left: 30%;
 					@include display-flex(none, center);
 					color: map-get($theme, 'sccl-header-white');
 					text-transform: uppercase;
@@ -74,7 +80,7 @@
 					height: $foot-head-height;
 					@include flex-width(1);
 				}
-				#dd-notification-menu {
+				/*#dd-notification-menu {
 					@include sccl-drop-down-menu(
 						$theme, 
 						map-get($theme, 'sccl-header-primary-darken'), 
@@ -97,12 +103,8 @@
 							$dd-menu-width, $dd-menu-menu-top, $dd-menu-margin-left+101.5,
 							$margin-right, $dd-menu-caret-position + 82,
 							$margin-top+3, $margin-bottom+24, $dd-items-height, $caret-move-or-down);	
-				}	
+				}	*/
 				@media #{$medium-and-down} {
-   					.page-content-nav {
-   						padding-left: 5%;
-   						@include flex-width(1);
-					}
 					.tbar-shortcuts {
 						.tbar-shortcuts-dd-menu {
 							.instant,
@@ -115,8 +117,6 @@
 						.tbar-shortcuts-dd-menu-none {
 							@include display-flex(flex-end, center);
 							@include flex-width(2);
-							.shortcut-btn {
-							}
 							.on-mobile {
 							display: inline-block;
 						}	
@@ -124,90 +124,44 @@
 					}
 					
   				}
-				@media #{$small-and-down} {
-					.page-content-nav {
-   						padding-left: 3%;
-   						font-size: 12px;
-   						@include flex-width(1);
-					}
-					.tbar-shortcuts {
-						.tbar-shortcuts-dd-menu {
-							
+				
+			}
+			
+			@media #{$small-and-down} {
+				display: none;
+				.page-content-nav {
+					   padding-left: 3%;
+					   font-size: 12px;
+					   @include flex-width(1);
+				}
+				.tbar-shortcuts {
+					.tbar-shortcuts-dd-menu-none {
+						@include display-flex(flex-end, center);
+						.mobile {
+							@include display-flex(none, none);	
 						}
-						.tbar-shortcuts-dd-menu-none {
-							@include display-flex(flex-end, center);
-							.mobile {
-								@include display-flex(none, none);	
-							}
-							sccl-A-button {
-								height: $foot-head-height;
-								line-height: $foot-head-height;
-								>span {
-									a {
-										padding: 0 11px;
-										.shortcut-btn {
-											.icon {
-												font-size: 16px;	
-											}	
-										}
-									}	
-								}
-							}
-							.loggedOut {
-								> .title {
-									display: none;
+						sccl-A-button {
+							height: $foot-head-height;
+							line-height: $foot-head-height;
+							>span {
+								a {
+									padding: 0 11px;
+									.shortcut-btn {
+										.icon {
+											font-size: 16px;	
+										}	
+									}
 								}	
 							}
 						}
+						.loggedOut {
+							> .title {
+								display: none;
+							}	
+						}
 					}
-				}	
+				}
 			}	
 		}
-		#navbar-onscroll {
-			position: fixed;
-			padding: 0 20px;
-			height: 24px;
-			top: -35px;
-			z-index: 1800;
-			width: 100%;
-  			display:block;
-  			transition: top .5s;
-  			background: map-get($theme, 'sccl-header-primary-darken');
-  			> div.navbar-onscroll-wrapper {
-  				height: 24px;
-  				@include display-flex(space-between, center);
-  				> div.sect-one {
-  					@include display-flex(space-between, center);
-  					@include flex-width(1);
-  					> div.left-sidebar-toggle {
-  						> a {
-  							@include sccl-rounded-btn($theme)
-  						}
-  					}
-  					> div.sccl-logo {
-  						height: 25px;
-  						line-height: 25px;
-  						padding-right: 50%;
-  						> img {
-  							width: 33px;
-  							margin-top: 2px;
-  						}	
-  					}
-  				}
-  				> div.sect-two {
-  					@include flex-width(2);
-  					> span {
-  						font-size: 15px;
-  						font-weight: bold;	
-  					}
-  				}
-  			
-  				> div.sect-three {
-  					> a {
-  						@include sccl-rounded-btn($theme)	
-  					}
-  				}
-  			}
-  		}
 	}
 }

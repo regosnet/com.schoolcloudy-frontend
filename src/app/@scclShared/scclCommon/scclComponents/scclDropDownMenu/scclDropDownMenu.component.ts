@@ -1,33 +1,19 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
-declare var $: any
+import { Component, Input } from '@angular/core';
 
 @Component({
    selector: 'sccl-dropdown-menu',
    templateUrl: './scclDropDownMenu.html',
    styleUrls: ['./scclDropDownMenu.scss']
 })
-export class ScclDropDownMenu implements AfterViewInit{
-    
+export class ScclDropDownMenuComponent {
+
     @Input()
-    public listItems;
-    
+    public ddMenuConfig;
+
     @Input()
-    public menuHeader = [];
-    
-    constructor() {   
+    itemsContainer;
+
+    constructor() {
     }
-    
-    ngAfterViewInit(): void {
-        $('.dropdown-button').dropdown({
-            inDuration: 300,
-            outDuration: 225,
-            constrainWidth: false,
-            hover: false, 
-            gutter: 0, 
-            belowOrigin: true, 
-            alignment: 'right',
-            stopPropagation: false
-          }
-        );
-    }
+
 }

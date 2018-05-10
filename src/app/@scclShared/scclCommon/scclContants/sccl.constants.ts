@@ -4,9 +4,10 @@ const GRAPHICS_ROOT_SRC = './assets/scclgraphics/';
 const SVGS_SRC = GRAPHICS_ROOT_SRC + 'svgs/';
 const COUNTRY_FLAGS_SRC = SVGS_SRC + 'countryFlags/';
 const LANGUAGE_FILES_SRC = './assets/i18n/langs/';
-export const SCCL_API_URL = 'http://localhost:8080/schoolcloudy/api/';
+const USERNAME_KEY = 'stukvr_xr';
+const SCCL_API_URL = 'http://localhost:8080/schoolcloudy/api/';
 
-export const scclMediaSizes = {
+const dimensions = {
         resWidthL: 1295,
         resWidthCollapseSidebar: 1200,
         resWidthHideSidebar: 500
@@ -24,12 +25,12 @@ const srcUrl = {
 
 const slimScrollObject =  {
           axis: 'y',
-          theme: 'dark-thick',
-          contentTouchScroll: 100,
+          theme: 'sccl-default-theme',
+          contentTouchScroll: 10,
           documentTouchScroll: true,
           mouseWheel: { enable: true },
-          scrollAmount: 100,
-          scrollInertia: 100,
+          scrollAmount: 0,
+          scrollInertia: 230,
           scrollbarPosition: 'outside'
 };
 
@@ -47,7 +48,10 @@ export const scclContants = {
     srcUrl : srcUrl,
     layoutHeight: scclLayoutHeight.height,
     scclThemes: SCCL_THEMES,
-    slimScrollObject: slimScrollObject
+    slimScrollObject: slimScrollObject,
+    screen: dimensions,
+    usr_key: USERNAME_KEY,
+    api_url_path: SCCL_API_URL
 };
 
 

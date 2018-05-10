@@ -5,7 +5,7 @@ import { Component, Input, AfterViewInit, Output, EventEmitter, ChangeDetectorRe
     templateUrl: './scclForm.html',
     styleUrls: ['./scclForm.scss']
 })
-export class ScclFormComponent implements AfterViewInit{
+export class ScclFormComponent implements AfterViewInit {
     
     @Input()
     formConfig 

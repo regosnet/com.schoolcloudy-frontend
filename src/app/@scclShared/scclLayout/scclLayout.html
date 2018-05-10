@@ -1,6 +1,19 @@
 <div class="{{scclTheme}}" scclLayoutDirective [ngStyle]="{'height': height + 'px'}">
+	<aside class="technical-panel-slide-out" [ngClass]="{'technical-panel-slide-in': isTechnicalPanelSlideIn}">
+		<sccl-button-b [scclBtns]="slideOutBtn" (btnActions)="togglePanel()"></sccl-button-b>
+		<sccl-technical-panel></sccl-technical-panel>
+	</aside>
+	<span [ngClass]="{'container': resizeWidth}">
+		<sccl-header [headConfig]="headConfig"></sccl-header>
+		<sccl-body [bodyConfig]="bodyConfig"></sccl-body>
+	</span>
+</div>
+<!--
+div class="{{scclTheme}}" scclLayoutDirective [ngStyle]="{'height': height + 'px'}">
+		<sccl-technical-panel></sccl-technical-panel>
 	<span [ngClass]="{'container': resizeWidth}">
 		<sccl-header></sccl-header>
 		<sccl-body></sccl-body>
 	</span>
 </div>
+-->

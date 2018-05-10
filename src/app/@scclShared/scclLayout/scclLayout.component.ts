@@ -1,7 +1,9 @@
 import { Component, HostListener, OnInit, Input, AfterViewInit, ChangeDetectorRef} from '@angular/core';
-import { ScclLayoutService } from './scclLayout.service';
 import { ScclGlobalService } from '../scclCommon/scclServices';
 import { scclContants } from '../scclCommon/scclContants/sccl.constants';
+import { ScclLayoutService } from './scclLayoutServices/scclLayout.service';
+import { IScclBody, IScclHeader, IScclLayout } from '../../scclModels';
+import { IScclButton } from '../../scclModels/scclComponents';
 
 @Component({
     selector: 'sccl-layout',
@@ -9,24 +11,30 @@ import { scclContants } from '../scclCommon/scclContants/sccl.constants';
     styleUrls: ['./scclLayout.scss']
 })
 export class ScclLayoutComponent implements AfterViewInit, OnInit {
-    height;
+    height: number;
     resizeWidth: boolean;
+    isTechnicalPanelSlideIn: boolean;
+    bodyConfig: IScclBody;
+    headConfig: IScclHeader;
     scclTheme = 'sccl-default-theme';
+    slideOutBtn: IScclButton;
+
     constructor(private scclGlobalService: ScclGlobalService,
                 private scclLayoutService: ScclLayoutService,
                 private cdRef: ChangeDetectorRef) {
+        this.initializeModuleConfigurations();
     }
     ngOnInit(): void {
-
+        this.setLayoutHeight();
     }
 
     ngAfterViewInit() {
         this.scclGlobalService.subscribe('selected.theme', (theme) => {
            this.scclTheme = this.switchTheme(theme);
         });
-        this.scclGlobalService.subscribe('heightConfigs', (heightConfig) => {
-            this.height = heightConfig.find((x => x['layout'])).layout.height;
-            this.cdRef.detectChanges();
+
+        this.scclGlobalService.subscribe('isSlideIn', (position) => {
+            this.isTechnicalPanelSlideIn = position.isSlideIn;
         });
     }
 
@@ -42,5 +50,25 @@ export class ScclLayoutComponent implements AfterViewInit, OnInit {
             break;
         }
         return this.scclTheme;
-}
+    }
+
+    setLayoutHeight() {
+        this.scclGlobalService.subscribe('screen-dimension', (dimension) => {
+            this.height = dimension.height;
+            this.cdRef.detectChanges();
+        });
+    }
+
+    togglePanel() {
+        this.scclLayoutService.panelSlideToggle();
+    }
+
+    initializeModuleConfigurations() {
+        this.scclGlobalService.subscribe('module.configurations', (configs: IScclLayout) => {
+            this.headConfig = configs.headerConfig;
+            this.bodyConfig = configs.bodyConfig;
+        });
+    }
+
+    closePanel() {}
 }

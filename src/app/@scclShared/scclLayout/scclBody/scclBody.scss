@@ -1,32 +1,107 @@
-@import './scclUserGreetingBar/scclUserGreetingBar';
-@import './scclLeftSideMenuBar/scclLeftSideMenuBar';
+@import './sidebars/scclLeftMenuBar/scclLeftMenuBar';
 @import './scclContentSection/scclContentSection';
-@import './scclWidgetBar/scclWidgetBar';
-@import './scclRSHPanel/scclRSHPanel';
+@import './sidebars/scclRightMenuBar/scclRightMenuBar';
 
 @mixin sccl-body($theme) {
+	sccl-right-menu-bar {
+		@include sccl-right-menu-bar($theme);
+	}
+	sccl-left-menu-bar {
+		@include sccl-left-menu-bar($theme);
+	}
 	$bg: map-get($theme, 'sccl-layout-background');
 	> section {
-		background-color: blue; //$bg;
-		height: 1000px;
+		@include body-panels($theme, $sidebar-padding, $bodyWidth, 27%);
+		&.logged-in {
+			@include body-panels($theme, ($sidebar-width + 10), $bodyWidth + 55, $sidebar-width);
+		}
+	}
+}
+
+
+@mixin body-panels($theme, $padding, $bodyWidth, $sidebar-width) {
+	>aside {
+		position: fixed;
+		top: 80px;
+		width: $sidebar-width;
+	}
+	#main-section-panel{
 		> div {
-			@include display-flex(space-between, none);
+			background: map-get($theme, 'sccl-body-primary-lighten');
 		}
-		sccl-user-greeting-bar {
-			@include sccl-user-greeting-bar($theme);	
+		margin: auto;
+		padding-top: 66px;
+		color: #fff;
+	}
+	> aside#right-side-panel{
+		right: 0;
+	}
+	
+	@media #{$medium-and-down} {
+		> aside#right-side-panel {
+			display: none;
 		}
-		
-		sccl-left-side-menu-bar {
-			@include sccl-left-side-menu-bar($theme);	
+		#main-section-panel{
+			width: 60%;
 		}
-		sccl-content-section {
-			@include sccl-content-section($theme);	
+		> aside#left-side-panel {
+			width: 19%;
 		}
-		sccl-widget-bar {
-			@include sccl-widget-bar($theme);	
+	}
+	@media #{$small-and-down} {
+		#main-section-panel{
+			width: 100%;
 		}
-		sccl-rsh-panel {
-			@include sccl-rsh-panel($theme);	
+		> aside#left-side-panel {
+			display: none;
+		}
+	}
+	@media #{$large-and-up} {
+		> aside#right-side-panel {
+			display: none;
+		}
+		#main-section-panel{
+			width: 60%;
+		}
+		> aside#left-side-panel {
+			width: 19%;
+		}
+	}
+	
+	@media #{$extra-large-and-up} {
+		> aside#right-side-panel {
+			display: block;
+			width: $sidebar-width;
+		}
+		#main-section-panel{
+			width: $bodyWidth;
+			padding: 53px $padding 0 $padding;
+		}
+		> aside#left-side-panel {
+			width: $sidebar-width;
+		}
+	}
+}
+
+@mixin collapseSidebar() {
+	> div {
+		> ul {
+			
+			> li {
+			  > div {
+				@include display-flex(none, center);
+				flex-direction: column;
+				&.collapsible-header {
+				  > span {
+					font-size: $sidebar-font-size-sm - .3;
+					//@include sccl-transition(.4s);
+				  }
+				}
+				> i {
+				  margin: 0;
+				}
+			  }
+			}
 		}
 	}
 }

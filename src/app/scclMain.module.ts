@@ -6,12 +6,7 @@ import { ScclMainRouter } from './scclMain.router';
 import { APP_BASE_HREF } from '@angular/common';
 import { ScclCommonModule } from './@scclShared/scclCommon/scclCommon.module';
 import { ScclLayoutModule } from './@scclShared/scclLayout/scclLayout.module';
-import { ScclHomeModule } from './scclHome/scclHome.module';
-import { ScclNewsFeedComponent } from './@scclShared/scclPanels/scclNewsFeed/scclNewsFeed.component';
-import { ScclGalleryComponent } from './@scclShared/scclPanels/scclGallery/scclGallery.component';
-import { ScclSettingsComponent } from './@scclShared/scclPanels/scclSettings/scclSettings.component';
-import { ScclSystemComponent } from './@scclShared/scclPanels/scclSystem/scclSystem.component';
-import { ScclLoginComponent } from './@scclShared/scclPanels/scclLogin/scclLogin.component';
+import { ScclStarterModule } from './scclStarter/scclStarter.module';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromEvent';
@@ -31,7 +26,7 @@ import { ScclMainService } from './scclMain.service';
     BrowserAnimationsModule,
     ScclMainRouter,
     ScclLayoutModule,
-    ScclHomeModule
+    ScclStarterModule
   ],
   providers: [
     {
@@ -39,13 +34,6 @@ import { ScclMainService } from './scclMain.service';
         useValue: '/'
     },
     ScclMainService
-  ],
-  entryComponents: [
-     ScclNewsFeedComponent,
-     ScclGalleryComponent,
-     ScclSettingsComponent,
-     ScclSystemComponent,
-     ScclLoginComponent
   ],
   bootstrap: [ScclMainComponent]
 })

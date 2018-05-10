@@ -5,7 +5,7 @@
 			class="opts" [value]="option.value"
 			attr.data-icon="{{url + option.icon + '.svg'}}">
 		 {{option.title}}</option>
-		</select><label>{{selectConfigs.label.title | translate}}</label>
+		</select><label *ngIf="selectConfigs.label">{{selectConfigs.label.title | translate}}</label>
 	</div>
 </div>
 

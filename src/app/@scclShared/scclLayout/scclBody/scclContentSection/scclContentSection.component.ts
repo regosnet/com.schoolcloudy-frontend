@@ -11,6 +11,7 @@ import { scclContants } from '../../../scclCommon/scclContants/sccl.constants';
 export class ScclContentSectionComponent implements AfterViewInit {
     isSticky: boolean;
     height: number;
+    HEIGHT_CONSTANT: number;
     overflowY = 'hidden';
     constructor(private scclGlobalService: ScclGlobalService,
                 private cdRef: ChangeDetectorRef,
@@ -23,7 +24,12 @@ export class ScclContentSectionComponent implements AfterViewInit {
         });
 
         this.scclGlobalService.subscribe('heightConfigs', (heightConfig) => {
-            this.height = heightConfig.find((x => x['content'])).content.height;
+            this.HEIGHT_CONSTANT = heightConfig.find((x => x['content'])).content.height;
+            this.cdRef.detectChanges();
+        });
+
+       this.scclGlobalService.subscribe('window.current-height', (windowHeight) => {
+            this.height = windowHeight.height - this.HEIGHT_CONSTANT;
             this.cdRef.detectChanges();
         });
     }

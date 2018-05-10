@@ -1,1 +1,1 @@
-export * from './scclContentSection.component'
+export * from './scclContentSection.component';

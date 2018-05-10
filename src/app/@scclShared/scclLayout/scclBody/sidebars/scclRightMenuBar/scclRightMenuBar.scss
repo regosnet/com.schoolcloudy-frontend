@@ -1,0 +1,16 @@
+@import '../../../../scclCommon/scclComponents/scclTab/scclTab';
+@import '../sccl-sidebar-mixins';
+
+@mixin sccl-right-menu-bar($theme){
+	> div {
+		@include sidebar($theme, 300px, none);
+		> div {
+			sccl-tab {
+				@include sccl-tab($theme);
+			}
+		}
+		&.logged-in {
+			@include sidebar($theme, 100%, none);
+		}
+	}
+}

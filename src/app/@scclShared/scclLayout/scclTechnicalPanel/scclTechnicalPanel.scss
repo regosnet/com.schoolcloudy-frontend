@@ -1,0 +1,14 @@
+@import 'scclSettings/scclSettings';
+
+@mixin sccl-technical-panel($theme) {
+	#technical-panel {
+		background-color: map-get($theme, 'sccl-sidebar-primary-lighten');
+		height: 800px;
+		> sccl-tab {
+			@include sccl-tab($theme);
+			@include sccl-settings($theme);
+		}
+	}
+	@media #{$small-and-down} {
+	}
+}

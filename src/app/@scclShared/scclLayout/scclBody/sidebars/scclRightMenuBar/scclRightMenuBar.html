@@ -1,0 +1,24 @@
+<div id="right-menu-bar" [ngClass]="{'logged-in': isLoggedIn}" [ngStyle]="{'height': menuBarHeight}">
+    <div class="menubar">
+        <div *ngIf="sidebarConfig?.menuBarItems">
+            <sccl-tab [tab]="scclTab" [height]="menuBarHeight - sidebarConfig?.footer?.height"></sccl-tab>
+        </div>
+        <div *ngIf="sidebarConfig?.resolvedComponent" 
+         id="resolved-component-right" 
+         [scclSidebarComponent]=sidebarConfig?.resolvedComponent.component 
+         [scclSidebar]=sidebar #sidebar></div>
+    </div>
+    <div class="sidebar-footer" [ngStyle]="{'height': sidebarConfig?.footer?.height + 'px'}">
+        <sccl-footer 
+            [footerConfig]="sidebarConfig?.footer" 
+            *ngIf="isLoggedIn"
+            (footerBtnActions)="btnActions($event)">
+        </sccl-footer>
+    </div>
+</div>
+
+
+<!--
+
+    
+-->

@@ -1,0 +1,7 @@
+@import '../../../../scclCommon/scclComponents/scclSelect/scclSelect.scss';
+@mixin sccl-language($theme) {
+	
+	sccl-select {
+		@include sccl-select($theme); 	
+	}
+}

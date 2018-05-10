@@ -1,0 +1,26 @@
+<div id="left-menu-bar" 
+  [ngClass]="{'sidebar-normal-width': isLoggedIn, 'sidebar-collapsed-width': sidebarConfig?.isCollapsed}"
+  [ngStyle]="{'height': menuBarHeight + 'px'}">
+
+	<div class="menu-bar">
+    <sccl-collapsible
+      [items]="sidebarConfig?.menuBarItems"
+      [height]="menuBarHeight - sidebarConfig?.footer?.height">
+    </sccl-collapsible>
+  </div>
+
+  <div class="sidebar-footer" 
+    [ngStyle]="{'height': sidebarConfig?.footer?.height + 'px'}">
+
+    <sccl-footer
+        [footerConfig]="sidebarConfig?.footer"
+        *ngIf="isLoggedIn"
+        (footerBtnActions)="btnActions($event)">
+    </sccl-footer>
+  </div>
+</div>
+
+
+
+
+<!--<div id="resolved-component-left"></div>-->

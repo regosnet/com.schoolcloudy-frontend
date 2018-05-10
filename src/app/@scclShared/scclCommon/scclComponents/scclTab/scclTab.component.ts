@@ -1,26 +1,19 @@
-import { Component, Input, AfterViewInit} from '@angular/core';
-import {
-    IScclTab,
-} from '../../../../scclModels';
-import { ScclTabService } from './scclTab.service';
+import { Component, Input, OnChanges, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 declare var $: any;
 
 @Component({
     selector: 'sccl-tab',
     templateUrl: './scclTab.html',
     styleUrls: ['./scclTab.scss'],
-    providers: [ScclTabService]
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScclTabComponent implements AfterViewInit {
-    @Input() tab: IScclTab;
+export class ScclTabComponent {
+    @Input() tab;
 
-    constructor(private scclTabService: ScclTabService) {
+    @Input()
+    height
 
+    constructor() {
     }
 
-    ngAfterViewInit() {
-        setTimeout(() => {
-            $('ul.tabs').tabs();
-        }, 200);
-    }
 }

@@ -1,0 +1,42 @@
+@mixin sccl-button-b($bgColor, $foreColor, $sccl-button-height) {
+	> span {
+		@include display-flex(space-between, center);
+		> button {
+			background: $bgColor;
+			width: 100%;
+			color: $foreColor;
+			box-shadow: none;
+			height: $sccl-button-height;
+			line-height: $sccl-button-height;
+			padding: 0; margin: 0;
+			> span {
+				height: $sccl-button-height;
+				line-height: $sccl-button-height;
+				&.btn-title {
+					font-weight: bold;
+				}
+			}
+		}
+		&#button-dropdown-menu-wrapper {
+			> a, ul {
+				padding: 0;
+				background: $bgColor;
+				color: $foreColor;
+				box-shadow: none;
+				margin: 0;
+				min-width: 2px;
+				width: 70px;
+				>li {
+					padding: 0;
+					text-align: center;
+					min-width: 2px;
+					width: 70px;
+					>span {
+						color: $foreColor;
+						font-size: $icon-font-size;
+					}
+				}
+			}
+		}
+	}
+}

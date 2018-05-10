@@ -1,0 +1,42 @@
+@import '../../../../scclCommon/scclComponents/scclCollapsible/scclCollapsible';
+@import '../sccl-sidebar-mixins';
+
+@mixin sccl-left-menu-bar($theme) {
+    > div {
+			@include sidebar($theme, $sidebar-width + 50, right);
+	    > div {
+		    sccl-collapsible {
+			    @include sccl-collapsible($theme);
+		    }   
+	    }
+	    &.sidebar-normal-width {
+			@include sidebar($theme, 100%, none);
+			}
+			&.sidebar-collapsed-width {
+				> div.menu-bar {
+					sccl-collapsible  {
+						> div > div > div { /* three more div tags added by the mCustom scrollbar*/
+							> ul {
+								> li {
+									> div {
+										@include display-flex(none, center);
+										flex-direction: column;
+										&.collapsible-header {
+											font-size: $sidebar-font-size-sm - .3;
+											font-weight: 700;
+											> span {
+												text-align: center;
+											}
+										}
+										> i {
+											margin: 0;
+										}
+										}
+								}
+							}
+						}
+					}
+				}
+			}
+    }
+}

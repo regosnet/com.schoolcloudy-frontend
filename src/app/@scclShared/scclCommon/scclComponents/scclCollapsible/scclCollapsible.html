@@ -1,10 +1,25 @@
-<ul class="collapsible" data-collapsible="accordion">
-	<li *ngFor="let item of items"> 
-		<div class="collapsible-header {{item.active}}">
-			<i class="material-icons">place</i>{{item.title}}
-		</div>
-		<div class="collapsible-body">
-			<span><ng-content></ng-content></span>
-		</div>
-	</li>
-</ul>
+<div [ngStyle]="{'height': height + 'px'}" [scclCollapsible]=collapsible #collapsible>
+	<ul class="collapsible" data-collapsible="accordion">
+		<li *ngFor="let item of items">
+			
+			<!--HEAD -->
+			<div *ngIf="!item.children" class="collapsible-header" [routerLink]="[item.route]" routerLinkActive="disabled" #link [routerLinkActiveOptions]="{exact: true}">
+				<i *ngIf="item.icon" class="material-icons">{{item.icon}}</i>
+				<span>{{item.title | translate | uppercase}}</span>
+			</div>
+	
+			<!--HEAD WITH CHILDREN-->
+			<div *ngIf="item.children" class="collapsible-header">
+				<i class="material-icons">{{item.icon}}</i>
+				<span>{{item.title | translate | uppercase}}</span>
+			</div>
+	
+			<!--BODY -->
+			<div *ngIf="item.children" class="collapsible-body" routerLinkActive="disabled">
+				<div *ngFor="let childitem of item.children" [routerLink]="[childitem.route]" routerLinkActive="disabled" #link [routerLinkActiveOptions]="{exact: true}">
+					<span>{{childitem.title | translate | uppercase}}</span>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

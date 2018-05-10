@@ -1,0 +1,27 @@
+<span *ngIf="!scclBtns?.wrapper?.active">
+	<button *ngFor="let scclBtn of scclBtns?.buttons" [disabled]="" (click)="emitBtnActions(el)" #el
+		id="{{scclBtn.id}}"
+		data-toggle="tooltip" attr.data-placement="{{scclBtn.tool_tip.d_p}}" 
+		title="{{scclBtn.tool_tip.title | translate}}"
+		class="waves-effect waves-light btn"
+		id="search-btn">
+		<span *ngIf="scclBtn.icon" class="material-icons">{{scclBtn.icon}}</span>
+		<span class="btn-title" *ngIf="scclBtn.title" translate>{{scclBtn.title}}</span>
+	</button>
+</span>
+
+<!-- wraps up the button elements into a drop down menu. 
+	Active once the wrapper property, 'active' is set to true-->
+<span id="button-dropdown-menu-wrapper" *ngIf="scclBtns?.wrapper?.active">
+	<a class='dropdown-button btn' href='javascript:' dropDownMenu
+		[attr.data-activates]="scclBtns?.wrapper?.title">
+		<span class="material-icons">{{scclBtns?.wrapper?.icon}}</span>
+	</a>
+	
+	<ul id="{{scclBtns?.wrapper?.title}}" class='dropdown-content'>
+		<li *ngFor="let scclBtn of scclBtns?.buttons" 
+			id="{{scclBtn.id}}" (click)="emitBtnActions(el)" #el>
+			<span *ngIf="scclBtn.icon" class="material-icons">{{scclBtn.icon}}</span>
+		</li>
+	</ul>
+</span>

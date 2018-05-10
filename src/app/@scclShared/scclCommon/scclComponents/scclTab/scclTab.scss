@@ -1,18 +1,18 @@
 @mixin sccl-tab($theme) {
-	.row, .col{
+	.row, .col {
 		padding: 0 !important;
 		margin: 0 !important;
 	}	
 	> div.tab-wrapper {
 		background-color: map-get($theme, 'sccl-tabs-primary');
 		@include border-radius($border-radius, $border-radius, 0, 0);
-		>div.row {
+		> div.row {
 			> div.tab-head-wrapper {
 				> ul.tabs {
 					background-color: map-get($theme, 'sccl-tabs-primary-darken');
 					@include border-radius($border-radius, $border-radius, 0, 0);
 					> .tab {
-						#sm-tab{font-size: $font-size - .35}
+						#sm-tab{font-size: $tab-font-size-sm}
 						a {
 							color:  map-get($theme, 'sccl-tabs-text-darken');
 							font-size: $font-size;
@@ -28,9 +28,6 @@
 			}
 			> div.tab-body-wrapper {
 				color: #fff;
-				> div {
-					margin: 0 3%;	
-				}
 			}
 		}
 	}

@@ -1,0 +1,59 @@
+
+<div  class="message-drop-down-menu-buttons">
+	<!-- shortcuts buttons with drop down menu -->
+	<div *ngFor="let config of dropDownMenuConfig" 
+		class="{{config.buttonConfigs.buttons[0].class}} dropdown-button" 
+		attr.data-activates="{{config.buttonConfigs.buttons[0].data_activates}}"
+		data-toggle="tooltip" 
+		attr.data-placement="{{config.buttonConfigs.buttons[0].data_placement}}" 
+		title="{{config.buttonConfigs.buttons[0].title | translate}}">
+
+		<span class="material-icons icon">{{config.buttonConfigs.buttons[0].icon}}</span>
+
+		<sccl-dropdown-menu dropDownMenu
+			id="{{config.buttonConfigs.buttons[0]?.data_activates}}" 
+			class='dropdown-content' 
+			[ddMenuConfig]="config"
+			[itemsContainer]="config.itemsContainer"> 
+		</sccl-dropdown-menu>
+	</div>
+</div>
+<!-- tbar shortcuts with drop down menu -->
+
+
+
+
+
+
+<!--
+
+
+    <div class="tbar-shortcuts">
+			<div class="tbar-shortcuts-dd-menu">
+				<!-- shortcuts buttons with drop down menu 
+				<div *ngFor="let inbox_msg of inboxMessage" class="{{inbox_msg.btn_conf.class}} dropdown-button" attr.data-activates="{{inbox_msg.btn_conf.d_a}}"
+				 data-toggle="tooltip" attr.data-placement="{{inbox_msg.btn_conf.d_p}}" title="{{inbox_msg.btn_conf.title | translate}}">
+					<span class="material-icons icon">{{inbox_msg.btn_conf.icon}}</span>
+					<sccl-dropdown-menu id="{{inbox_msg.btn_conf.d_a}}" class='dropdown-content' [listItems]="inboxMsg_box" [menuHeader]="inbox_msg.header">
+					</sccl-dropdown-menu>
+				</div>
+
+				<div *ngFor="let instant_msg of instantMessage" class="{{instant_msg.btn_conf.class}} dropdown-button" attr.data-activates="{{instant_msg.btn_conf.d_a}}"
+				 data-toggle="tooltip" attr.data-placement="{{instant_msg.btn_conf.d_p}}" title="{{instant_msg.btn_conf.title | translate}}">
+					<span class="material-icons icon">{{instant_msg.btn_conf.icon}}</span>
+					<sccl-dropdown-menu id="{{instant_msg.btn_conf.d_a}}" class='dropdown-content' [listItems]="instantMsg_box" [menuHeader]="instant_msg.header">
+					</sccl-dropdown-menu>
+				</div>
+
+				<div *ngFor="let notif_msg of notificationMessage" class="{{notif_msg.btn_conf.class}} dropdown-button" attr.data-activates="{{notif_msg.btn_conf.d_a}}"
+				 data-toggle="tooltip" attr.data-placement="{{notif_msg.btn_conf.d_p}}" title="{{notif_msg.btn_conf.title | translate}}">
+					<span class="material-icons icon">{{notif_msg.btn_conf.icon}}</span>
+					<sccl-dropdown-menu id="{{notif_msg.btn_conf.d_a}}" class='dropdown-content' [listItems]="notificationMsg_box" [menuHeader]="notif_msg.header">
+					</sccl-dropdown-menu>
+				</div>
+			</div>
+			<!-- tbar shortcuts with drop down menu -->
+			
+			<!-- tbar shortcuts without drop down menu 
+		</div>
+-->

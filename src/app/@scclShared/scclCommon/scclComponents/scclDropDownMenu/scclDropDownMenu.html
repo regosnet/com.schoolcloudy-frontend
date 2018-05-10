@@ -1,39 +1,133 @@
 
 <div class="divider"></div>
-<ul *ngIf="menuHeader.length != 0">
-	<span *ngFor="let item of menuHeader" class="dd-menu-header">
-		<li><a href="#!">{{item.type | translate}}</a></li>
-		<li><a href="{{item.url}}">{{'sccl.message.mark_all_read' | translate}}</a></li>
-		<li><a href="{{item.url}}">{{'sccl.settings.title'| translate}}</a></li>
-		<li><a href="{{item.url}}" *ngIf="item.new"> <i
-				class="fa fa-pencil-square-o" aria-hidden="true"></i>
-		</a></li>
-	</span>
+<ul *ngIf="ddMenuConfig?.header?.length != 0" class="dd-menu-header">
+	<li *ngFor="let head_config of ddMenuConfig?.header">
+		<a [routerLink]="head_config.route"> 
+			<i *ngIf="head_config.icon" class="{{head_config.icon}}" aria-hidden="true"></i>
+			<span *ngIf="head_config.title">{{head_config.title | translate}}</span>
+		</a>
+	</li>
 </ul>
 <ul>
-	<li *ngFor="let item of listItems"><a href="#!"> 
+	<div *ngIf="itemsContainer?.length === 0 || itemsContainer === undefined" id="preloader-small">
+		<div class="preloader-wrapper small active">
+			<div class="spinner-layer">
+				<div class="circle-clipper left">
+				<div class="circle"></div>
+				</div><div class="gap-patch">
+				<div class="circle"></div>
+				</div><div class="circle-clipper right">
+				<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<li *ngFor="let item of itemsContainer">
+
+		<!-- for links that requires href (e.g 'sign out' button)-->
+		<a *ngIf="item.href" href="{{item.href}}">
+			<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i>
+			<span *ngIf="item.title">{{item.title | translate}}</span> 
+		</a>
+		
+		<!--For links that require angular route-->
+		<a *ngIf="item.route" [routerLink]="item.route"> 
+			<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i>
+			<span *ngIf="!item.sender">{{item.title | translate}}</span> 
+			<div *ngIf="item.sender" class="message-box">
+				<!--sender avatar-->
+				<div class="sender-avatar">
+					<img 
+						src="{{ ('profile/' + (item.sender.firstName + '.' + 
+							item.sender.lastName | lowercase) | scclPngExt) }}"
+						class="circle">
+				</div>
+				<!-- content -->
+				<div class="message-content">
+					<div *ngIf="item.sender" class="c-head">
+						<span>{{item.sender.firstName}} {{item.sender.lastName}}</span>
+						<span *ngIf="item.title">Subject: {{item.title}}</span>
+					</div>
+					<div class="c-body">{{item.text}}</div>
+					<div class="time">
+						<span class="{{item.typeIcon}}"></span>
+						<span><em><strong>{{item.time}}</strong></em></span>
+					</div>
+				</div>
+
+				<!--badge-->
+				<div class="message-badge">
+					<em><strong><span *ngIf="!item.isRead">new</span></strong></em>
+				</div>
+			</div>
+		</a>
+	</li>
+</ul>
+<!-- footer -->
+<ul *ngIf="ddMenuConfig?.footer?.length != 0" class="dd-footer">
+	<li *ngFor="let foot_config of ddMenuCaption?.footer">
+	<a [routerLink]="foot_config.route">{{foot_config.title | translate}}</a></li>
+</ul>
+
+
+
+<!--
+
+	<ul>
+	<div *ngIf="ddMenuConfig?.content?.length === 0" id="preloader-small">
+		<div class="preloader-wrapper small active">
+			<div class="spinner-layer">
+				<div class="circle-clipper left">
+				<div class="circle"></div>
+				</div><div class="gap-patch">
+				<div class="circle"></div>
+				</div><div class="circle-clipper right">
+				<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<li *ngFor="let item of ddMenuConfig.content">
+		<!-- for links that requires href (e.g 'sign out' button)
+		<a *ngIf="item.href" href="{{item.href}}">
+			<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i>
+			<span *ngIf="item.title">{{item.title | translate}}</span> 
+		</a>
+		
+		<!--For links that require angular route
+		<a *ngIf="item.route" [routerLink]="item.route"> 
 		<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i> 
 		<span *ngIf="item.title">{{item.title | translate}}</span> 
 				<div *ngIf="item.sender" class="message-box">
+					<!--sender avatar-
 					<div class="sender-avatar">
-						<img src="{{ ('profile/' + item.sender.username | scclPngExt) }}"
+						<img 
+							src="{{ ('profile/' + (user.firstName + '.' + 
+								item.sender.lastName | lowercase) | scclPngExt) }}"
 							class="circle">
 					</div>
+					<!-- content -
 					<div class="message-content">
 						<div *ngIf="item.sender" class="c-head">
 							<span>{{item.sender.firstName}} {{item.sender.lastName}};</span>
-							<span *ngIf="item.subject">Subject: {{item.subject}}</span>
+							<span *ngIf="item.subject">Subject: {{item.title}}</span>
 						</div>
 						<div class="c-body">{{item.text}}</div>
 						<div class="time">
-							<span class="{{item.typeIcon}}"></span><span><em><strong>{{item.time}}</strong></em></span>
+							<span class="{{item.typeIcon}}"></span>
+							<span><em><strong>{{item.time}}</strong></em></span>
 						</div>
 					</div>
-					<div class="message-badge"><em><strong><span *ngIf="item.isRead">new</span></strong></em></div>
+					<!--badge-
+					<div class="message-badge">
+						<em><strong><span *ngIf="item.isRead">new</span></strong></em>
+					</div>
 				</div>
 	</a></li>
 </ul>
-<ul *ngIf="menuHeader.length != 0" class="dd-footer">
-	<li *ngFor="let item of menuHeader">
-	<a href="{{item.seeAll}}">{{'sccl.message.see_all' | translate}}</a></li>
+<!-- footer -
+<ul *ngIf="ddMenuConfig.footer?.length != 0" class="dd-footer">
+	<li *ngFor="let item of ddMenuCaption.footer">
+	<a [routerLink]="item.route">{{item.title | translate}}</a></li>
 </ul>
+-->

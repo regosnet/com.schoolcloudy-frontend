@@ -1,6 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ScclGlobalService } from "../../../../scclCommon/scclServices/index";
-declare var $: any
+import { Component, OnInit, Input, AfterViewInit, ChangeDetectorRef, OnChanges} from '@angular/core';
+import { ScclGlobalService } from '../../../../scclCommon/scclServices/index';
+import { IScclUser, IScclHeader, IScclMainHeadbar} from '../../../../../scclModels';
+import { IScclDropDownMenu } from '../../../../../scclModels/scclComponents/scclDropDownMenu/index.';
+import { IScclButton } from '../../../../../scclModels/scclComponents';
+import { ScclLayoutService } from '../../../scclLayoutServices';
+declare var $: any;
 
 
 @Component({
@@ -8,24 +12,67 @@ declare var $: any
     templateUrl: './scclMidHead.html',
     styleUrls: ['./scclMidHead.scss']
 })
-export class ScclMidHeadComponent implements OnInit{
-    
-    listItems;
-    username = 'eric.ihechukwudere';
-    @Input() 
-    isLoggedIn: boolean = false;
-    
-   
-    menuHeader = [];
-    
-    constructor(private scclGlobalService: ScclGlobalService) {
-        this.scclGlobalService.subscribe('midHeadConfig', (midHeadConfigs) => {
-            this.listItems = midHeadConfigs.menuDropdown
-        })
+export class ScclMidHeadComponent implements OnInit, AfterViewInit, OnChanges {
+
+    activePageTitle: string;
+    user: IScclUser;
+    B1: IScclButton;
+    B2: IScclButton;
+    @Input()
+    isLoggedIn: boolean;
+    @Input()
+    mainHeadConfig: IScclMainHeadbar;
+    dropDownMenuConfig: IScclDropDownMenu;
+
+    constructor(private scclGlobalService: ScclGlobalService,
+                private scclLayoutService: ScclLayoutService,
+                private cdRef: ChangeDetectorRef) {
     }
-    
+
     ngOnInit(): void {
-        
+        this.getCurrentUser();
     }
-  
+
+    ngAfterViewInit(): void {
+        this.scclGlobalService.subscribe('active-page.title', (pageTitle) => {
+            this.activePageTitle = pageTitle;
+            this.cdRef.detectChanges();
+        });
+    }
+
+    getCurrentUser() {
+        this.scclGlobalService.subscribe('isUser', (usr: IScclUser) => {
+            this.user = usr;
+        });
+    }
+
+    ngOnChanges(): void {
+        if (this.mainHeadConfig !== undefined) {
+            this.dropDownMenuConfig = this.mainHeadConfig.dropDownMenuConfigs;
+            this.B1 = this.mainHeadConfig.btnConfigs.B1;
+            this.B2 = this.mainHeadConfig.btnConfigs.B2;
+        }
+    }
+
+    btnActions(e): void {
+        const btnId = $(e.element).attr('id');
+        console.log(e)
+        switch (btnId) {
+        case 'settings-btn':
+            this.scclLayoutService.panelSlideToggle();
+            break;
+        case 'search-btn':
+            console.log('Search bar opening');
+            break;
+        case 'screen-resize-btn':
+        let button = e.button.buttons.find(x => x.id === btnId);
+        button.icon = button.icon === 'fullscreen' ? 'fullscreen_exit' : 'fullscreen';
+            break;
+        case 'menu-btn':
+            this.scclLayoutService.collapseSidePanel();
+            break;
+        default:
+            console.log('None clicked');
+        }
+    }
 }

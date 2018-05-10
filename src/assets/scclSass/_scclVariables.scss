@@ -7,7 +7,7 @@ $resXS: 500px;
 $resXXS: 435px;
 $resMin: 320px;
 
-$font-size: 1rem;
+$font-size: 1em;
 $font-weight: 400;
 
 
@@ -16,22 +16,32 @@ $margin-left:0px;
 $margin-right: 0px;
 $margin-top: 0px;
 $margin-bottom: 0px;
-$caret-position: 0px;
+$caret-y-axis: 0px;
 $top: 0px; 
 $width: 0px;
-$border-radius: 5px;
+$border-radius: 0;
 $height: 23px;
 $padding-left: 3px;
-$icon-font-size:$font-size + .3;
+$icon-font-size:$font-size + .5;
 $sccl-border: 1px;
-$z-index-lay-1: 1000;
+$z-index: 1;
 
 
 //======= SIDE BARS ==================
 $sidebar-width: 250px;
+$sidebar-padding: 0;
+$sidebar-font-size: $font-size;
+$sidebar-font-size-sm: $sidebar-font-size - .1;
+$sidebar-collapse-width: $sidebar-width - 170;
 
-//======= FOOT HEAD ======================
-$foot-head-height: $height; 
+//======= SCCL HEADER ==================
+    $header-z-index: $z-index;
+    //======= MAIN HEAD =======================
+    $sccl-main-head-height: 55px;
+    $sccl-main-head-min-height: 30px;
+    //======= TOP HEAD ======================
+    //======= FOOT HEAD ======================
+    $foot-head-height: $height;
 
 //======= HOME PANELS ================
 $max-width: $width + 340;
@@ -40,6 +50,13 @@ $login-panel-max-width: $max-width;
 //======= SCCL BUTTONS ===============
 $sccl-buttons-weight: $font-weight;
 $sccl-button-height: $height;
+$sccl-button-padding: 10px;
+$sccl-button-margin: 10px;
+$sccl-button-padding-x: 5px;
+$sccl-button-margin-x: 5px;
+$sccl-button-padding-y: 5px;
+$sccl-button-margin-y: 5px;
+$sccl-button-width: 5px;
 
 //======= SCCL FORMS ===============
 $sccl-form-input-border: $sccl-border; 
@@ -47,17 +64,33 @@ $sccl-form-input-border: $sccl-border;
 //======= SCCL CARDS ===============
 $head-height: $height + 12;
 
-//======= DROP DOWN MENU =============
-$dd-menu-width: $width + 450;
-$dd-menu-menu-top: $top + 33;
-$dd-items-height: 50px;
-$caret-move-or-down: -37px;
-$shift-box: 2; // use for moving the dd menu box together with caret
-$dd-menu-caret-position: $caret-position  + 40 + $shift-box;
-$dd-menu-margin-left: $margin-left + $shift-box;
+//======= DROP DOWN MENU  (default settings suite only for the user drop down menu)=============
+$dd-menu-height: 50px;
+$dd-menu-line-height: $dd-menu-height;
+$dd-menu-min-height: $dd-menu-height - 20;
+$dd-menu-width: 20px;
+$dd-menu-width: 20px;
+$dd-menu-x-pos: 0px;
+$dd-menu-y-pos: 54px;
+$dd-menu-font-size: $font-size; 
+
+//======= CARET (default settings suite only for the user drop down menu) =============
+$caret-x-pos: 15px;
+$caret-y-pos: -35px;
+$caret-content:$fa-var-caret-up;
+$caret-color: green;
+$caret-size: 35px;
 
 //======= SCCL TAB ===============
 $sccl-tab-border-raidus:$border-radius;
+$tab-font-size-sm: $font-size - .15;
 
 //======= SCCL SELECT ==================
 $sccl-select-input-border: $sccl-border;
+$sccl-select-items-height: 300px;
+
+//======= SCCL TECHNICAL PANEL ==================
+$tpanel-z-index: $z-index + 1;
+
+//======= SCCL BODY ==================
+$bodyWidth: 45%;

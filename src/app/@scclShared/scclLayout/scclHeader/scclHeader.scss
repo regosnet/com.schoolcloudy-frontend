@@ -1,15 +1,16 @@
 @import 'scclHeadSections/scclTopHead/scclTopHead';
 @import 'scclHeadSections/scclMidHead/scclMidHead';
-@import 'scclHeadSections/scclFootHead/scclFootHead';
 
 @mixin scclHeader($theme) {
 	> nav {
 		height: auto;
+		position: fixed;
+		top: 0;
+		z-index: $header-z-index;
 		.nav-wrapper {
 			background: map-get($theme, 'sccl-header-primary');
 			@include sccl-top-head($theme);
 			@include sccl-mid-head($theme);
-			@include sccl-foot-head($theme)
 		}
 	}
 } 
