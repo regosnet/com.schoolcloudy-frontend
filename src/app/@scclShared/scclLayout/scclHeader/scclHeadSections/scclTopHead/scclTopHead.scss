@@ -26,16 +26,21 @@
 				}
 			}
 			@media #{$medium-and-down} {
-    				
+    			> div.nav-wrapper {
+					@include display-flex(space-between, none);
+					>div.sccl-logo {
+						display: block;
+						@include logo-image()
+					}
+					> div.last-login {
+						display: none;
+					}
+				}	
 			}
 		  @media #{$small-and-down} {	
 			> div.nav-wrapper {
 				@include display-flex(space-between, none);
-				>div.sccl-logo {
-					display: block;
-					@include logo-image()
-				}
-				>div.session, div.last-login {
+				>div.session {
 					display: none;
 				}
 			}

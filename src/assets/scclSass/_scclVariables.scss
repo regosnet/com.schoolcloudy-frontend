@@ -1,14 +1,21 @@
-$resXXL: 1280px;
-$resXL: 1170px;
-$resL: 991px;
-$resM: 768px;
-$resS: 660px;
-$resXS: 500px;
-$resXXS: 435px;
-$resMin: 320px;
 
 $font-size: 1em;
-$font-weight: 400;
+$font-weight: 600;
+
+$breakpoints: (
+  'xs':  $small-screen-up - 200,
+  'sm':  $small-screen-up,
+  'md': $medium-screen-up,
+  'lg':  $large-screen-up,
+  'xlg':  1200px
+);
+$breakpoints-default-feature: min-width;
+
+
+
+
+//======= IMAGE PATH =========
+$logoPath: "/assets/scclgraphics/scclLogo/sccl_logo_sm.png";
 
 
 //======= GENERIC VARIABLES =========
@@ -37,11 +44,9 @@ $sidebar-collapse-width: $sidebar-width - 170;
 //======= SCCL HEADER ==================
     $header-z-index: $z-index;
     //======= MAIN HEAD =======================
-    $sccl-main-head-height: 55px;
+    $sccl-main-head-height: 45px;
     $sccl-main-head-min-height: 30px;
     //======= TOP HEAD ======================
-    //======= FOOT HEAD ======================
-    $foot-head-height: $height;
 
 //======= HOME PANELS ================
 $max-width: $width + 340;
@@ -64,21 +69,11 @@ $sccl-form-input-border: $sccl-border;
 //======= SCCL CARDS ===============
 $head-height: $height + 12;
 
-//======= DROP DOWN MENU  (default settings suite only for the user drop down menu)=============
-$dd-menu-height: 50px;
-$dd-menu-line-height: $dd-menu-height;
-$dd-menu-min-height: $dd-menu-height - 20;
-$dd-menu-width: 20px;
-$dd-menu-width: 20px;
-$dd-menu-x-pos: 0px;
-$dd-menu-y-pos: 54px;
-$dd-menu-font-size: $font-size; 
 
 //======= CARET (default settings suite only for the user drop down menu) =============
 $caret-x-pos: 15px;
 $caret-y-pos: -35px;
 $caret-content:$fa-var-caret-up;
-$caret-color: green;
 $caret-size: 35px;
 
 //======= SCCL TAB ===============

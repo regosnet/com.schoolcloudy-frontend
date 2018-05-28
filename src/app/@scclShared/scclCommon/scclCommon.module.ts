@@ -21,22 +21,27 @@ import {
 
 import {
     ScclAuthenticationService,
-    ScclMessageService,
     ScclGlobalService,
-    ScclAuthGuard
+    ScclAuthGuard,
+    ScclPanelTogglerService,
+    ScclPanelToggler,
+    ScclToolTipDirective,
+    ScclNotifierService,
+    ScclScrollbarAdapterSerivce,
+    ScclScrollbarAdapter
 } from './scclServices';
 
 import {
     ScclCardComponent,
     ScclDropDownMenuComponent,
-    ScclAButtonComponent,
     ScclCollapsibleComponent,
     ScclFormComponent,
     ScclTabComponent,
     ScclSelectComponent,
     ScclTabDirective,
     ScclDropDownMenuDirective,
-    ScclTabFilter
+    ScclTabFilter,
+    Menu
 } from './scclComponents';
 
 import {
@@ -47,7 +52,8 @@ import {
 } from './scclDirectives';
 import { ScclTranslationModule } from '../scclLayout/scclTechnicalPanel/scclSettings/scclLanguage/translator/scclTranslatingModule';
 import { ScclButtonBComponent } from './scclComponents/scclButtons/scclButtonB';
-
+import { ScclFooterComponent } from '../scclLayout/scclFooter';
+import { ScclLinkButtonComponent } from './scclComponents/scclButtons/scclLinkButton';
 
 
 
@@ -55,9 +61,11 @@ const SCCL_SHARED_SERVICE =
     [
      MalihuScrollbarService,
      ScclAuthenticationService,
-     ScclMessageService,
+     ScclNotifierService,
      ScclGlobalService,
-     ScclAuthGuard
+     ScclAuthGuard,
+     {provide: ScclPanelTogglerService, useClass: ScclPanelToggler},
+     {provide: ScclScrollbarAdapterSerivce, useClass: ScclScrollbarAdapter}
      ];
 
 const SCCL_DIRECTIVES =
@@ -67,19 +75,22 @@ const SCCL_DIRECTIVES =
      ScclHeaderDirective,
      ScclTabDirective,
      ScclCollapsibleDirective,
-     ScclDropDownMenuDirective
+     ScclDropDownMenuDirective,
+     ScclToolTipDirective 
      ];
 
 const SCCL_COMPONENTS =
     [ScclCardComponent,
      ScclDropDownMenuComponent,
-     ScclAButtonComponent,
+     ScclLinkButtonComponent,
      ScclButtonBComponent,
      ScclSlimScrollDirective,
      ScclFormComponent,
      ScclCollapsibleComponent,
      ScclTabComponent,
-     ScclSelectComponent
+     ScclSelectComponent,
+     ScclFooterComponent,
+     Menu
      ];
 
 const SCCL_PIPES =
@@ -109,7 +120,7 @@ const SCCL_PIPES =
       ...SCCL_COMPONENTS
     ],
     providers: [
-        ...SCCL_SHARED_SERVICE
+        ...SCCL_SHARED_SERVICE 
     ],
     exports: [
          ...SCCL_PIPES,

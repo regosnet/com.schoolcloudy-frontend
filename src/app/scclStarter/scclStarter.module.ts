@@ -5,6 +5,7 @@ import { ScclCommonModule } from '../@scclShared/scclCommon/scclCommon.module';
 import { ScclAdministratorModule } from '../scclAdministrator/scclAdministrator.module';
 import { ScclStarterService } from './scclStarter.service';
 import { ScclLoginComponent, ScclLoginService } from './scclLogin';
+import { ScclHomeComponent } from './scclHome/scclHome.component';
 
 
 
@@ -17,7 +18,8 @@ import { ScclLoginComponent, ScclLoginService } from './scclLogin';
     ],
    declarations: [
         ScclStarterComponent,
-        ScclLoginComponent
+        ScclLoginComponent,
+        ScclHomeComponent
     ],
     providers: [ScclStarterService, ScclLoginService],
     entryComponents: [

@@ -21,6 +21,5 @@ export class ScclStarterComponent implements OnInit {
 
     ngOnInit(): void {
         this.scclStarterService.notifyUserStatus();
-        
     }
 }

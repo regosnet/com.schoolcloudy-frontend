@@ -1,34 +1,10 @@
 @import '../../scclFooter/scclFooter';
 
-@mixin sidebar($theme, $sidebar-width, $float) {
+@mixin sidebar($theme) {
 	background: map-get($theme, 'sccl-sidebar-primary');
-	float: $float;
-	width: $sidebar-width;
-    @include display-flex(space-between, none);
-	flex-direction: column;
     > div.sidebar-footer {
         > sccl-footer  {
             @include sccl-footer($theme);
         }
     }
-	@media #{$medium-and-down} {
-		width: $sidebar-width;
-	  > ul{
-		>li > div {
-		  @include display-flex(center, center);
-		  flex-direction: column;
-		  text-align: center;
-		  > i{
-			  margin: 0;
-		  }
-		}
-	  }
-	}
-	@media #{$large-and-up} {
-		width: $sidebar-width;
-	}
-  
-	@media #{$extra-large-and-up} {
-		width: $sidebar-width;
-	}
 }

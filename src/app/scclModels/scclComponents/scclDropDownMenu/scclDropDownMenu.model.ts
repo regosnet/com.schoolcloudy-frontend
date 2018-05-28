@@ -1,14 +1,18 @@
 import {
     IScclDropDownMenuHeader,
     IScclDropDownMenuFooter,
-    IScclDropDownMenuItemsContainer
+    IScclDropDownMenuItemsContainer,
+    IScclDropDownProperties
 } from './tags';
-import { IScclButton } from '..';
+import { IScclDropDownMenuButton } from '..';
 
 export interface IScclDropDownMenu {
     header?: IScclDropDownMenuHeader[];
     itemsContainer?: IScclDropDownMenuItemsContainer[];
     footer?: IScclDropDownMenuFooter[];
-    buttonConfigs: any;
-
+    trigger?: IScclDropDownMenuButton;
+    properties?: IScclDropDownProperties;
+    size?: {height?: number, width: number}
 }
+
+

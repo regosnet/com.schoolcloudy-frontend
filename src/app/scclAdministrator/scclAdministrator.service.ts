@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ScclGlobalService, ScclMessageService } from '../@scclShared/scclCommon/scclServices';
+import { ScclGlobalService, ScclNotifierService } from '../@scclShared/scclCommon/scclServices';
 import { SCCL_ADMINISTRATOR_CONFIG } from './scclAdministrator.configuration';
 import { ScclLayoutService } from '../@scclShared/scclLayout/scclLayoutServices/scclLayout.service';
 import { IScclUser } from '../scclModels';
@@ -7,9 +7,10 @@ import { IScclUser } from '../scclModels';
 @Injectable()
 export class ScclAdmininstratorService {
 
-    constructor(private scclGlobalService: ScclGlobalService,
-                private scclLayoutService: ScclLayoutService,
-                private scclMessageService: ScclMessageService) {
+    constructor(
+        private scclGlobalService: ScclGlobalService,
+        private scclLayoutService: ScclLayoutService,
+        private scclNotifier: ScclNotifierService) {
                     this.initializeModuleConfigurations();
         this.setCurrentUser();
         this.getUserMessages();
@@ -31,8 +32,12 @@ export class ScclAdmininstratorService {
        this.scclGlobalService.notifyDataChanged('module.configurations', SCCL_ADMINISTRATOR_CONFIG);
     }
 
-    getUserMessages() {
-        this.scclGlobalService.notifyDataChanged('message.notification', this.scclMessageService.getNotificationMessages());
+    getUserMessages() {;
+        setTimeout(() => {
+            this.scclNotifier.getAllNotification().forEach((msg) => {
+                this.getNotificationContainer().push(msg);
+            });
+        }, 5000);
     }
 
     setPageTitle(pageTitle) {
@@ -41,6 +46,14 @@ export class ScclAdmininstratorService {
 
     notifyUserStatus() {
         this.scclGlobalService.notifyDataChanged('isLoggedIn', true);
+    }
+
+    getNotificationContainer() {
+        return SCCL_ADMINISTRATOR_CONFIG
+                .headConfig
+                .mainHeadConfig
+                .notifierConfig
+                .itemsContainer
     }
 /*
     public getAdministrator() {

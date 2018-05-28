@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IScclFooter } from './scclFooter.model';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { IScclFooter } from '../../../scclModels';
+
 
 @Component({
     selector: 'sccl-footer',

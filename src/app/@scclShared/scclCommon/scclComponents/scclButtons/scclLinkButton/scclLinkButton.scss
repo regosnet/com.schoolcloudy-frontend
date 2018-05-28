@@ -1,0 +1,14 @@
+@mixin sccl-link-button() {
+    > span {
+        @include display-flex(space-between, center);
+        > a {
+            width: 100%;
+            @content;
+            @include display-flex(center, center);
+        }
+    }
+    #clear-btn {
+        color: red;
+    }
+}
+

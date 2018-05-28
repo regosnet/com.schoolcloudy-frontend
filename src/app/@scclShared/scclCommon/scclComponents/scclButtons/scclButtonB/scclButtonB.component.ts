@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
 import { IScclButton } from '../../../../../scclModels/scclComponents';
+import { ScclButton } from '../scclButton';
 declare var $: any;
 
 @Component({
@@ -7,20 +8,7 @@ declare var $: any;
     templateUrl: './scclButtonB.html',
     styleUrls: ['./scclButtonB.scss']
 })
-export class ScclButtonBComponent implements AfterViewInit, OnChanges {
+export class ScclButtonBComponent extends ScclButton {
 
-    @Input()
-    scclBtns: IScclButton;
-
-    @Output()
-    btnActions = new EventEmitter();
-
-    emitBtnActions(el) {
-        this.btnActions.emit({element: el, button: this.scclBtns});
-    }
-
-    ngAfterViewInit(): void {
-    }
-    ngOnChanges(): void {
-    }
+    
 }

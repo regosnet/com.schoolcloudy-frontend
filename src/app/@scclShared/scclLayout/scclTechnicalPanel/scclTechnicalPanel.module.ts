@@ -3,11 +3,9 @@ import { ScclCommonModule } from '../../scclCommon/scclCommon.module';
 import { ScclSystemInformationComponent } from './scclSystemInformation';
 import { ScclSettingsComponent, ScclLanguageComponent, ScclThemesComponent } from './scclSettings';
 import { ScclTechnicalPanelComponent } from './scclTechnicalPanel.component';
-import { ScclTechnicalPanelRouter } from './scclTechnicalPanel.route';
 import { ScclTechnicalPanelService } from './scclTechnicalPanel.service';
 
-const SCCL_LAYOUT_COMPONENTS =
-    [
+const SCCL_LAYOUT_COMPONENTS = [
         ScclTechnicalPanelComponent,
         ScclSettingsComponent,
         ScclSystemInformationComponent,
@@ -17,7 +15,7 @@ const SCCL_LAYOUT_COMPONENTS =
 
 
 @NgModule({
-    imports: [ScclCommonModule.forRoot(), ScclTechnicalPanelRouter],
+    imports: [ScclCommonModule.forRoot()],
     declarations: [...SCCL_LAYOUT_COMPONENTS],
     exports: [...SCCL_LAYOUT_COMPONENTS],
     providers: [ScclTechnicalPanelService],

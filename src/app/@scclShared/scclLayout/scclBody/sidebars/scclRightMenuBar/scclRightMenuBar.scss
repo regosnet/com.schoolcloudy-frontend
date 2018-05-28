@@ -2,15 +2,33 @@
 @import '../sccl-sidebar-mixins';
 
 @mixin sccl-right-menu-bar($theme){
-	> div {
-		@include sidebar($theme, 300px, none);
-		> div {
+	> div#right-menu-bar {
+		@include sidebar($theme);
+		/* The 'default' css class is active only 
+			when the user is not logged in.
+		*/
+		&.default {
+			width: 300px;
+		}
+
+		/* Some properties in 'logged-in' class is 
+		active only when the user is logged in*/
+		&.logged-in {
+			width: 100%;
 			sccl-tab {
 				@include sccl-tab($theme);
 			}
 		}
-		&.logged-in {
-			@include sidebar($theme, 100%, none);
+
+		> div.menubar {
+			background: transparent;
+			div#resolved-component-right {
+				background: transparent;
+				> div {
+					background: transparent;
+					@include sccl-login($theme);
+				}
+			}
 		}
 	}
 }

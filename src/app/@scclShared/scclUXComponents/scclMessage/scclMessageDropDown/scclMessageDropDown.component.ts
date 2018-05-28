@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IScclInboxMessage, IScclNotificationMessage, IScclInstantMessage } from '../scclMessageModel';
 import { ScclGlobalService } from '../../../scclCommon/scclServices';
-import { IScclDropDownMenu, IScclDropDownMenuItemsContainer } from '../../../../scclModels/scclComponents/scclDropDownMenu/index.';
+import { IScclDropDownMenu } from '../../../../scclModels/scclComponents/scclDropDownMenu';
+
 declare var $: any;
 
 @Component({
@@ -11,12 +12,11 @@ declare var $: any;
 })
 export class ScclMessageDropDownComponent implements OnChanges, OnInit {
   /* message content are loaded asynchronosly in these boxes */
-    dropDownMenuConfig: IScclDropDownMenu[];
+    dropDownMenuConfig: IScclDropDownMenu;
     constructor(private scclGlobalService: ScclGlobalService) {
         this.scclGlobalService.subscribe('message.notification', (res) => {
            setTimeout(() => {
-            this.dropDownMenuConfig.forEach((data) => {
-                data.itemsContainer = [
+            this.dropDownMenuConfig.itemsContainer = [
                  {
                      sender: {
                          firstName: 'Eric',
@@ -90,31 +90,20 @@ export class ScclMessageDropDownComponent implements OnChanges, OnInit {
                     route: '/inbox'
                 },
             ];
-            });
+         
            }, 5000);
         });
     }
 
     ngOnInit(): void {
        this.dropDownMenuConfig = this.getMessageMenuConfig();
-       $('.dropdown-button').dropdown({
-        inDuration: 300,
-        outDuration: 225,
-        constrainWidth: false,
-        hover: false,
-        gutter: 0,
-        belowOrigin: true,
-        alignment: 'right',
-        stopPropagation: false
-      }
-    );
     }
 
     ngOnChanges(): void {
     }
 
-    getMessageMenuConfig(): IScclDropDownMenu[] {
-        return [{
+    getMessageMenuConfig(): IScclDropDownMenu {
+        return {
             header: [
                 {
                     title: 'sccl.message.notification',
@@ -140,19 +129,20 @@ export class ScclMessageDropDownComponent implements OnChanges, OnInit {
                     route: '/notifications'
                 }
             ],
-            buttonConfigs: {
-                buttons: [
-                    {
-                        title: 'sccl.message.notification',
-                        icon: 'notifications',
-                        data_activates: 'dd-notification-menu',
-                        tool_tip: {
-                            data_placement: 'bottom',
-                        }
-                    }
-                ]
+            trigger: {
+                title: 'sccl.message.notification',
+                class: 'notification-dropdown-menu-button',
+                icon: 'notifications',
+                paired_icon: false,
+                id: 'notification',
+                tool_tip: {
+                    delay: 50,
+                    position: 'right',
+                    title: 'sccl.notification',
+                    html: false,
+                }
             }
-        }];
+        };
     }
 }
 

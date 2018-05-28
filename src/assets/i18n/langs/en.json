@@ -48,6 +48,7 @@
 	"minimize": "Minimize",
 	"fullscreen": "Fullscreen",
 	"exit_fullscreen": "Exit Fullscreen",
+	"notifications": "Notifications",
   	"languages":{
   		"title": "languages",
   		"en": "English",
@@ -101,7 +102,6 @@
 	 "message": {
 	 	"instant": "Messages",
 	 	"inbox": "Inbox",
-	 	"notification": "Notifications",
 		 "mark_all_read": "Mark All as Read",
 		 "see_all": "See All"
 	 }

@@ -1,6 +1,6 @@
 import { ScclGlobalService } from '../../../../scclCommon/scclServices';
-import { ScclSidebar } from '../../../../../scclModels/scclLayout/scclBody/sidebar/scclSidebar';
 import { Component, AfterViewInit, OnInit, OnChanges } from '@angular/core';
+import { ScclAsidebar } from '../sccl-aside-bar';
 declare var $: any;
 
 @Component({
@@ -8,11 +8,8 @@ declare var $: any;
     templateUrl: './scclLeftMenuBar.html',
     styleUrls: ['./scclLeftMenuBar.scss']
 })
-export class ScclLeftMenuBarComponent extends ScclSidebar implements AfterViewInit, OnInit, OnChanges {
+export class ScclLeftMenuBarComponent extends ScclAsidebar implements AfterViewInit, OnInit, OnChanges {
 
-    constructor(private scclGlobalService: ScclGlobalService) {
-        super();
-    }
 
     ngOnInit(): void {
         this.heightResizer();
@@ -23,14 +20,14 @@ export class ScclLeftMenuBarComponent extends ScclSidebar implements AfterViewIn
     }
 
     ngOnChanges() {
-        this.setMenubarHeight();
+       
     }
 
-    heightResizer() {
-        this.scclGlobalService.subscribe('screen-dimension', (props) => {
+    heightResizer() { 
+        /*this.scclGlobalService.subscribe('screen-dimension', (props) => {
             if (this.isStaticHeight) {
                 this.menuBarHeight = props.height - this.HEIGHT;
             }
-        });
+        });*/
     }
 }

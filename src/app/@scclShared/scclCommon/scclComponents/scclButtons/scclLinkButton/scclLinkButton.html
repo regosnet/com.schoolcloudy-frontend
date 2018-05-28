@@ -1,0 +1,19 @@
+<span id="link-button">
+	<a 
+		*ngFor="let scclBtn of scclBtns?.buttons"
+		(click)="emitBtnActions(el)" #el
+		id="{{scclBtn.id}}"
+		[scclToolTip]=scclBtn?.trigger 
+		class="waves-effect waves-light">
+		<span 
+			*ngIf="scclBtn?.icon" 
+			class="material-icons icon">{{scclBtn.icon}}
+		</span> 
+		<span 
+			*ngIf="scclBtn?.title" 
+			class="title">{{scclBtn.title | translate}}
+		</span>
+	</a>
+</span>
+
+

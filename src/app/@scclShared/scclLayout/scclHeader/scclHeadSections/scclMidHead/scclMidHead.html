@@ -1,33 +1,41 @@
 <nav>
 	<div class="nav-wrapper">
 		<div id="head-left">
-			<!--<div class="toggle-sidebar-btn" *ngIf="isLoggedIn">
-					<sccl-button-b 
-						[scclBtns]="B2" 
-						(btnActions)="btnActions($event)">
-					</sccl-button-b>
-			</div>-->
-			<div class="sccl-logo">
-				<a href="#"><span>School</span>Cloudy</a>
-				<img alt="sccl" src="{{ 'scclLogo/sccl_logo' | scclPngExt }}">
+			<div class="user-menu">
+				<!--this button displays when user is not logged in-->
+				<sccl-dropdown-menu *ngIf="!isLoggedIn" id="user-menu"
+					[ddMenuConfig]="userMenuConfig"
+					[itemsContainer]="userMenuConfig?.itemsContainer">
+				</sccl-dropdown-menu>
 			</div>
-			<div class="active-page-title">
-				<span>{{activePageTitle | translate}}</span>
+			<div class="sccl-logo">
+				<a href="#">
+					<span>School</span>Cloudy
+					<img 
+						alt="sccl" 
+						src="{{ 'scclLogo/sccl_logo' | scclPngExt }}">
+				</a>
 			</div>
 		</div>
 
+		<div class="active-page-title">
+			<span>{{activePageTitle | translate}}</span>
+		</div>
+
 		<div id="head-right">
-			<div class="menu-button">
+			<div class="user-LoggedIn-menu">
 				<!--this button displays when user logged in-->
-				<a *ngIf="isLoggedIn" 
-					id="signed-in-menu" 
-					class='dropdown-button' 
-					href='javascript:' 
-					data-activates='user-dd-menu'>
-					<span *ngIf="user !== undefined" 
+				<sccl-dropdown-menu 
+					*ngIf="isLoggedIn" 
+					id="user-LoggedIn-menu"
+					[ddMenuConfig]="userMenuConfig"
+					[itemsContainer]="userMenuConfig?.itemsContainer">
+					<span 
+						*ngIf="user !== undefined" 
 						class="avatar"> 
 						<img 
-							src="{{ ('profile/' + (user.firstName + '.' + user.lastName | lowercase) | scclPngExt) }}" 
+							src="{{ ('profile/' + (user.firstName + '.' 
+							+ user.lastName | lowercase) | scclPngExt) }}" 
 							alt="{{user.firstName}}"
 							class="circle">
 					</span>
@@ -35,39 +43,29 @@
 						<span>{{user.firstName}} {{user.lastName}}</span>
 						<i class="fa fa-caret-down"></i>
 					</span>
-				</a>
-	
-				<!--this button displays when user logged out and only on small screen-->
-				<a  *ngIf="!isLoggedIn"
-					id="signed-out-menu" 
-					class='dropdown-button btn-floating btn waves-effect waves-light'
-					href='javascript:' 
-					data-activates='user-dd-menu'>
-						<i class="material-icons">menu</i>
-				</a>
-	
-				<!--this drop down menu component works for both button
-				but menu items are determined by the loaded module. -->
-				<div id="user-menu-dd-wrapper">
-					<sccl-dropdown-menu dropDownMenu
-						id='user-dd-menu' 
-						class='dropdown-content'
-						[ddMenuConfig]="dropDownMenuConfig"
-						[itemsContainer]="dropDownMenuConfig?.itemsContainer">
-					</sccl-dropdown-menu>
-				</div>
+				</sccl-dropdown-menu>
 			</div><!--menu-button close tag-->
-			<div *ngIf="isLoggedIn" class="message-drop-down-menu">
-				<sccl-message-drop-down>
-				</sccl-message-drop-down>
+
+			<div *ngIf="isLoggedIn" class="notifications">
+				<sccl-dropdown-menu id="notification-menu"
+					[size]="notifierConfig.size"
+					[ddMenuConfig]="notifierConfig"
+					[itemsContainer]="notifierConfig?.itemsContainer">
+				</sccl-dropdown-menu>
 			</div>
-	
-			<!-- these tbar shortcuts are without drop down menu -->
-			<div class="tbar-shortcuts-dd-menu-none">
+
+			<div class="rhs-btns">
 				<sccl-button-b
-					[scclBtns]="B1" 
+					[scclBtns]="buttonConfigs" 
 					(btnActions)="btnActions($event)">
 				</sccl-button-b>
+			</div>
+
+			<div *ngIf="!isLoggedIn" class="rhs-link-btns">
+				<sccl-link-button
+					[scclBtns]="linkBtnConfigs"
+					(btnActions)="btnActions($event)">
+				</sccl-link-button>
 			</div>
 		</div>
 	</div>

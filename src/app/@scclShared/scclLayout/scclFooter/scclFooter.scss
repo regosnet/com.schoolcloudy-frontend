@@ -1,15 +1,20 @@
 @mixin sccl-footer($theme) {
     $bgColor: map-get($theme, 'sccl-sidebar-primary-darken');
-    $foreColor:map-get($theme, 'sccl-button-secondary');
+    $foreColor: map-get($theme, 'sccl-button-secondary');
    > footer {
         $footer-height: 100%;
         width: $footer-height;
-        padding-top: 10px;
         height: $footer-height;
         text-align: center;   /* Height of the footer */
         background: $bgColor; 
         sccl-button-b {
             @include sccl-button-b($bgColor, $foreColor, 50px);
+        }
+        sccl-link-button {
+            @include sccl-link-button() {
+                color: $foreColor;
+                padding: 8px 0;
+            }
         }
    }
 }

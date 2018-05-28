@@ -12,6 +12,15 @@ export class ScclLoginService {
                 private scclGlobalService: ScclGlobalService,
                 private _route: Router) {
             this.logoutUser();
+            this.loadLoginComponentOnSmallScreen();
+
+            this.scclGlobalService.subscribe('screen-dimension', (windowSize) => {
+                if(windowSize.width > 1200) {
+                    if (this._route.url === '/login') {
+                        this._route.navigate(['']);
+                    }
+                }
+            })
     }
 
     displayLoginForm() {
@@ -27,6 +36,7 @@ export class ScclLoginService {
                     buttons: [
                         {
                             title: 'sccl.login.title',
+                            id: 'login-btn',                           
                             tool_tip: {
                               title: 'sccl.login.title',
                               d_p: 'buttom'
@@ -62,6 +72,12 @@ export class ScclLoginService {
         console.log('Login checking');
         localStorage.setItem(scclContants.usr_key, tc_u);
         localStorage.setItem('isLoggedIn', 'loggedIn');
+    }
+
+    loadLoginComponentOnSmallScreen() {
+        this.scclGlobalService.subscribe('login-btn', (e) => {
+            this._route.navigate(['login']);
+        })
     }
 
 }

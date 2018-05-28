@@ -1,41 +1,62 @@
 @import '../../../../scclCommon/scclComponents/scclDropDownMenu/scclDropDownMenu';
 @import '../../../../scclCommon/scclComponents/scclButtons/scclButtonB/scclButtonB';
+@import '../../../../scclCommon/scclComponents/scclButtons/scclLinkButton/scclLinkButton';
 @import '../../../../scclUXComponents/scclMessage/scclMessageDropDown/scclMessageDropDown';
 
 @mixin sccl-mid-head($theme) {
-	$secondaryColor: map-get($theme, 'sccl-header-secondary');
-	sccl-mid-head {
-		> nav {
-			min-height: $sccl-main-head-min-height;
-			height: $sccl-main-head-height;
-			>.nav-wrapper {
-				background: map-get($theme, 'sccl-header-primary');
-				@include display-flex(space-between, center);
-				padding: 0 20px;
-				
-				>div#head-left {
-					@include display-flex(none, center);
-					@include flex-width(1);
-					height: $sccl-main-head-height;
-					/*> div.toggle-sidebar-btn  {
-						sccl-button-b {
-							@include sccl-button-b(
-							$theme, transparent, white, $sccl-main-head-height - 3, 
-							$sccl-button-padding-x + 10, 0, 0, 0,
-							$sccl-button-width + 50);
+	$secondColor: map-get($theme, 'sccl-header-secondary');
+	> nav {
+		@include set_height($sccl-main-head-height);
+		>.nav-wrapper {
+			background: map-get($theme, 'sccl-header-primary');
+			@include display-flex(space-between, center);
+			padding: 0 1px;
+			
+			/*
+			This head section is parted into two, " |head-left | head-right| "
+			HEAD LEFT
+			*/
+			>div#head-left {
+				@include display-flex(none, center);
+				@include set_height($sccl-main-head-height);
+				> div.user-menu {
+					@include set_height($sccl-main-head-height);
+					width: 55px;
+					> sccl-dropdown-menu#user-menu {
+						@include sccl-drop-down-menu() {
+							> a {
+								@include set_height($sccl-main-head-height);
+							}
+							> ul {
+								&::before {
+									@include sccl-caret() {
+										content: $fa-var-caret-up;
+										font-size: 30px;
+										color: gold;
+										top: 15 - $sccl-main-head-height;
+										left: 17px;
+									} 
+								}
+							}
 						}
-					}*/
-					.sccl-logo {
+						@include respond-to(md) {
+							display: none;
+						}
+					}
+				}
+				.sccl-logo {
+					display: none;
+					@include respond-to(md) {
+						display: block;
 						font-size: 20px;
 						font-weight: bold;
-						margin-left: 2%;
-						height: $sccl-main-head-height - 24;
-						line-height: $sccl-main-head-height - 24;
+						width: 150px;
 						a {
 							text-decoration: none;
 							color: map-get($theme, 'sccl-header-white');
+							position: relative;
 							span {
-								color: $secondaryColor;	
+								color: $secondColor;	
 							}
 							&:hover {
 								color: map-get($theme, 'sccl-text-hover');	
@@ -43,141 +64,144 @@
 						}
 						img {
 							width: 25px;
-							position: relative;
-							top: -12px;
-							left: -14px;
+							position: absolute;
+							top: -7px;
+							right: -16px;
 						}	
 					}
-	
-					> div.active-page-title {
+				}
+			} // head-left
+
+			> div.active-page-title {
+				> span {
+					font-weight: $font-weight;
+				}
+				@include respond-to(md) {
+					display: none;
+				}
+			}
+
+			/*
+			HEAD RIGHT
+			*/
+			> div#head-right {
+				@include set_height($sccl-main-head-height);
+				@include display-flex(space-between, center);
+				> div.user-LoggedIn-menu {
+					> sccl-dropdown-menu#user-LoggedIn-menu {
+						@include sccl-drop-down-menu() {
+							> a {
+								> span.avatar {
+									padding-right: 5px;
+									@include respond-to(sm) {
+										padding: 0;
+									}
+									> img {
+										width: $sccl-main-head-height - 5px;
+										height: $sccl-main-head-height - 5px;
+										position: relative;
+										top: 12px;
+									}	
+								}
+								> span.user-name {
+									height: $sccl-main-head-height;
+									line-height: 48px;
+									@include respond-to(sm) {
+										@include display-flex(space-between, center);
+									}
+									> span {
+										display: none;
+										padding: 0 5px;
+										@include respond-to(sm) {
+											display: block;
+										}
+									}
+									> i {
+										color: $secondColor;
+										padding: 0 20px 0 0;
+									}
+								}	
+							}
+							> ul {
+								&::before {
+									@include sccl-caret() {
+										content: $fa-var-caret-up;
+										font-size: 30px;
+										color: gold;
+										top: 15 - $sccl-main-head-height;
+										right: 17px;
+									} 
+								}
+							}
+						}
+					}
+				}
+				
+				> div.notifications {
+					width: 55px;
+					display: none;
+					@include respond-to(md) {
+						display: block;
+					}
+					> sccl-dropdown-menu {
+						@include sccl-drop-down-menu() {
+							> a {
+								@include set_height($sccl-main-head-height);
+							}
+							> ul {
+								&::before {
+									@include sccl-caret() {
+										content: $fa-var-caret-up;
+										font-size: 30px;
+										color: gold;
+										top: 15 - $sccl-main-head-height;
+										left: 17px;
+									} 
+								}
+							}
+						}
+						
+					}
+				}
+
+				> div.rhs-btns {
+					display: none;
+					width: 170px;
+					sccl-button-b {
+						@include sccl-button-b(transparent, white, $sccl-main-head-height - 3);
+					}
+					@include respond-to(md) {
+						display: block;
+					}
+				}
+
+				> div.rhs-link-btns {
+					width: 75px;
+					sccl-link-button {
+						@include sccl-link-button() {
+							@include set_height($sccl-main-head-height);
+						};
+						/*
+							this code below changes style properties 
+							of one of the link buttons (login button).
+						*/
+						> span {
+							#login-btn {
+								background: map-get($theme, 'sccl-default-secondary-button-bg');
+								font-size: $font-size; 
+							}
+						}
+					}
+					@include respond-to(md) {
 						display: none;
 					}
-				} // head-left
-
-				> div#head-right {
-					height: $sccl-main-head-height;
-					@include display-flex(space-between, center);
-					>div.message-drop-down-menu {
-						margin-right: 20px;
-						sccl-message-drop-down {
-							@include sccl-message-drop-down($theme);
-						}
-					}
-					> div.menu-button {
-						height: $sccl-main-head-height;
-						line-height: $sccl-main-head-height;
-						> a#signed-in-menu {
-							height: $sccl-main-head-height;
-							line-height: $sccl-main-head-height;
-							@include display-flex(space-between, none);
-							padding: 0 20px;
-							> .avatar {
-								height: $sccl-main-head-height;
-								margin-right: 5px;
-								> img {
-									width: 45px;
-									height: 45px;
-									position: relative;
-									top: 5px;
-								}	
-							}
-							> .user-name {
-									height: $sccl-main-head-height;
-									line-height: $sccl-main-head-height;
-								> i {
-									padding:0 1px;
-									height: $sccl-main-head-height;
-									line-height: $sccl-main-head-height;
-									color: $secondaryColor;
-								}
-							}	
-						}
-						> a#signed-out-menu {
-							display: none;
-						}
-					}
-					sccl-dropdown-menu {
-						@include sccl-drop-down-menu($theme, 
-						$dd-menu-height,
-						$dd-menu-width, 
-						$dd-menu-x-pos, 
-						$dd-menu-y-pos, 
-						$caret-x-pos, 
-						$caret-y-pos, 
-						$caret-content) 
-					}
-
-					> div.tbar-shortcuts-dd-menu-none {
-						width: 170px;
-						sccl-button-b {
-							@include sccl-button-b(transparent, white, $sccl-main-head-height - 3);
-						}
-					}
-				}// head-right
-				 
-				 @media #{$medium-and-down} {
-				 	.sccl-logo {
-						font-size: 19px;
-						img {
-							width: 20px;
-							position: relative;
-							top: -11px;
-							left: -14px;
-						}	
-					}
-				 	.menu-button {
-    					height: 35px;
-    					> a#signed-in-menu {
-    						> .avatar {
-								> img {
-									width: 37px;
-									height: 37px;
-									margin-bottom: -12px;	
-								}	
-							}
-							> .user-name {
-								>span {
-									display: none;	
-								}
-							}	
-    					}	
-    				}
-  				}
-				 @media #{$small-and-down} {
-    				>div.menu-button {
-    					height: 35px;
-    					> a#signed-in-menu {
-    						> .avatar {
-								> img {
-									width: 35px;
-									height: 35px;
-									margin-bottom: -12px;	
-								}	
-							}
-							> .status {
-								display: none;
-							}	
-						}
-						> a#signed-out-menu {
-							display: block;
-							//@include sccl-round-b-btn($theme);
-						}	
-    				}
-    				.sccl-logo {
-    					>a {
-							display: none;
-						}
-						img {
-							display: none;
-						}	
-					}
-					> div.active-page-title {
-						display: inline-block;
-						height: 35px;
-						line-height: 35px;
-					}
-  				}
-			}
+				}
+			}// head-right
 		}
-	}
+	} // NAV
+}
+
+@mixin set_height($height) {
+	min-height: $height;
+	height: $height;
 }

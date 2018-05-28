@@ -1,9 +1,7 @@
-import { AfterViewInit,
-        ComponentFactoryResolver,
-        Injector, ApplicationRef,
-        Input, Directive } from '@angular/core';
+import { AfterViewInit, Input, Directive } from '@angular/core';
 import {  scclContants } from '../../scclContants/sccl.constants';
 import { ScclLayoutService } from '../../../scclLayout/scclLayoutServices';
+import { ScclScrollbarAdapterSerivce } from '../../scclServices';
 declare var $: any;
 
 
@@ -18,15 +16,16 @@ export class ScclTabDirective implements AfterViewInit {
     @Input('scclTabBody')
     scclTabBody: HTMLDivElement;
 
-    constructor(private scclLayoutService: ScclLayoutService) {
+    constructor(
+        private scclLayoutService: ScclLayoutService,
+        private scclScrollbarAdapter: ScclScrollbarAdapterSerivce) {
        }
 
     ngAfterViewInit(): void {
-        $('ul.tabs').tabs();
         this.scclTabComponent.forEach((compo) => {
             if (compo.ref === $(this.scclTabBody).attr('id')) {
                 this.scclLayoutService.resolveComponentView(this.scclTabBody, compo.component);
-                this.scclLayoutService.activateScrollbar(this.scclTabBody);
+                this.scclScrollbarAdapter.initializePanelScrollbar(this.scclTabBody);
             }
         });
     }

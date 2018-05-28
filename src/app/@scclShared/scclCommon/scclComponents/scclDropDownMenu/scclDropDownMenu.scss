@@ -1,172 +1,39 @@
-@mixin sccl-drop-down-menu(
-		$theme, 
-		$dd-menu-height,
-		$dd-menu-width, 
-		$dd-menu-x-pos, 
-		$dd-menu-y-pos, 
-		$caret-x-pos, 
-		$caret-y-pos, 
-		$caret-content) {
-	$bg-color: map-get($theme, 'sccl-dropdown-menu-primary');
-	* {	margin:0; padding:0;}
-	background: $bg-color;
-	border-radius: $border-radius;
-	width: 100%;
-	z-index: 1001;
-	top: $dd-menu-y-pos !important;
-	margin-left: $dd-menu-x-pos !important;
-	overflow-y: visible;
-	.divider {
-		background: map-get($theme, 'sccl-dropdown-menu-primary-darken');
-		height: 7px;
-		width: 100%;
-		margin: auto;
-		@include border-radius($border-radius);	
-	}
-	.dd-menu-header {
-		height: 30px;
-		padding: 0 20px;
-		@include display-flex(space-around, none);
-		> li {
-			min-height: 2px;
-			height: 30px;
-			&:hover {
-				cursor: default;
-				> a {
-					text-decoration: underline;
-				}
-			}
-			> a {
-				font-size: $dd-menu-font-size - 0.2;
-				height: 30px;
-				line-height: 25px;
-				font-weight: 700;
-				color: map-get($theme, 'sccl-dropdown-menu-secondary') !important;
-				&:hover {
-					background: none;
-				}	
-			}
-			&:first-child {
-				margin-right: 20%;
-				a {
-					text-decoration: none;
-					cursor: default;
-				}	
-			}
-			&:nth-child(2) {
-				margin-right: 30px;
-				width: 120%; 
-			}
-			&:last-child {
-				width: 7%;
-				a {
-					font-size: 1.5rem;
-				}		
-			}
-		}
-	}	
-	&::before {
-		@include sccl-caret($caret-x-pos, $caret-y-pos, $caret-content, map-get($theme, 'sccl-dropdown-menu-primary-darken'), $caret-size);
+@mixin sccl-drop-down-menu() {
+	@content;
+	> a {
+		@include display-flex(center, center);
 	}
 	> ul {
-		> div#preloader-small {
-			@include sccl-preloader-small($theme);
-		}
-		> li {
-			min-height: 2px;
-			height: $dd-menu-height;
-			background: $bg-color;
-			a {
-				min-height: 2px;
-				color: map-get($theme, 'sccl-dropdown-menu-white');
-				text-decoration: none;
-				height: $dd-menu-height;
-				line-height: $dd-menu-line-height;
-				> .dd-icon {
-					margin: 0 11px;	
-				}
-				.message-box {
-					@include display-flex(space-between, none);
-					padding: 0 10px;
-					border-top: 1px solid map-get($theme, 'sccl-dropdown-menu-text-darken');
-					min-height: 2px;
-					.sender-avatar {
-						margin: 6px 6px 0 4px;
-						img {
-							width: 35px;
-							height: 35px;
-						}
-					}
-					.message-content {
-						@include display-flex(space-between, none);
-						@include flex-width(1);
-						height: $dd-menu-height - 7;
-						padding-top: 6px;
-						flex-direction: column;
-						.c-head {
-							height: 15px;
-							line-height: 15px;
-							min-height: 2px;
-							font-size: 12px;
-							font-weight: bold;
-						}
-						.c-body {
-							font-size: 12px;
-							height: 15px;
-							line-height: 15px;
-						}
-						
-						.time {
-							font-size: 10px;
-							height: 10px;
-							line-height: 10px;
-							color: map-get($theme, 'sccl-dropdown-menu-text-darken');
-						}	
-					}
-				
-					.message-badge {
-						font-size: $dd-menu-font-size;
-						width: 30px;
-						color: map-get($theme, 'sccl-dropdown-menu-text-darken');
-					}
-				}	
-				&:hover {
-					background: map-get($theme, 'sccl-dropdown-menu-primary-deep-darken');	
-				}	
+		height: auto;
+		overflow-y: visible;
+		> div.dropdown-menu-header {
+			background: red;
+			.divider {
+				background: green;
+				height: 5px;
 			}
+		}	
+		> div.dropdown-menu-box {
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+		> div.dropdown-menu-footer {
+			background: red;
 		}
 	}
-	.dd-footer > li{
-			height: 30px;
-			&:hover{
-				background:none;
-			}
-			a {
-				font-size: $dd-menu-font-size;
-				height: 30px;
-				text-align: center;
-				color: map-get($theme, 'sccl-dropdown-menu-secondary');	
-				&:hover{
-					background:none;
-					text-decoration: underline;
-				}	
-			}
-		}
-		
-	@media #{$small-and-down} {
-    	
-  	}
-  	@media #{$medium-and-up} {
-    // styles for medium screens and larger
-  	}
-  	@media #{$medium-and-down} {
-  		
-  	}
-  	@media #{$large-and-up} {
-    // styles for large screens and up
-  	}
-  	@media #{$extra-large-and-up} {
-    // styles for extra large screens and up
-  	}
+
 }
 
+/*
+.mCSB_container {
+		background: orange !important;
+		&::before {
+			content: $fa-var-caret-up;
+			font-family: FontAwesome;
+			position: inherit !important;
+			z-index: 8000 !important;
+			font-size: 25px;
+			color: red;
+			top: -40px;
+	}
+}*/

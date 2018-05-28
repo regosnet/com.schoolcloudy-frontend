@@ -10,7 +10,9 @@
 		.nav-wrapper {
 			background: map-get($theme, 'sccl-header-primary');
 			@include sccl-top-head($theme);
-			@include sccl-mid-head($theme);
+			sccl-mid-head {
+				@include sccl-mid-head($theme);
+			}
 		}
 	}
 } 

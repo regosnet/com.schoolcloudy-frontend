@@ -1,11 +1,12 @@
 import { IScclButton } from '../../../scclComponents';
-import { IScclDropDownMenu } from '../../../scclComponents/scclDropDownMenu/index.';
+import { IScclDropDownMenu } from '../../../scclComponents/scclDropDownMenu';
 
 
 export interface IScclMainHeadbar {
-    dropDownMenuConfigs: IScclDropDownMenu;
-    btnConfigs: {
-        B1: IScclButton;
-        B2: IScclButton;
-    };
+    userMenuConfigs: IScclDropDownMenu;
+    notifierConfig: IScclDropDownMenu;
+    btns?: {
+        btnConfigs?:  IScclButton;
+        linkBtnConfigs?: IScclButton;
+    }
 }

@@ -2,41 +2,143 @@
 @import '../sccl-sidebar-mixins';
 
 @mixin sccl-left-menu-bar($theme) {
-    > div {
-			@include sidebar($theme, $sidebar-width + 50, right);
-	    > div {
-		    sccl-collapsible {
-			    @include sccl-collapsible($theme);
-		    }   
-	    }
-	    &.sidebar-normal-width {
-			@include sidebar($theme, 100%, none);
-			}
-			&.sidebar-collapsed-width {
-				> div.menu-bar {
-					sccl-collapsible  {
-						> div > div > div { /* three more div tags added by the mCustom scrollbar*/
-							> ul {
-								> li {
-									> div {
-										@include display-flex(none, center);
-										flex-direction: column;
-										&.collapsible-header {
-											font-size: $sidebar-font-size-sm - .3;
-											font-weight: 700;
-											> span {
-												text-align: center;
-											}
-										}
-										> i {
-											margin: 0;
-										}
-										}
-								}
-							}
-						}
-					}
+    div#left-menu-bar {
+		@include sidebar($theme);
+		/* The 'default' css class is active only 
+			when the user is not logged in.
+		*/
+		&.default {
+			> div {
+				sccl-collapsible {
+					@include menu-bar-items($theme);
 				}
 			}
-    }
+			@include respond-to(md) {
+				width: 185px;
+				float: right;
+			}
+			@include respond-to(lg) {
+				width: 300px;
+			}
+		}
+
+		/* Some properties in 'logged-in' class is 
+		active only when the user is logged in*/
+		&.logged-in {
+			@include respond-to(md) {
+				width: 100%;
+				float: left;
+			}
+		}
+	}
 }
+
+@mixin menu-bar-notCollpsed() {
+	> li {
+		> div {
+			@include display-flex(none, center);
+			flex-direction: row;
+			&.collapsible-header {
+				font-size: $sidebar-font-size;
+				font-weight: 400;
+				> span {
+					text-align: right;
+				}
+				> i {
+					margin: 0 20px;
+				}
+			}
+		}
+	}
+}
+
+@mixin menu-bar-collpsed($flex-direction, $font-size, $font-weight, $align, $margin) {
+	@include display-flex(none, center);
+		flex-direction: $flex-direction;
+		&.collapsible-header {
+		font-size: $font-size;
+		font-weight: $font-weight;
+		> span {
+			text-align: $align;
+		}
+	}
+	> i {
+		margin: $margin;
+	}
+}
+
+
+@mixin menu-bar-items($theme) {
+	@include sccl-collapsible() {
+		> li {
+			> div {
+				background: transparent;
+				color: map-get($theme , 'sccl-sidebar-white'); 
+				border: none;
+				&.collapsible-header {
+				> span {
+					font-size: $sidebar-font-size;
+					&:hover{
+					text-decoration: underline;
+					color: map-get($theme, 'sccl-sidebar-secondary');
+					}
+				}
+				}
+				&.disabled {
+				color: map-get($theme, 'sccl-sidebar-secondary') !important;
+				background: map-get($theme , 'sccl-sidebar-primary-darken');
+				border-right: 3px solid map-get($theme, 'sccl-sidebar-secondary');
+				}
+
+				@include respond-to(sm) {
+					@include menu-bar-collpsed(
+						column, $sidebar-font-size-sm - .3, 
+						$font-weight: 700, $align:center, 
+						$margin: 0
+					)
+				}
+				@include respond-to(lg) {
+					@include menu-bar-collpsed(
+						row, $sidebar-font-size-sm, 
+						$font-weight: 700, $align:right,
+						$margin: 0 20px
+					)
+				}
+				
+			}
+			> div.collapsible-body {
+				display: block;
+				background: map-get($theme , 'sccl-sidebar-primary-darken');
+				flex-direction: column;
+				margin: 0;
+				padding: 0;
+				padding-left: 23%;
+				right: 0;
+				font-size: $sidebar-font-size-sm;
+				> div {
+				border-left: 1px map-get($theme, 'sccl-sidebar-primary-lighten') dotted;
+				padding: 2% 9%;
+				margin-top: 1px;
+				&::before {
+					content: $fa-var-circle;
+					font-family: FontAwesome;
+					font-size: 7px;
+					position: relative;
+					top: -2px;
+					left: -20px;
+					color: map-get($theme , 'sccl-sidebar-primary-lighten');
+				}
+				}
+			}
+			@include respond-to(lg) {
+				#login {
+				@include display-flex(none, none);
+				@include respond-to(lg) {
+					display: none;
+				}
+				}
+			}
+		}
+	};
+}
+

@@ -1,57 +1,16 @@
 
-@mixin sccl-collapsible($theme) {
-    #mCSB_1_container {
-        > ul{
-            background: transparent;
-            box-shadow: none;
-            width: 100%;
-            border: none;
-            margin-top: 0;
-            > li {
-              > div {
-                background: transparent;
-                color: map-get($theme , 'sccl-sidebar-white'); 
-                border: none;
-                &.collapsible-header {
-                  > span {
-                    font-size: $sidebar-font-size;
-                    &:hover{
-                      text-decoration: underline;
-                      color: map-get($theme, 'sccl-sidebar-secondary');
-                    }
-                  }
-                }
-                &.disabled {
-                  color: map-get($theme, 'sccl-sidebar-secondary') !important;
-                  background: map-get($theme , 'sccl-sidebar-primary-darken');
-                  border-right: 3px solid map-get($theme, 'sccl-sidebar-secondary');
-                }
-              }
-              > div.collapsible-body {
-                display: block;
-                background: map-get($theme , 'sccl-sidebar-primary-darken');
-                flex-direction: column;
-                margin: 0;
-                padding: 0;
-                padding-left: 23%;
-                right: 0;
-                font-size: $sidebar-font-size-sm;
-                > div {
-                  border-left: 1px map-get($theme , 'sccl-sidebar-primary-lighten') dotted;
-                  padding: 2% 9%;
-                  margin-top: 1px;
-                  &::before {
-                    content: $fa-var-circle;
-                    font-family: FontAwesome;
-                    font-size: 7px;
-                    position: relative;
-                    top: -2px;
-                    left: -20px;
-                    color: map-get($theme , 'sccl-sidebar-primary-lighten');
-                  }
-                }
-              }
-            }
+@mixin sccl-collapsible() {
+  div.mCSB_container {
+    > ul{
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        border: none;
+        margin-top: 0;
+        > li {
+          user-select: none;
         }
+        @content
     }
+  }  
 }

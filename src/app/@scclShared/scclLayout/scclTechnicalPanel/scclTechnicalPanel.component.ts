@@ -1,3 +1,40 @@
+import { Component, OnChanges, OnInit, AfterViewInit } from '@angular/core';
+import { ScclTechnicalPanelService } from './scclTechnicalPanel.service';
+import { IScclTechnicalPanel } from '../../../scclModels/scclLayout/scclTechnicalPanel';
+import { IScclTabHeader, IScclTabBody } from '../../../scclModels/scclComponents';
+import { ScclAsidebar } from '../scclBody/sidebars/sccl-aside-bar';
+declare var $: any;
+
+
+
+@Component({
+    selector: 'sccl-technical-panel',
+    templateUrl: './scclTechnicalPanel.html',
+    styleUrls: ['./scclTechnicalPanel.scss']
+})
+export class ScclTechnicalPanelComponent extends ScclAsidebar implements AfterViewInit, OnInit, OnChanges, IScclTechnicalPanel{
+    tabContent;
+    ngOnInit(): void {
+        
+    }
+
+    ngAfterViewInit() {
+        
+    }
+    ngOnChanges(): void {
+        if (this.sidebarConfig !== undefined) {
+            this.scclTab = this.scclTPanelService
+                                .filterTabElements(this.sidebarConfig, this.tabContent);
+        }
+        this.setMenubarHeight();
+        
+    }
+    
+}
+
+
+
+/*
 import { Component, AfterViewInit, OnInit, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { ScclGlobalService } from '../../scclCommon/scclServices';
 import { ScclSettingsComponent } from './scclSettings';
@@ -52,3 +89,5 @@ export class ScclTechnicalPanelComponent implements AfterViewInit, OnInit, OnCha
         this.scclLayoutService.panelSlideToggle();   
     }
 }
+
+*/

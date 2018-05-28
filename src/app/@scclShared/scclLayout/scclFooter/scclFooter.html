@@ -1,4 +1,13 @@
 <footer>
-    <sccl-button-b [scclBtns]="footerConfig?.buttonConfigs" (btnActions)="btnActions($event)">
+    <sccl-button-b
+        *ngIf="footerConfig?.btns?.btnConfigs"
+        [scclBtns]="footerConfig?.btns?.btnConfigs" 
+        (btnActions)="btnActions($event)">
     </sccl-button-b>
+
+    <sccl-link-button
+        *ngIf="footerConfig?.btns?.linkBtnConfigs"
+		[scclBtns]="footerConfig?.btns?.linkBtnConfigs"
+        (btnActions)="btnActions($event)">
+    </sccl-link-button>
 </footer>

@@ -47,9 +47,6 @@ export class ScclLayoutService {
         this.scclViewResolverService.componentViewResolver(element, component);
     }
 
-    public activateScrollbar(element) {
-        this.scclViewResolverService.initScrollbar(element);
-    }
     public collapseSidePanel() {
         this.isPanelCollapsed = !this.isPanelCollapsed;
         this.scclGlobalService.notifyDataChanged('collapse-panel', this.isPanelCollapsed);

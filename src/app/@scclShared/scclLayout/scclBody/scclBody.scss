@@ -3,105 +3,96 @@
 @import './sidebars/scclRightMenuBar/scclRightMenuBar';
 
 @mixin sccl-body($theme) {
+	$bg: map-get($theme, 'sccl-layout-background');
+	$padding-top: 55px;
 	sccl-right-menu-bar {
 		@include sccl-right-menu-bar($theme);
 	}
 	sccl-left-menu-bar {
 		@include sccl-left-menu-bar($theme);
 	}
-	$bg: map-get($theme, 'sccl-layout-background');
+	
 	> section {
-		@include body-panels($theme, $sidebar-padding, $bodyWidth, 27%);
+		/* The 'default' css class is active only 
+			when the user is not logged in.
+		*/
+		&.default {
+			> aside {
+				display: none;
+				position: fixed;
+				top: $padding-top + 15;
+				border: 1px solid $bg;
+				width: 19.5%;
+				@include respond-to(lg) {
+					width: 26.5%;
+				}
+
+			}
+			> aside#left-side-panel {
+				@include respond-to(md) {
+					display: block;
+				}
+			}
+			> section#main-section-panel {
+				color: #fff;
+				margin: auto;
+				padding-top: $padding-top;
+				> div.content {
+					padding-bottom: 20px;
+					sccl-starter { /****** sccl starter scss file loads*****/
+						> div {
+							> sccl-login {
+								@include sccl-login($theme); /****** sccl login scss file load*****/
+							}
+						}
+					}
+				}
+				@include respond-to(sm) {
+					padding: $padding-top 10% 0 10%;
+				}
+				@include respond-to(md) {
+					padding: $padding-top 20% 0 20%; 
+				}
+				@include respond-to(lg) {
+					padding: $padding-top 27% 0 27%; 
+				}
+			}
+			> aside#right-side-panel { 
+				right: 0;
+				@include respond-to(lg) {
+					display: block;
+				}
+			}
+		}
+
+		/* Some properties in 'logged-in' class is 
+		active only when the user is logged in*/
 		&.logged-in {
-			@include body-panels($theme, ($sidebar-width + 10), $bodyWidth + 55, $sidebar-width);
-		}
-	}
-}
-
-
-@mixin body-panels($theme, $padding, $bodyWidth, $sidebar-width) {
-	>aside {
-		position: fixed;
-		top: 80px;
-		width: $sidebar-width;
-	}
-	#main-section-panel{
-		> div {
-			background: map-get($theme, 'sccl-body-primary-lighten');
-		}
-		margin: auto;
-		padding-top: 66px;
-		color: #fff;
-	}
-	> aside#right-side-panel{
-		right: 0;
-	}
-	
-	@media #{$medium-and-down} {
-		> aside#right-side-panel {
-			display: none;
-		}
-		#main-section-panel{
-			width: 60%;
-		}
-		> aside#left-side-panel {
-			width: 19%;
-		}
-	}
-	@media #{$small-and-down} {
-		#main-section-panel{
-			width: 100%;
-		}
-		> aside#left-side-panel {
-			display: none;
-		}
-	}
-	@media #{$large-and-up} {
-		> aside#right-side-panel {
-			display: none;
-		}
-		#main-section-panel{
-			width: 60%;
-		}
-		> aside#left-side-panel {
-			width: 19%;
-		}
-	}
-	
-	@media #{$extra-large-and-up} {
-		> aside#right-side-panel {
-			display: block;
-			width: $sidebar-width;
-		}
-		#main-section-panel{
-			width: $bodyWidth;
-			padding: 53px $padding 0 $padding;
-		}
-		> aside#left-side-panel {
-			width: $sidebar-width;
-		}
-	}
-}
-
-@mixin collapseSidebar() {
-	> div {
-		> ul {
-			
-			> li {
-			  > div {
-				@include display-flex(none, center);
-				flex-direction: column;
-				&.collapsible-header {
-				  > span {
-					font-size: $sidebar-font-size-sm - .3;
-					//@include sccl-transition(.4s);
-				  }
+			$padding-top: $padding-top - 10;
+			> aside {
+				@include respond-to(sm) {
+					display: block;
+					width: 70px;
 				}
-				> i {
-				  margin: 0;
+				@include respond-to(lg) {
+					width: 250px;
 				}
-			  }
+			}
+			#main-section-panel {
+				padding-top: $padding-top;
+				@include respond-to(sm) {
+					padding: $padding-top 75px 0 75px;
+				}
+				@include respond-to(lg) {
+					padding: $padding-top 255px 0 255px; 
+				}
+			}
+			> aside#right-side-panel { 
+				@include respond-to(lg) {
+					display: block;
+				}
 			}
 		}
 	}
 }
+

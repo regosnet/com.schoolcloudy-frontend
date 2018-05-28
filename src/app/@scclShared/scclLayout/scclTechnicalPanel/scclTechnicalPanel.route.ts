@@ -1,4 +1,4 @@
-import { Routes, RouterModule} from '@angular/router';
+/*import { Routes, RouterModule} from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { ScclTechnicalPanelComponent } from './scclTechnicalPanel.component';
 import { ScclSettingsComponent } from './scclSettings';

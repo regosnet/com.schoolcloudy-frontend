@@ -3,10 +3,14 @@
 @mixin sccl-technical-panel($theme) {
 	#technical-panel {
 		background-color: map-get($theme, 'sccl-sidebar-primary-lighten');
-		height: 800px;
 		> sccl-tab {
 			@include sccl-tab($theme);
 			@include sccl-settings($theme);
+		}
+		> div.sidebar-footer {
+			> sccl-footer  {
+				@include sccl-footer($theme);
+			}
 		}
 	}
 	@media #{$small-and-down} {

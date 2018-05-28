@@ -8,11 +8,11 @@ import { Component, Input } from '@angular/core';
 export class ScclDropDownMenuComponent {
 
     @Input()
-    public ddMenuConfig;
-
+    ddMenuConfig;
+    @Input()
+    size
     @Input()
     itemsContainer;
-
     constructor() {
     }
 

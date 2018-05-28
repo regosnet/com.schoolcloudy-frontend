@@ -4,55 +4,37 @@
 @import '../../scclStarter/scclLogin/scclLogin';
 
 @mixin sccl-layout($theme) {
-	sccl-header {
-		@include scclHeader($theme);
-	}
-	sccl-body {
-		@include sccl-body($theme)
-	}
-	@include sccl-login($theme);
-	> aside.technical-panel-slide-out {
-		position: fixed;
-		right: -$sidebar-width;
-		@include sccl-transition(width, .5s);
-		z-index: $tpanel-z-index;
-		height: 100%;
-		width: $sidebar-width;
-		background-color: transparent;
-		> sccl-button-b {
-			transition: opacity 2s ease-out;
-			position: absolute;
-			opacity: 0;
-			> button{
-				background: transparent;
-				color: map-get($theme, 'sccl-button-error'); 
-			} 
+	> span {
+		sccl-header {
+			@include scclHeader($theme);
 		}
-		sccl-technical-panel {
-			@include sccl-technical-panel($theme) 
+		sccl-body {
+			@include sccl-body($theme)
 		}
-	}
-	> aside.technical-panel-slide-in {
-		height: 100%;
-		position: fixed;
-		z-index: $tpanel-z-index + 1;
-		width: $sidebar-width;
-		border: 1px solid map-get($theme, 'sccl-primary-darken');;
-		@include sccl-translate(-252px, 0);
-		@include sccl-transition(width, .5s);
-		> sccl-button-b {
-			position: absolute;
-			opacity: 1;
-			z-index: $tpanel-z-index + 2;
-			> button {
-				color: map-get($theme, 'sccl-button-error');
-				line-height: 5px;
-				height: 32px;
-				background: transparent;
-				margin: 0; padding: 0 5px;
+		> footer#sccl-footer {
+			position: fixed;
+			bottom: 0;
+			height: 40px;
+			background: map-get($theme, 'sccl-layout-background');
+			width: 100%;
+			> sccl-footer {
+				@include sccl-footer($theme);
+			}
+			@include respond-to(md) {
+				display: none;
 			}
 		}
 	}
-	width: 100%;
+	> aside.technical-panel {
+		position: fixed;
+		height: auto;
+		width: 250px;
+		background: transparent;
+		z-index: 2;
+		right: -250px;
+		sccl-technical-panel {
+			@include sccl-technical-panel($theme) 
+		}
+	}	
 	background: map-get($theme, 'sccl-layout-background');
 }

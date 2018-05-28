@@ -71,24 +71,50 @@
 	}
 }
 
-@mixin sccl-caret($x-pos, $y-pos, $content, $color, $size){
-	content: $content;
+@mixin sccl-caret() {
 	font-family: FontAwesome;
 	position: absolute;
-	color: $color;
-	font-size: $size;
-	top: $y-pos;
-	right: $x-pos;
+	@content
 }
 
 @mixin sccl-round-b-btn($theme) {
 	background: map-get($theme, 'sccl-header-secondary') !important;
-	width: 26px;
-	height: 26px;
+	width: 3em;
+	height: 3em;
+	border-radius: 50%;
 	> i.material-icons {
-		height: 22px;
-		line-height: 26px;
-		font-size: 18px;
+		text-align: center;
+		height: 1.5em;
+		line-height: 1.5em;
+		font-size: 2em;
 		color: map-get($theme, 'sccl-button-white');
 	}		
 }
+
+@mixin sccl-create-media-queries($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media #{inspect(map-get($breakpoints, $breakpoint))} {
+		  @content;
+		}
+	}
+	  // If the key doesn't exist in the map
+	@else {
+		@warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+			+ "Available breakpoints are: #{map-keys($breakpoints)}.";
+	}
+}
+
+@mixin set-breakpoint-properties($breakpoint-properties) {
+	@each $screen-range, $classes in $breakpoint-properties {
+		@include sccl-create-media-queries(#{$screen-range}) {
+		  @each $class, $properties in $classes {
+			#{$class} {
+				@each $property, $value in $properties {
+					#{$property}: $value;
+				}
+			};
+		  }
+		}
+	}
+}
+

@@ -1,8 +1,10 @@
 @import '../node_modules/materialize-css/sass/materialize';
 @import 'materialize-css-overrides/materialize-css-overrides';
 @import '../node_modules/font-awesome/scss/font-awesome.scss';
+@import '../node_modules/breakpoint-sass/stylesheets/breakpoint.scss';
 @import 'scclVariables';
 @import 'sccl-mixins';
+@import 'sccl-functions';
 @import '../../assets/@themes/sccl-default-theme';
 @import '../../assets/@themes/sccl-regomic-theme';
 @import '../../app/@scclShared/scclLayout/scclLayout';
@@ -13,11 +15,11 @@
 }
 
 .sccl-default-theme {
-	@include sccl-component-themes($sccl-default-theme)
+	@include sccl-component-themes($sccl-default-theme);
 }
 
 .sccl-regomic-theme {
-	@include sccl-component-themes($sccl-regomic-theme)
+	@include sccl-component-themes($sccl-regomic-theme);
 }
 
 

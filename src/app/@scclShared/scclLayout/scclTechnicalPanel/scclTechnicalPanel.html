@@ -1,3 +1,15 @@
-<aside id="technical-panel">
-	<sccl-tab [tab]="technicalPanelTab"></sccl-tab>
+<aside id="technical-panel" [ngStyle]="{'height': sidebarConfig?.state?.height + 'px'}">
+    <sccl-tab 
+        [tab]="scclTab"
+        [height]="sidebarConfig?.state?.height - sidebarConfig?.footer?.height">
+    </sccl-tab>
+
+    <div 
+        class="sidebar-footer" 
+        [ngStyle]="{'height': sidebarConfig?.footer?.height + 'px'}">
+        <sccl-footer 
+            [footerConfig]="sidebarConfig?.footer"
+            (footerBtnActions)="btnActions($event)">
+        </sccl-footer>
+    </div>	
 </aside>

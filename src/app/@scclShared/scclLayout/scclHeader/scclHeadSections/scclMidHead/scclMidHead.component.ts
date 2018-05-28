@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, AfterViewInit, ChangeDetectorRef, OnChanges} from '@angular/core';
-import { ScclGlobalService } from '../../../../scclCommon/scclServices/index';
+import { ScclGlobalService } from '../../../../scclCommon/scclServices';
 import { IScclUser, IScclHeader, IScclMainHeadbar} from '../../../../../scclModels';
-import { IScclDropDownMenu } from '../../../../../scclModels/scclComponents/scclDropDownMenu/index.';
 import { IScclButton } from '../../../../../scclModels/scclComponents';
 import { ScclLayoutService } from '../../../scclLayoutServices';
+import { IScclDropDownMenu } from '../../../../../scclModels/scclComponents/scclDropDownMenu';
 declare var $: any;
 
 
@@ -14,18 +14,18 @@ declare var $: any;
 })
 export class ScclMidHeadComponent implements OnInit, AfterViewInit, OnChanges {
 
-    activePageTitle: string;
+    activePageTitle: string = 'Home';
     user: IScclUser;
-    B1: IScclButton;
-    B2: IScclButton;
+    buttonConfigs;
+    linkBtnConfigs;
     @Input()
     isLoggedIn: boolean;
     @Input()
     mainHeadConfig: IScclMainHeadbar;
-    dropDownMenuConfig: IScclDropDownMenu;
-
+    userMenuConfig: IScclDropDownMenu;
+    notifierConfig: IScclDropDownMenu;
+    active = false;
     constructor(private scclGlobalService: ScclGlobalService,
-                private scclLayoutService: ScclLayoutService,
                 private cdRef: ChangeDetectorRef) {
     }
 
@@ -48,31 +48,17 @@ export class ScclMidHeadComponent implements OnInit, AfterViewInit, OnChanges {
 
     ngOnChanges(): void {
         if (this.mainHeadConfig !== undefined) {
-            this.dropDownMenuConfig = this.mainHeadConfig.dropDownMenuConfigs;
-            this.B1 = this.mainHeadConfig.btnConfigs.B1;
-            this.B2 = this.mainHeadConfig.btnConfigs.B2;
+            this.userMenuConfig = this.mainHeadConfig.userMenuConfigs;
+            this.notifierConfig = this.mainHeadConfig.notifierConfig;
+            this.buttonConfigs = this.mainHeadConfig.btns.btnConfigs;
+            this.linkBtnConfigs = this.mainHeadConfig.btns.linkBtnConfigs;
         }
     }
 
     btnActions(e): void {
         const btnId = $(e.element).attr('id');
-        console.log(e)
-        switch (btnId) {
-        case 'settings-btn':
-            this.scclLayoutService.panelSlideToggle();
-            break;
-        case 'search-btn':
-            console.log('Search bar opening');
-            break;
-        case 'screen-resize-btn':
-        let button = e.button.buttons.find(x => x.id === btnId);
-        button.icon = button.icon === 'fullscreen' ? 'fullscreen_exit' : 'fullscreen';
-            break;
-        case 'menu-btn':
-            this.scclLayoutService.collapseSidePanel();
-            break;
-        default:
-            console.log('None clicked');
-        }
+        let button = this.buttonConfigs.buttons.filter(x => x.id === btnId);
+        this.active = !this.active;
+        this.scclGlobalService.notifyDataChanged(btnId, {button: button, active: this.active});
     }
 }

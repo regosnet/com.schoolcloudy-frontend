@@ -1,6 +1,7 @@
+import { IScclComponentState } from "..";
 
 export interface IScclButton {
-    buttons?: Button[]; 
+    buttons?: IButton[]; 
     wrapper?: {
         title?: string,
         icon?: string,
@@ -8,16 +9,36 @@ export interface IScclButton {
     }
 }
 
-interface Button{
+export interface IScclDropDownMenuButton extends IButton {
     
+}
+
+export interface IButton {
     title?: string;
     icon?: string;
-    type: string;
+    paired_icon?: boolean;
+    icons?: {
+        icon1?: {
+            title?: string,
+            id?: string,
+            tool_tip?: {
+                title?: string
+            }
+        },
+        icon2?: {
+            title?: string,
+            id?: string,
+            tool_tip?: {
+                title?: string
+            }
+        }
+    }
     id?: string;
     class?: string;
     tool_tip?: {
-        title?: string;
-        data_placement?: string
-    };
-    
+        delay?: number,
+        position?: string, 
+        title?: string,
+        html?: boolean
+    }
 }

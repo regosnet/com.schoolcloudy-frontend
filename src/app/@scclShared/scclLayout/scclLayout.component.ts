@@ -4,20 +4,24 @@ import { scclContants } from '../scclCommon/scclContants/sccl.constants';
 import { ScclLayoutService } from './scclLayoutServices/scclLayout.service';
 import { IScclBody, IScclHeader, IScclLayout } from '../../scclModels';
 import { IScclButton } from '../../scclModels/scclComponents';
+import { IScclTechnicalPanel } from '../../scclModels/scclLayout/scclTechnicalPanel';
+declare var $:any;
 
 @Component({
     selector: 'sccl-layout',
     templateUrl: './scclLayout.html',
-    styleUrls: ['./scclLayout.scss']
+    styleUrls: ['./scclLayout.scss'],
 })
-export class ScclLayoutComponent implements AfterViewInit, OnInit {
-    height: number;
+export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
+    isLoggedIn: boolean;
+    scclTheme: string;
     resizeWidth: boolean;
-    isTechnicalPanelSlideIn: boolean;
-    bodyConfig: IScclBody;
+    height: number;
     headConfig: IScclHeader;
-    scclTheme = 'sccl-default-theme';
-    slideOutBtn: IScclButton;
+    bodyConfig: IScclBody;
+    technicalPanel: IScclTechnicalPanel;
+    footer;
+    right = "-=250"
 
     constructor(private scclGlobalService: ScclGlobalService,
                 private scclLayoutService: ScclLayoutService,
@@ -32,9 +36,16 @@ export class ScclLayoutComponent implements AfterViewInit, OnInit {
         this.scclGlobalService.subscribe('selected.theme', (theme) => {
            this.scclTheme = this.switchTheme(theme);
         });
-
+        
         this.scclGlobalService.subscribe('isSlideIn', (position) => {
-            this.isTechnicalPanelSlideIn = position.isSlideIn;
+            
+            this.right = this.right === "+=250" ? "-=250" : "+=250";
+            $('.technical-panel').animate({
+                right: this.right,
+              }, {
+                  step: function(now, fx) {
+                  }
+              });
         });
     }
 
@@ -65,10 +76,19 @@ export class ScclLayoutComponent implements AfterViewInit, OnInit {
 
     initializeModuleConfigurations() {
         this.scclGlobalService.subscribe('module.configurations', (configs: IScclLayout) => {
-            this.headConfig = configs.headerConfig;
+            this.scclTheme = configs.scclTheme;
+            this.resizeWidth = configs.resizeWidth;
+            this.headConfig = configs.headConfig;
             this.bodyConfig = configs.bodyConfig;
+            this.technicalPanel = configs.technicalPanel;
+            this.footer = configs.footer;
+            this.isLoggedIn = configs.isLoggedIn;
         });
     }
 
     closePanel() {}
+
+    footerbtnActions(event) {
+        console.log(event)
+    }
 }

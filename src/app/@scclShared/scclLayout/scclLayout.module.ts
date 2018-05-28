@@ -4,7 +4,6 @@ import { ScclCommonModule } from '../scclCommon/scclCommon.module';
 import {
     ScclHeaderComponent,
     ScclMidHeadComponent,
-    ScclFootHeadComponent,
     ScclTopHeadComponent
     } from './scclHeader';
 import {
@@ -21,10 +20,12 @@ import { ScclTechnicalPanelModule } from './scclTechnicalPanel/scclTechnicalPane
 import { ScclLayoutDirective } from './scclLayoutDirectives';
 import {
     ScclViewResolverService,
-    ScclLayoutService
+    ScclLayoutService,
+    ScclPanelControlService
 } from './scclLayoutServices';
 import { ScclUXComponentsModule } from '../scclUXComponents/scclUXComponents.module';
-import { ScclFooterComponent } from './scclFooter';
+import { ScclAsideBarService } from './scclBody/sidebars/sccl-aside-bar.service';
+import { ScclAsidebar } from './scclBody/sidebars/sccl-aside-bar';
 
 
 const SCCL_LAYOUT_COMPONENTS =
@@ -37,10 +38,8 @@ const SCCL_LAYOUT_COMPONENTS =
          ScclRightMenuBarComponent,
          ScclWidgetBarComponent,
          ScclMidHeadComponent,
-         ScclFootHeadComponent,
          ScclTopHeadComponent,
-         ScclUserContactsComponent,
-         ScclFooterComponent
+         ScclUserContactsComponent
      ];
 const SCCL_LAYOUT_DIRECTIVES =
     [
@@ -50,7 +49,9 @@ const SCCL_LAYOUT_DIRECTIVES =
 const SCCL_LAYOUT_SERVICE =
     [
         ScclViewResolverService,
-        ScclLayoutService
+        ScclLayoutService,
+        ScclAsideBarService,
+        {provide: ScclPanelControlService, useClass: ScclAsideBarService}
     ];
 
 

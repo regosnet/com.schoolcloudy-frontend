@@ -1,2 +1,2 @@
 export * from './scclBody.model';
-export * from './sidebar';
+export * from './sccl-aside-bar';

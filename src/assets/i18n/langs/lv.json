@@ -44,6 +44,7 @@
 	"todos": "Darāmo",
 	"fullscreen": "Pilnekrāna režīms",
 	"exit_fullscreen": "Iziet pilnekrāna režīmā",
+	"notifications": "Paziņojumi",
   	"languages":{
   		"title": "Valodas",
   		"en": "English",
@@ -95,7 +96,6 @@
 	"message": {
 	 	"instant": "Ziņojumi",
 	 	"inbox": "E-pasts",
-	 	"notification": "Paziņojumi",
 		 "mark_all_read": "Atzīmēt visu kā izlasītu",
 		 "see_all": "Redzēt visu"
 	 }
