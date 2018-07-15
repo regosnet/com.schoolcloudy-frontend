@@ -9,6 +9,4 @@ declare var $: any;
     styleUrls: ['./scclButtonB.scss']
 })
 export class ScclButtonBComponent extends ScclButton {
-
-    
 }

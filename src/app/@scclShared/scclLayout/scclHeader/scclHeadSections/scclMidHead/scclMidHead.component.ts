@@ -23,6 +23,7 @@ export class ScclMidHeadComponent implements OnInit, AfterViewInit, OnChanges {
     @Input()
     mainHeadConfig: IScclMainHeadbar;
     userMenuConfig: IScclDropDownMenu;
+    userMenuConfig2: IScclDropDownMenu;
     notifierConfig: IScclDropDownMenu;
     active = false;
     constructor(private scclGlobalService: ScclGlobalService,
@@ -49,6 +50,7 @@ export class ScclMidHeadComponent implements OnInit, AfterViewInit, OnChanges {
     ngOnChanges(): void {
         if (this.mainHeadConfig !== undefined) {
             this.userMenuConfig = this.mainHeadConfig.userMenuConfigs;
+            this.userMenuConfig2 = this.mainHeadConfig.userMenuConfigs2;
             this.notifierConfig = this.mainHeadConfig.notifierConfig;
             this.buttonConfigs = this.mainHeadConfig.btns.btnConfigs;
             this.linkBtnConfigs = this.mainHeadConfig.btns.linkBtnConfigs;

@@ -6,7 +6,7 @@ export interface IScclAsideBar {
     menuBarItems?;
     isStaticHeight?: boolean;
     resolvedComponent?: IScclResolvedComponent;
-    footer?: IScclFooter,
-    state:IScclComponentState
+    footer?: IScclFooter;
+    state: IScclComponentState;
 
 }

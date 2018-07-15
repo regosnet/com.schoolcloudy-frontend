@@ -22,8 +22,6 @@ export const routes: Routes = [
           hello: console.log('from the router')
         }*/
       },
-
-      {path: 'manage-users', loadChildren: '../@scclShared/scclUXComponents/scclManageUsers/scclManageUsers.module#ScclManageUsersModule'},
       {path: 'taskboard', loadChildren: '../@scclShared/scclUXComponents/scclTaskboard/scclTaskboard.module#ScclTaskboardModule'},
       {path: 'inbox', loadChildren: '../@scclShared/scclUXComponents/scclInbox/scclInbox.module#ScclInboxModule'}
     ]

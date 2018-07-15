@@ -3,12 +3,13 @@ import {
     Input,
     AfterViewInit
 } from '@angular/core';
-import { ScclLayoutService } from '../../scclLayoutServices';
-declare var $: any;
+import {
+    ScclComponentViewResolverService
+} from '../../../scclCommon/scclServices/scclComponentViewResolver';
 
 
 @Directive({
-  selector: '[scclSidebar], [scclSidebarComponent]',
+  selector: '[scclSidebar], [scclSidebarComponent]'
 })
 export class ScclSidebarDirective implements AfterViewInit {
 
@@ -18,11 +19,13 @@ export class ScclSidebarDirective implements AfterViewInit {
     @Input('scclSidebar')
     scclSidebar: HTMLDivElement;
 
-    constructor(private scclLayoutService: ScclLayoutService) {
+    constructor(
+        private componentViewResolver: ScclComponentViewResolverService
+    ) {
 
     }
 
     ngAfterViewInit(): void {
-        this.scclLayoutService.resolveComponentView(this.scclSidebar, this.scclSidebarComponent);
+        this.componentViewResolver.componentViewResolver(this.scclSidebar, this.scclSidebarComponent);
     }
 }

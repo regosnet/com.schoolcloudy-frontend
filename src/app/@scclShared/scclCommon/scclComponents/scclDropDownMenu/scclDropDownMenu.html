@@ -1,143 +1,83 @@
-<!--<a 
-	id="{{ddMenuConfig?.btn?.id}}" 
-	class='{{ddMenuConfig?.btn?.class}}' 
-	href='javascript:' 
-	attr.data-activates="{{ddMenuConfig?.btn.id}}"
-		data-toggle="tooltip" 
-		attr.data-placement="{{ddMenuConfig?.btn?.id}}" 
-		title="{{ddMenuConfig?.btn.title | translate}}"
-	#userMenu [dropDownMenu]=ddMenuConfig?.btn?.class>
-	<i class="material-icons">{{ddMenuConfig?.btn?.icon}}</i>
-</a>-->
-
-<!-- Drop down menu trigger button
 <ng-container *ngFor=" let conf of [ddMenuConfig]">
-	<a 
-		class="dropdown-button" 
-		href='javascript:'
-		[scclToolTip]=conf?.btn
-		[dropDownMenu]=conf?.btn
-		attr.data-activates='{{ddMenuConfig?.btn.id}}'>
-		<i *ngIf="ddMenuConfig?.btn?.icon" 
-			class="material-icons">{{ddMenuConfig?.btn?.icon}}
-		</i>
-		<ng-content></ng-content>
-	</a>
-</ng-container>
- -->
-<ng-container *ngFor=" let conf of [ddMenuConfig]">
-	<a 
-		class='{{conf?.trigger?.class}}' 
+	<a class='{{conf?.trigger?.class}}' 
 		href='javascript:' 
 		attr.data-activates="{{conf?.trigger?.id}}" 
 		[dropDownTrigger]=conf?.trigger
 		[dropDownProperties]=conf?.properties
-		attr.data-tooltip="{{conf?.trigger?.tool_tip?.title | translate}}"
+		data-tooltip="conf?.trigger?.tool_tip?.title"
 		[scclToolTip]=conf?.trigger>
-		<i *ngIf="conf?.trigger?.icon" 
-			class="material-icons">{{conf?.trigger?.icon}}
-		</i>
 		<ng-content></ng-content>
 	</a>
 
 	<ul id="{{conf?.trigger?.id}}" class='dropdown-content'>
 		
 		<!-- HEADER-->
-		<div class="dropdown-menu-header">
-			<div class="divider"></div>
-				<span *ngIf="conf?.header?.length != 0">
-					Notifications
+		<div class="divider"></div>
+		<div *ngIf="conf?.header?.length != 0"
+			 class="dropdown-menu-header">
+			<ng-container *ngFor="let hItem of conf?.header">
+				<span *ngIf="hItem?.route"
+				  	routerLink="{{hItem.route}}" 
+				  	id="{{hItem.id}}">
+					{{hItem.title | translate}}
 				</span>
-		</div>
-		<!-- DROP DOWN MENU BODY-->
-		<div class="dropdown-menu-box" #menuBox [dropDownMenu]=menuBox
-			[ngStyle]="{'height': conf?.size.height + 'px', 'width': conf?.size.width + 'px' }">
-			<ng-container *ngFor="let item of conf?.itemsContainer">
-					<!-- LINKS WITH HREF-->
-				<li *ngIf="item.href"><a href="#!">{{item.title | translate}}</a></li>
-				
-				<!-- LINKS WITH ANGULAR ROUTE-->
-				<li *ngIf="item.route"><a href="#!">{{item.title | translate}}</a></li>
-				
-				<!-- NOTIFICATION LINK-->
-				<li *ngIf="item.sender"><a href="#!">three</a></li>
-				<li><a href="#!">two</a></li>
-				<li><a href="#!">three</a></li>
-				<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-				<li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+				<span *ngIf="!hItem.route"
+				  	id="{{hItem.id}}">
+					{{hItem.title | translate}}
+				</span>
 			</ng-container>
 		</div>
+
+		<!-- PRELOADER -->
+		<div *ngIf="conf?.itemsContainer?.length === 0" id="preloader-small">
+			<div class="preloader-wrapper small active">
+				<div class="spinner-layer">
+					<div class="circle-clipper left">
+					<div class="circle"></div>
+					</div><div class="gap-patch">
+					<div class="circle"></div>
+					</div><div class="circle-clipper right">
+					<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		
+		<!-- DROP DOWN MENU BODY-->
+		<!-- Make sure to set height property for this div, 'dropdown-menu-container' -->
+		<div *ngIf="conf?.itemsContainer?.length !== 0"
+			 class="dropdown-menu-container"
+			 #menuContainer 
+			 [scclScrollbar]=menuContainer>
+			<ng-container *ngFor="let item of conf?.itemsContainer">
+					<!-- LINKS WITH HREF-->
+				<li *ngIf="item.href"><a href="/">{{item.title | translate}}</a></li>
+				
+				<!-- ANGULAR ROUTES-->
+				<li *ngIf="item.route">
+					<a  routerLink="{{item.route}}" 
+						routerLinkActive="active">
+
+						<!-- BASIC ROUTES-->
+						<span *ngIf="!item.sender">
+							{{item.title | translate}}
+						</span>
 
 
+						<!-- NOTIFICATIONS ROUTES-->
+						<span *ngIf="item.sender">
+							{{item.title | translate}}
+						</span>
+					 </a> 
+				</li>
+			</ng-container>
+		</div>
+	
 		<!-- FOOTER-->
-		<div class="dropdown-menu-footer">
-			<div class="divider"></div>
-			<span *ngIf="conf?.footer?.length != 0">
-				Footer
+		<div *ngIf="conf?.footer?.length !== 0" class="dropdown-menu-footer">
+			<span *ngFor="let fItem of conf?.footer">
+				{{fItem.title}}
 			</span>
 		</div>
 	</ul>
 </ng-container>
-
-
-<!--
-
-	<ul>
-	<div *ngIf="ddMenuConfig?.content?.length === 0" id="preloader-small">
-		<div class="preloader-wrapper small active">
-			<div class="spinner-layer">
-				<div class="circle-clipper left">
-				<div class="circle"></div>
-				</div><div class="gap-patch">
-				<div class="circle"></div>
-				</div><div class="circle-clipper right">
-				<div class="circle"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<li *ngFor="let item of ddMenuConfig.content">
-		<!-- for links that requires href (e.g 'sign out' button)
-		<a *ngIf="item.href" href="{{item.href}}">
-			<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i>
-			<span *ngIf="item.title">{{item.title | translate}}</span> 
-		</a>
-		
-		<!--For links that require angular route
-		<a *ngIf="item.route" [routerLink]="item.route"> 
-		<i *ngIf="item.icon" class="{{item.icon}} dd-icon"></i> 
-		<span *ngIf="item.title">{{item.title | translate}}</span> 
-				<div *ngIf="item.sender" class="message-box">
-					<!--sender avatar-
-					<div class="sender-avatar">
-						<img 
-							src="{{ ('profile/' + (user.firstName + '.' + 
-								item.sender.lastName | lowercase) | scclPngExt) }}"
-							class="circle">
-					</div>
-					<!-- content -
-					<div class="message-content">
-						<div *ngIf="item.sender" class="c-head">
-							<span>{{item.sender.firstName}} {{item.sender.lastName}};</span>
-							<span *ngIf="item.subject">Subject: {{item.title}}</span>
-						</div>
-						<div class="c-body">{{item.text}}</div>
-						<div class="time">
-							<span class="{{item.typeIcon}}"></span>
-							<span><em><strong>{{item.time}}</strong></em></span>
-						</div>
-					</div>
-					<!--badge-
-					<div class="message-badge">
-						<em><strong><span *ngIf="item.isRead">new</span></strong></em>
-					</div>
-				</div>
-	</a></li>
-</ul>
-<!-- footer -
-<ul *ngIf="ddMenuConfig.footer?.length != 0" class="dd-footer">
-	<li *ngFor="let item of ddMenuCaption.footer">
-	<a [routerLink]="item.route">{{item.title | translate}}</a></li>
-</ul>
--->

@@ -32,7 +32,7 @@ export class ScclAdmininstratorService {
        this.scclGlobalService.notifyDataChanged('module.configurations', SCCL_ADMINISTRATOR_CONFIG);
     }
 
-    getUserMessages() {;
+    getUserMessages() {
         setTimeout(() => {
             this.scclNotifier.getAllNotification().forEach((msg) => {
                 this.getNotificationContainer().push(msg);
@@ -53,7 +53,7 @@ export class ScclAdmininstratorService {
                 .headConfig
                 .mainHeadConfig
                 .notifierConfig
-                .itemsContainer
+                .itemsContainer;
     }
 /*
     public getAdministrator() {

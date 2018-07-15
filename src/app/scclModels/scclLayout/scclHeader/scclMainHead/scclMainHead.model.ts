@@ -3,8 +3,9 @@ import { IScclDropDownMenu } from '../../../scclComponents/scclDropDownMenu';
 
 
 export interface IScclMainHeadbar {
-    userMenuConfigs: IScclDropDownMenu;
-    notifierConfig: IScclDropDownMenu;
+    userMenuConfigs?: IScclDropDownMenu;
+    userMenuConfigs2?: IScclDropDownMenu;
+    notifierConfig?: IScclDropDownMenu;
     btns?: {
         btnConfigs?:  IScclButton;
         linkBtnConfigs?: IScclButton;

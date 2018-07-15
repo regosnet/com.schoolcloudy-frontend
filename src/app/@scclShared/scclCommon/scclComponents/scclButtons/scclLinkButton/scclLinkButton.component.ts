@@ -6,6 +6,5 @@ import { ScclButton } from '../scclButton';
     templateUrl: './scclLinkButton.html',
     styleUrls: ['./scclLinkButton.scss']
 })
-export class ScclLinkButtonComponent extends ScclButton implements AfterViewInit { 
-    
+export class ScclLinkButtonComponent extends ScclButton {
 }

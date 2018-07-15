@@ -1,15 +1,14 @@
 import { scclContants } from '../@scclShared/scclCommon/scclContants/sccl.constants';
 import { IScclHeader, IScclLayout, IScclBody } from '../scclModels';
 import { IScclTechnicalPanel } from '../scclModels/scclLayout/scclTechnicalPanel';
+const initialHeight = window.innerHeight;
 
 const technicalPanel: IScclTechnicalPanel = {
     name: 'technical-panel',
-    isStaticHeight: true,
+    isStaticHeight: false,
     state: {
-        height: window.innerHeight - 1,
-        right: "+=250",
+        height: initialHeight,
         isClosed: false,
-        isCollapsed: false,
     },
     menuBarItems: [],
     footer: {
@@ -44,7 +43,7 @@ const technicalPanel: IScclTechnicalPanel = {
 
         }
     }// TECHNICAL PANEL CONTENTS AND CONFIGURATIONS
-}
+};
 
 const head: IScclHeader = {
     topHeadConfig: {
@@ -82,50 +81,45 @@ const head: IScclHeader = {
                     icon: 'fa fa-inbox',
                 },
                 {
-                    title: 'sccl.login.sign_out',
+                    title: 'sccl.sign_out',
                     href: '/',
                     icon: 'fa fa-sign-out'
                 }
             ],
             trigger: {
-                //title: 'sccl.',
-                //icon: 'home',
                 class: 'user-dropdown-menu-button',
                 paired_icon: false,
                 id: 'user-dropdown-menu',
                 tool_tip: {
                     delay: 50,
-                    position: 'left',
+                    position: 'right',
                     title: '',
                     html: false,
                 }
             },
             footer: [],
-            size: {height: 300, width: 200},
             properties: {
                 constrainWidth: false,
-                gutter: 0,
+                gutter: -15,
                 belowOrigin: true,
-                alignment: 'right', 
+                alignment: 'right',
             }
         },
         notifierConfig: {
             header: [
                 {
-                    title: 'sccl.message.notification',
-                    route: '#!',
+                    title: 'sccl.notifications',
+                    id: 'notifications'
                 },
                 {
                     title: 'sccl.mark_all_read',
-                    route: '#!',
+                    route: '/',
+                    id: 'mark-all-read'
                 },
                 {
                     title: 'sccl.settings',
-                    route: '#!',
-                },
-                {
-                    icon: 'fa fa-pencil-square-o',
-                    route: '#!',
+                    route: '/',
+                    id: 'settings-dd-link'
                 }
             ],
             itemsContainer: [],
@@ -135,10 +129,6 @@ const head: IScclHeader = {
                     route: '/notifications'
                 }
             ],
-            size: {
-                height: 400,
-                width: 400
-            },
             trigger: {
                 title: 'sccl.message.notification',
                 class: 'notification-dropdown-menu-button',
@@ -156,7 +146,7 @@ const head: IScclHeader = {
                 constrainWidth: false,
                 gutter: 0,
                 belowOrigin: true,
-                alignment: 'right', 
+                alignment: 'right',
             }
         },
         btns: {
@@ -222,15 +212,12 @@ const body: IScclBody = {
     HEIGHT: 70,
     rightSidebar: {
         name: 'right-side-menu-bar',
-        isStaticHeight: true,
+        isStaticHeight: false,
         state: {
-            height: window.innerHeight - 70,
-            left: "+=250",
-            right: "-=250",
+            height: initialHeight,
             isClosed: false,
             isCollapsed: false,
         },
-        
         menuBarItems: [
             {title: 'sccl.dashboard', icon: 'home', route: 'dashboard'},
             {title: 'sccl.academics', icon: 'photo_album', route: 'academics'},
@@ -279,11 +266,9 @@ const body: IScclBody = {
     },
     leftSidebar: {
         name: 'left-side-menu-bar',
-        isStaticHeight: true,
+        isStaticHeight: false,
         state: {
-            height: window.innerHeight - 70,
-            left: "+=250",
-            right: "-=250",
+            height: initialHeight,
             isClosed: false,
             isCollapsed: false,
         },
@@ -434,7 +419,7 @@ const layoutConfig: IScclLayout = {
                             title: 'sccl.menu',
                             html: false,
                         }
-                    }, 
+                    },
                     {
                         icon: 'search',
                         id: 'search-btn',
@@ -499,5 +484,5 @@ const layoutConfig: IScclLayout = {
             }
         }
     }
-}
+};
 export const SCCL_ADMINISTRATOR_CONFIG = layoutConfig;

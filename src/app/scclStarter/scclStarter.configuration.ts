@@ -2,6 +2,28 @@ import { scclContants } from '../@scclShared/scclCommon/scclContants/sccl.consta
 import { ScclLoginComponent } from './scclLogin/scclLogin.component';
 import { IScclHeader, IScclBody, IScclLayout } from '../scclModels';
 import { IScclTechnicalPanel } from '../scclModels/scclLayout/scclTechnicalPanel';
+const userMenuItems = [
+    {
+        title: 'sccl.home',
+        route: '/home',
+        icon: 'fa fa-home'
+    },
+    {
+        title: 'sccl.gallery',
+        route: '/gallery',
+        icon: 'fa fa-envelope',
+    },
+    {
+        title: 'sccl.news_feed',
+        route: '/news_feed',
+        icon: 'fa fa-inbox',
+    },
+    {
+        title: 'sccl.login.title',
+        route: '/login',
+        icon: 'fa fa-sign-in'
+    }
+];
 const head: IScclHeader = {
     topHeadConfig: {
         schoolCalender: {
@@ -21,37 +43,41 @@ const head: IScclHeader = {
     mainHeadConfig: {
         userMenuConfigs: {
             header: [],
-            itemsContainer: [
-                {
-                    title: 'sccl.home',
-                    route: '/home',
-                    icon: 'fa fa-home'
-                },
-                {
-                    title: 'sccl.gallery',
-                    route: '/gallery',
-                    icon: 'fa fa-envelope',
-                },
-                {
-                    title: 'sccl.inbox',
-                    route: '/inbox',
-                    icon: 'fa fa-inbox',
-                },
-                {
-                    title: 'sccl.login.sign_out',
-                    href: '/',
-                    icon: 'fa fa-sign-out'
-                }
-            ],
+            itemsContainer: userMenuItems,
             trigger: {
                 title: 'sccl.menu',
                 icon: 'menu',
                 paired_icon: false,
-                class: 'unknown-dropdown-user-btn',
-                id: 'unknown-dropdown-user-menu',
+                class: 'dropdown-trigger',
+                id: 'dropdown-trigger',
                 tool_tip: {
                     delay: 50,
                     position: 'right',
+                    title: 'sccl.menu',
+                    html: true,
+                }
+            },
+            footer: [],
+            properties: {
+                constrainWidth: false,
+                gutter: 1,
+                belowOrigin: true,
+                alignment: 'left',
+            }
+        },
+        /*userMenuConfig2 displays only on large screens */
+        userMenuConfigs2: {
+            header: [],
+            itemsContainer: userMenuItems,
+            trigger: {
+                title: 'sccl.menu',
+                icon: 'menu',
+                paired_icon: false,
+                class: 'dropdown-trigger2',
+                id: 'dropdown-trigger2',
+                tool_tip: {
+                    delay: 50,
+                    position: 'left',
                     title: 'sccl.menu',
                     html: false,
                 }
@@ -60,10 +86,9 @@ const head: IScclHeader = {
             properties: {
                 constrainWidth: false,
                 gutter: 1,
-                belowOrigin: true,
-                alignment: 'left', 
-            },
-            size: {height: 300, width: 200}
+                belowOrigin: false,
+                alignment: 'right',
+            }
         },
         notifierConfig: {},
         btns: {
@@ -136,7 +161,7 @@ const head: IScclHeader = {
                             title: 'sccl.login.title',
                             html: false,
                         }
-                    }, 
+                    },
                 ]
             }
         }
@@ -147,7 +172,7 @@ const body: IScclBody = {
     HEIGHT: 70,
     rightSidebar: {
         name: 'right-side-menu-bar',
-        isStaticHeight: false,
+        isStaticHeight: true,
         state: {
             height: 370,
             width: 300,
@@ -163,9 +188,9 @@ const body: IScclBody = {
     },
     leftSidebar: {
         name: 'left-side-menu-bar',
-        isStaticHeight: false,
+        isStaticHeight: true,
         state: {
-            height: 399,
+            height: 470,
             width: 300,
             isClosed: false,
             isCollapsed: false,
@@ -173,8 +198,7 @@ const body: IScclBody = {
         menuBarItems: [
             {title: 'sccl.home', icon: 'home', route: 'home', id: 'home'},
             {title: 'sccl.gallery', icon: 'photo_album', route: 'gallery', id: 'gallery'},
-            {title: 'sccl.news_feed', icon: 'rss_feed', route: 'news_feed', id: 'news-feed'},
-            {title: 'sccl.login.title', icon: 'lock', route: 'login', id: 'login'}
+            {title: 'sccl.news_feed', icon: 'rss_feed', route: 'news_feed', id: 'news-feed'}
         ],
         footer: {
             height: 0
@@ -183,12 +207,10 @@ const body: IScclBody = {
 
 };
 const technicalPanel: IScclTechnicalPanel = {
-        name: 'right-side-menu-bar',
-        isStaticHeight: true,
+        name: 'technical-panel',
+        isStaticHeight: false,
         state: {
             height: window.innerHeight - 1,
-            left: "+=250",
-            right: "-=250",
             isClosed: false,
             isCollapsed: false,
         },
@@ -289,6 +311,6 @@ const layoutConfig: IScclLayout = {
             }
         }
     }
-}
+};
 export const SCCL_STARTER_CONFIG = layoutConfig;
 

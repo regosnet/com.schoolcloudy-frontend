@@ -4,4 +4,7 @@ export * from './scclGlobalService';
 export * from './scclAuthGuard';
 export * from './sccl-panel-toggler';
 export * from './sccl-tooltip';
-export * from './scclScrollbarAdapter'
+export * from './scclScrollbar'
+export * from './scclComponentViewResolver';
+export * from './scclScreenDimensionResolver';
+

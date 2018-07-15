@@ -49,6 +49,7 @@
 	"fullscreen": "Fullscreen",
 	"exit_fullscreen": "Exit Fullscreen",
 	"notifications": "Notifications",
+	"sign_out": "Sign out",
   	"languages":{
   		"title": "languages",
   		"en": "English",
@@ -61,8 +62,7 @@
   		"title": "Login",
   		"username": "Username",
   		"password": "Password",
-  		"lastLogin": "Last Login",
-  		"sign_out": "Sign Out"
+  		"lastLogin": "Last Login"
   	},
   	"tab": {
   		

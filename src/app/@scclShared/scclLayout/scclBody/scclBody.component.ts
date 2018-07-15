@@ -1,49 +1,57 @@
-import { Component, ChangeDetectorRef, AfterViewInit, OnInit, Input, OnChanges, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { ScclGlobalService } from '../../scclCommon/scclServices';
-import { IScclRightSidebar, IScclLeftSidebar, IScclBody } from '../../../scclModels/scclLayout';
+import { Component, AfterViewInit, OnInit, OnChanges, Input} from '@angular/core';
 import { resizeSidePanel } from '../../scclCommon/scclAnimations/scclAnimations';
+import { IScclRightSidebar, IScclLeftSidebar, IScclBody } from '../../../scclModels';
+import { ScclGlobalService } from '../../scclCommon/scclServices';
+import { trigger, transition, state, style, animate } from '@angular/animations';
 declare var $: any;
 
 @Component({
     selector: 'sccl-body',
     templateUrl: './scclBody.html',
     styleUrls: ['./scclBody.scss'],
-    animations: resizeSidePanel
+    animations: [
+        trigger('collapseWidth', [
+            state('true', style({
+                width: 70 + 'px'
+            })),
+            transition('true <=> false', animate('200ms ease-in'))
+        ]),
+        ,
+        trigger('right-padding', [
+            state('true', style({
+                paddingRight: 75 + 'px'
+            })),
+            transition('true <=> false', animate('200ms ease-in'))
+        ]),
+        trigger('left-padding', [
+            state('true', style({
+                paddingLeft: 75 + 'px'
+            })),
+            transition('true <=> false', animate('200ms ease-in'))
+        ])
+    ]
 })
 export class ScclBodyComponent implements AfterViewInit, OnInit, OnChanges {
-    HEIGHT: number;
+    @Input()
+    height: number;
     @Input() isLoggedIn: Boolean;
     rightSidebarConfig: IScclRightSidebar;
     leftSidebarConfig: IScclLeftSidebar;
     @Input() bodyConfig: IScclBody;
-    @ViewChild('right') sidebar: ElementRef;
 
     constructor(
-        private scclGlobalService: ScclGlobalService,
-        private cdRef: ChangeDetectorRef, private renderer: Renderer2) {
+        private scclGlobalService: ScclGlobalService) {
     }
 
     ngOnInit() {
-        this.initPanels();
     }
     public ngAfterViewInit(): void {
     }
 
-    initPanels() {
-       this.scclGlobalService.subscribe('screen-dimension', (windowHeight) => {
-            this.HEIGHT = windowHeight.height - this.HEIGHT;
-            this.cdRef.detectChanges();
-        });
-    }
     ngOnChanges(): void {
         if (this.bodyConfig !== undefined) {
             this.rightSidebarConfig = this.bodyConfig.rightSidebar;
             this.leftSidebarConfig = this.bodyConfig.leftSidebar;
-            this.HEIGHT = this.bodyConfig.HEIGHT;
         }
-    }
-
-    collapseAsidePanel(e) {
-       
     }
 }

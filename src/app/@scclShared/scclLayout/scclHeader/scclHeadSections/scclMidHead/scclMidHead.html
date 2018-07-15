@@ -1,13 +1,17 @@
 <nav>
 	<div class="nav-wrapper">
 		<div id="head-left">
+
+			<!--this button displays when user is not logged in-->
 			<div class="user-menu">
-				<!--this button displays when user is not logged in-->
 				<sccl-dropdown-menu *ngIf="!isLoggedIn" id="user-menu"
 					[ddMenuConfig]="userMenuConfig"
 					[itemsContainer]="userMenuConfig?.itemsContainer">
+					<i class="material-icons">menu</i>
 				</sccl-dropdown-menu>
 			</div>
+
+			<!--LOGO-->
 			<div class="sccl-logo">
 				<a href="#">
 					<span>School</span>Cloudy
@@ -16,15 +20,17 @@
 						src="{{ 'scclLogo/sccl_logo' | scclPngExt }}">
 				</a>
 			</div>
-		</div>
 
+		</div> <!-- HEAD LEFT-->
+
+		<!-- ACTIVE PAGE TITLE-->
 		<div class="active-page-title">
 			<span>{{activePageTitle | translate}}</span>
 		</div>
 
 		<div id="head-right">
+			<!--this button displays when user logged in-->
 			<div class="user-LoggedIn-menu">
-				<!--this button displays when user logged in-->
 				<sccl-dropdown-menu 
 					*ngIf="isLoggedIn" 
 					id="user-LoggedIn-menu"
@@ -46,11 +52,25 @@
 				</sccl-dropdown-menu>
 			</div><!--menu-button close tag-->
 
+			<!-- NOTIFICATION DROP DOWN MENU -->
 			<div *ngIf="isLoggedIn" class="notifications">
 				<sccl-dropdown-menu id="notification-menu"
-					[size]="notifierConfig.size"
 					[ddMenuConfig]="notifierConfig"
 					[itemsContainer]="notifierConfig?.itemsContainer">
+					<i class="material-icons">notifications</i>
+				</sccl-dropdown-menu>
+			</div>
+
+			<!-- PAGE NAVIGATION DROP DOWN MENU: 
+				displays only on medium screens and when user is not logged in-->
+			<div *ngIf="!isLoggedIn" class="user-menu-2">
+				<sccl-dropdown-menu  id="user-menu"
+					[ddMenuConfig]="userMenuConfig2"
+					[itemsContainer]="userMenuConfig2?.itemsContainer">
+					<span>
+						<span>{{activePageTitle | translate}}</span>
+						<i class="fa fa-caret-down"></i>
+					</span>
 				</sccl-dropdown-menu>
 			</div>
 
@@ -61,6 +81,7 @@
 				</sccl-button-b>
 			</div>
 
+			<!-- DISPLAYS LOGIN BUTTON FROM MEDIUM SCREEN DOWN -->
 			<div *ngIf="!isLoggedIn" class="rhs-link-btns">
 				<sccl-link-button
 					[scclBtns]="linkBtnConfigs"

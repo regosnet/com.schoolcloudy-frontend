@@ -10,8 +10,6 @@ export class ScclDropDownMenuComponent {
     @Input()
     ddMenuConfig;
     @Input()
-    size
-    @Input()
     itemsContainer;
     constructor() {
     }

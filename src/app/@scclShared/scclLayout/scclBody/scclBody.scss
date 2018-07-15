@@ -1,5 +1,4 @@
 @import './sidebars/scclLeftMenuBar/scclLeftMenuBar';
-@import './scclContentSection/scclContentSection';
 @import './sidebars/scclRightMenuBar/scclRightMenuBar';
 
 @mixin sccl-body($theme) {
@@ -26,12 +25,6 @@
 				@include respond-to(lg) {
 					width: 26.5%;
 				}
-
-			}
-			> aside#left-side-panel {
-				@include respond-to(md) {
-					display: block;
-				}
 			}
 			> section#main-section-panel {
 				color: #fff;
@@ -48,24 +41,26 @@
 					}
 				}
 				@include respond-to(sm) {
-					padding: $padding-top 10% 0 10%;
+					padding: $padding-top 3% 0 3%;
 				}
 				@include respond-to(md) {
-					padding: $padding-top 20% 0 20%; 
+					padding: $padding-top 5% 0 5%; 
 				}
 				@include respond-to(lg) {
 					padding: $padding-top 27% 0 27%; 
 				}
 			}
-			> aside#right-side-panel { 
-				right: 0;
+			> aside#left-side-panel, > aside#right-side-panel { 
 				@include respond-to(lg) {
 					display: block;
 				}
 			}
+			> aside#right-side-panel { 
+				right: 0;
+			}
 		}
 
-		/* Some properties in 'logged-in' class is 
+		/* properties in 'logged-in' class are 
 		active only when the user is logged in*/
 		&.logged-in {
 			$padding-top: $padding-top - 10;
@@ -78,18 +73,13 @@
 					width: 250px;
 				}
 			}
-			#main-section-panel {
+			> section#main-section-panel {
 				padding-top: $padding-top;
-				@include respond-to(sm) {
+				@include respond-to(md) {
 					padding: $padding-top 75px 0 75px;
 				}
 				@include respond-to(lg) {
 					padding: $padding-top 255px 0 255px; 
-				}
-			}
-			> aside#right-side-panel { 
-				@include respond-to(lg) {
-					display: block;
 				}
 			}
 		}

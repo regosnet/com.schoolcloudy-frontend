@@ -7,13 +7,8 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ScclCommonModule } from './@scclShared/scclCommon/scclCommon.module';
 import { ScclLayoutModule } from './@scclShared/scclLayout/scclLayout.module';
 import { ScclStarterModule } from './scclStarter/scclStarter.module';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/mapTo';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/scan';
 import { ScclMainService } from './scclMain.service';
+import { ScclAdministratorModule } from './scclAdministrator/scclAdministrator.module';
 
 
 
@@ -26,7 +21,8 @@ import { ScclMainService } from './scclMain.service';
     BrowserAnimationsModule,
     ScclMainRouter,
     ScclLayoutModule,
-    ScclStarterModule
+    ScclStarterModule,
+    ScclAdministratorModule
   ],
   providers: [
     {

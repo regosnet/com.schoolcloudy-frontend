@@ -1,27 +1,74 @@
-@mixin sccl-drop-down-menu() {
+@mixin sccl-drop-down-menu($theme) {
+	$bgColor: map-get($theme, 'sccl-dropdown-menu-primary-darken');
+	$secondColor: map-get($theme, 'sccl-dropdown-menu-secondary');
 	@content;
 	> a {
 		@include display-flex(center, center);
 	}
 	> ul {
-		height: auto;
+		.divider {
+			background: $bgColor;
+			height: 5px;
+		}
+		background: map-get($theme , 'sccl-dropdown-menu-primary-lighten');
 		overflow-y: visible;
+		// CARET
+		&::before {
+			@include sccl-caret() {
+				font-size: 30px;
+				color: map-get($theme, 'sccl-dropdown-menu-primary-darken');	
+			} 
+		}
+
+		// HEADER
 		> div.dropdown-menu-header {
-			background: red;
-			.divider {
-				background: green;
-				height: 5px;
-			}
-		}	
-		> div.dropdown-menu-box {
+			background: map-get($theme, 'sccl-dropdown-menu-primary-darken');
+				height: 25px;
+				line-height: 20px;
+				@include display-flex(space-around, center);
+				>span {
+					font-weight: 700;
+					font-size: $font-sm-size;
+					color: $secondColor;
+				}
+			> :not(#notifications) {
+				cursor: pointer;
+				&:hover {
+					text-decoration: underline;
+				}
+			}			
+		}
+
+		// CONTAINER
+		> div.dropdown-menu-container {
 			overflow-y: scroll;
 			overflow-x: hidden;
+			 li {
+				background: map-get($theme , 'sccl-dropdown-menu-primary-lighten');
+				a {
+					color: #fff;
+				}
+			}
 		}
+
+		// FOOTER
 		> div.dropdown-menu-footer {
-			background: red;
+			background: $bgColor;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+			>span {
+				font-weight: $font-weight;
+				font-size: $font-sm-size;
+				color: $secondColor;
+				padding: 1.1% 5%;
+				&:hover {
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
 		}
 	}
-
 }
 
 /*

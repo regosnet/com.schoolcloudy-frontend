@@ -1,10 +1,5 @@
-import { Injectable } from "@angular/core";
-import {IScclButton } from "../../../../scclModels/scclComponents";
 
-@Injectable()
-export abstract class ScclPanelTogglerService {
-    abstract toggleSlideOnAxisX(): void;
-    abstract toggleSlideOnAxisY(): void;
-    abstract toggleAlongAxisX(elment, state): void;
-    abstract toggleAlongAxisY(element, state): void;
+export interface ScclPanelTogglerService {
+    slideOnX(element, state): void;
+    slideOnY(element, state): void;
 }

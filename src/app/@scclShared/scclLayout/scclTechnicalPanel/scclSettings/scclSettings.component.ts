@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { ScclGlobalService, ScclPanelTogglerService } from '../../../scclCommon/scclServices';
+import { ScclGlobalService, ScclPanelTogglerService, ScclPanelToggler } from '../../../scclCommon/scclServices';
 
 @Component({
     selector: 'sccl-settings',
@@ -8,14 +8,14 @@ import { ScclGlobalService, ScclPanelTogglerService } from '../../../scclCommon/
 export class ScclSettingsComponent implements OnInit {
     constructor(
         private scclGlobalService: ScclGlobalService,
-        private panelToggler: ScclPanelTogglerService) {
-        this.openSettingsPanel();
+    private ts: ScclPanelToggler) {
     }
     ngOnInit(): void {
+        this.openSettingsPanel();
     }
     openSettingsPanel() {
         this.scclGlobalService.subscribe('settings-btn', (_event) => {
-            this.panelToggler.toggleAlongAxisX('.technical-panel', '');
+            this.ts.slideOnX('.technical-panel', '');
         });
     }
 }

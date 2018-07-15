@@ -1,16 +1,15 @@
-import { IScclComponentState } from "..";
+import { IScclComponentState } from '..';
 
 export interface IScclButton {
-    buttons?: IButton[]; 
+    buttons?: IButton[];
     wrapper?: {
         title?: string,
         icon?: string,
         active?: boolean
-    }
+    };
 }
 
 export interface IScclDropDownMenuButton extends IButton {
-    
 }
 
 export interface IButton {
@@ -32,13 +31,13 @@ export interface IButton {
                 title?: string
             }
         }
-    }
+    };
     id?: string;
     class?: string;
     tool_tip?: {
         delay?: number,
-        position?: string, 
+        position?: string,
         title?: string,
         html?: boolean
-    }
+    };
 }

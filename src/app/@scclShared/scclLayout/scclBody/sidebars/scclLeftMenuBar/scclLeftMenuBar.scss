@@ -1,4 +1,4 @@
-@import '../../../../scclCommon/scclComponents/scclCollapsible/scclCollapsible';
+@import '../../../../scclCommon/scclComponents/scclMenu/scclMenu';
 @import '../sccl-sidebar-mixins';
 
 @mixin sccl-left-menu-bar($theme) {
@@ -9,7 +9,7 @@
 		*/
 		&.default {
 			> div {
-				sccl-collapsible {
+				sccl-menu {
 					@include menu-bar-items($theme);
 				}
 			}
@@ -69,7 +69,7 @@
 
 
 @mixin menu-bar-items($theme) {
-	@include sccl-collapsible() {
+	@include sccl-menu() {
 		> li {
 			> div {
 				background: transparent;
@@ -127,14 +127,6 @@
 					top: -2px;
 					left: -20px;
 					color: map-get($theme , 'sccl-sidebar-primary-lighten');
-				}
-				}
-			}
-			@include respond-to(lg) {
-				#login {
-				@include display-flex(none, none);
-				@include respond-to(lg) {
-					display: none;
 				}
 				}
 			}

@@ -1,6 +1,5 @@
 import { Directive, AfterViewInit, Input } from '@angular/core';
 import { IScclDropDownProperties } from '../../../../scclModels/scclComponents/scclDropDownMenu/tags';
-import { ScclScrollbarAdapterSerivce } from '../../scclServices';
 declare var $: any;
 
 @Directive({
@@ -12,18 +11,14 @@ export class ScclDropDownMenuDirective implements AfterViewInit {
     dropDownTrigger
     @Input('dropDownProperties')
     dropDownProperties: IScclDropDownProperties
-    @Input('dropDownMenu')
-    dropDownMenu
 
-    constructor(private scrollbarAdapter: ScclScrollbarAdapterSerivce ) {
+
+    constructor() {
     }
     
     ngAfterViewInit(): void {
         if (this.dropDownTrigger !== undefined && this.dropDownTrigger !== null) {
             $('.' + this.dropDownTrigger.class).dropdown(this.dropDownProperties);
-        }
-        if (this.dropDownMenu !== undefined) {
-            this.scrollbarAdapter.initializePanelScrollbar(this.dropDownMenu);
         }
     }
 }

@@ -1,5 +1,7 @@
-<div class="{{scclTheme}}" scclLayoutDirective [ngStyle]="{'height': height + 'px'}">
-	<aside class="technical-panel" [ngStyle]="{'height':1800 + 'px'}">
+<div class="{{scclTheme}}" #layout
+	[scclScreenDimensionResolver]=bodyConfig  
+	[ngStyle]="{'minHeight': height + 'px'}">
+	<aside class="technical-panel">
 		<sccl-technical-panel
 			[sidebarConfig]="technicalPanel"
 			[isLoggedIn]="isLoggedIn">
@@ -13,7 +15,8 @@
 
 		<sccl-body 
 			[bodyConfig]="bodyConfig" 
-			[isLoggedIn]="isLoggedIn">
+			[isLoggedIn]="isLoggedIn"
+			[height]="height">
 		</sccl-body>
 
 		<footer id="sccl-footer">

@@ -1,9 +1,8 @@
 import { Component, Input, ChangeDetectorRef, AfterViewInit, OnInit, OnChanges} from '@angular/core';
-import { ScclGlobalService } from '../../../../scclCommon/scclServices';
 import { ScclUserContactsComponent} from './scclUserContacts';
 import { ScclWidgetBarComponent } from './scclWidgetBar';
 import { IScclTab } from '../../../../../scclModels/scclComponents/scclTab';
-import { ScclAsidebar } from '../sccl-aside-bar';
+import { ScclAsideMenuComponent } from '../scclAsideMenu';
 
 
 @Component({
@@ -11,20 +10,10 @@ import { ScclAsidebar } from '../sccl-aside-bar';
   templateUrl: './scclRightMenuBar.html',
   styleUrls: ['./scclRightMenuBar.scss']
 })
-export class ScclRightMenuBarComponent extends ScclAsidebar implements AfterViewInit, OnInit, OnChanges {
+export class ScclRightMenuBarComponent extends ScclAsideMenuComponent implements OnInit {
 
     ngOnInit(): void {
       this.scclTab = this.getRightMenuBarTabConfig();
-    }
-
-  ngAfterViewInit(): void {
-      this.scclGlobalService.subscribe('screen-dimension', (screenSize) => {
-          this.onScreenResize(screenSize); 
-      });
-  }
-
-    ngOnChanges(): void {
-        this.setMenubarHeight();
     }
 
     getRightMenuBarTabConfig(): IScclTab {

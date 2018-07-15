@@ -21,7 +21,6 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
     bodyConfig: IScclBody;
     technicalPanel: IScclTechnicalPanel;
     footer;
-    right = "-=250"
 
     constructor(private scclGlobalService: ScclGlobalService,
                 private scclLayoutService: ScclLayoutService,
@@ -29,24 +28,17 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
         this.initializeModuleConfigurations();
     }
     ngOnInit(): void {
-        this.setLayoutHeight();
+        this.setHeightOnWindowResize();
     }
 
     ngAfterViewInit() {
         this.scclGlobalService.subscribe('selected.theme', (theme) => {
            this.scclTheme = this.switchTheme(theme);
         });
-        
-        this.scclGlobalService.subscribe('isSlideIn', (position) => {
-            
-            this.right = this.right === "+=250" ? "-=250" : "+=250";
-            $('.technical-panel').animate({
-                right: this.right,
-              }, {
-                  step: function(now, fx) {
-                  }
-              });
-        });
+        this.scclGlobalService.subscribe('isLoggedIn', (isLoggedIn) => {
+            this.isLoggedIn = isLoggedIn;
+            this.cdRef.detectChanges();
+         });
     }
 
     switchTheme(theme) {
@@ -63,16 +55,6 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
         return this.scclTheme;
     }
 
-    setLayoutHeight() {
-        this.scclGlobalService.subscribe('screen-dimension', (dimension) => {
-            this.height = dimension.height;
-            this.cdRef.detectChanges();
-        });
-    }
-
-    togglePanel() {
-        this.scclLayoutService.panelSlideToggle();
-    }
 
     initializeModuleConfigurations() {
         this.scclGlobalService.subscribe('module.configurations', (configs: IScclLayout) => {
@@ -86,9 +68,14 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
         });
     }
 
-    closePanel() {}
-
-    footerbtnActions(event) {
-        console.log(event)
+    @HostListener('window:resize')
+    setHeightOnWindowResize() {
+        this.height = window.innerHeight;
+        
     }
+
+    footerbtnActions(evnt) {
+        console.log(evnt);
+    }
+    
 }

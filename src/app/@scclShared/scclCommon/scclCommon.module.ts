@@ -6,6 +6,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import 'hammerjs';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/mapTo';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
 
 import {
     MalihuScrollbarModule,
@@ -27,14 +35,16 @@ import {
     ScclPanelToggler,
     ScclToolTipDirective,
     ScclNotifierService,
-    ScclScrollbarAdapterSerivce,
-    ScclScrollbarAdapter
+    ScclScrollbarSerivce,
+    ScclScrollbar,
+    ScclScrollbarDirective,
+    ScclScreenDimensionResolverDirective
 } from './scclServices';
 
 import {
     ScclCardComponent,
     ScclDropDownMenuComponent,
-    ScclCollapsibleComponent,
+    ScclMenuComponent,
     ScclFormComponent,
     ScclTabComponent,
     ScclSelectComponent,
@@ -46,7 +56,6 @@ import {
 
 import {
     ScclSlimScrollDirective,
-    ScclCollapsibleDirective,
     ScclSelectDirective,
     ScclHeaderDirective
 } from './scclDirectives';
@@ -54,6 +63,11 @@ import { ScclTranslationModule } from '../scclLayout/scclTechnicalPanel/scclSett
 import { ScclButtonBComponent } from './scclComponents/scclButtons/scclButtonB';
 import { ScclFooterComponent } from '../scclLayout/scclFooter';
 import { ScclLinkButtonComponent } from './scclComponents/scclButtons/scclLinkButton';
+import {
+    ScclComponentViewResolver,
+    ScclComponentViewResolverService
+} from './scclServices/scclComponentViewResolver';
+import { ScclMenuDirective } from './scclDirectives/scclMenu';
 
 
 
@@ -64,19 +78,21 @@ const SCCL_SHARED_SERVICE =
      ScclNotifierService,
      ScclGlobalService,
      ScclAuthGuard,
-     {provide: ScclPanelTogglerService, useClass: ScclPanelToggler},
-     {provide: ScclScrollbarAdapterSerivce, useClass: ScclScrollbarAdapter}
+     ScclPanelToggler,
+     {provide: ScclScrollbarSerivce, useClass: ScclScrollbar},
+     {provide: ScclComponentViewResolverService, useClass: ScclComponentViewResolver}
      ];
 
 const SCCL_DIRECTIVES =
     [
-     ScclCollapsibleDirective,
      ScclSelectDirective,
      ScclHeaderDirective,
      ScclTabDirective,
-     ScclCollapsibleDirective,
+     ScclMenuDirective,
      ScclDropDownMenuDirective,
-     ScclToolTipDirective 
+     ScclToolTipDirective,
+     ScclScrollbarDirective,
+     ScclScreenDimensionResolverDirective
      ];
 
 const SCCL_COMPONENTS =
@@ -86,7 +102,7 @@ const SCCL_COMPONENTS =
      ScclButtonBComponent,
      ScclSlimScrollDirective,
      ScclFormComponent,
-     ScclCollapsibleComponent,
+     ScclMenuComponent,
      ScclTabComponent,
      ScclSelectComponent,
      ScclFooterComponent,
@@ -115,12 +131,12 @@ const SCCL_PIPES =
       DeviceDetectorModule.forRoot()
     ],
     declarations: [
-      ...SCCL_PIPES,
-      ...SCCL_DIRECTIVES,
-      ...SCCL_COMPONENTS
+        ...SCCL_PIPES,
+        ...SCCL_DIRECTIVES,
+        ...SCCL_COMPONENTS
     ],
     providers: [
-        ...SCCL_SHARED_SERVICE 
+        ...SCCL_SHARED_SERVICE
     ],
     exports: [
          ...SCCL_PIPES,

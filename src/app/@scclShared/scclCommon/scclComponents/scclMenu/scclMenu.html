@@ -1,0 +1,42 @@
+<div [ngStyle]="{'height': height + 'px'}" 
+	 [scclMenu]=menu #menu
+	 [scclScrollbar]=menu>
+	<ul class="collapsible" data-collapsible="accordion">
+		<li *ngFor="let item of items">
+			
+			<!--HEAD -->
+			<div 
+				*ngIf="!item.children" 
+				class="collapsible-header"
+				id="{{item.id}}" 
+				[routerLink]="[item.route]" 
+				routerLinkActive="disabled" 
+				#link [routerLinkActiveOptions]="{exact: true}">
+				<i *ngIf="item.icon" class="material-icons">{{item.icon}}</i>
+				<span>{{item.title | translate | uppercase}}</span>
+			</div>
+	
+			<!--HEAD WITH CHILDREN-->
+			<div 
+				*ngIf="item.children"
+				id="{{item.id}}"
+				class="collapsible-header">
+				<i class="material-icons">{{item.icon}}</i>
+				<span>{{item.title | translate | uppercase}}</span>
+			</div>
+	
+			<!--BODY -->
+			<div 
+				*ngIf="item.children"
+				class="collapsible-body" 
+				routerLinkActive="disabled">
+				<div *ngFor="let childitem of item.children" 
+				[routerLink]="[childitem.route]" 
+				routerLinkActive="disabled" #link 
+				[routerLinkActiveOptions]="{exact: true}">
+					<span>{{childitem.title | translate | uppercase}}</span>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

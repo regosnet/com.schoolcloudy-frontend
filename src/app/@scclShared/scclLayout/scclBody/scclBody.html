@@ -3,9 +3,9 @@
 		'collapseRightSidePanel': rightSidebarConfig?.state.isCollapsed, 
 		'collapseLeftSidePanel': leftSidebarConfig?.state.isCollapsed}">
 	<aside 
-		id="left-side-panel" 
+		id="left-side-panel"
 		[ngStyle]="{'height': leftSidebarConfig?.state.height + 'px'}"
-		[@sidebar-resize]="leftSidebarConfig?.state.isCollapsed">
+		[@collapseWidth]="leftSidebarConfig?.state?.isCollapsed">
 		<sccl-left-menu-bar
 			[sidebarConfig]="leftSidebarConfig"
 			[isLoggedIn]="isLoggedIn">
@@ -13,21 +13,24 @@
 	</aside>
 
 	<section 
-		id="main-section-panel"
-		[@left-padding]="leftSidebarConfig?.state.isCollapsed"
-		[@right-padding]="rightSidebarConfig?.state.isCollapsed">
+		id="main-section-panel" [ngStyle]="{'minHeight': height + 'px'}"
+		[@left-padding]="leftSidebarConfig?.state?.isCollapsed"
+		[@right-padding]="rightSidebarConfig?.state?.isCollapsed">
 		<div class="content">
 			<router-outlet></router-outlet>
 		</div>
 	</section>
 
 	<aside 
-		id="right-side-panel" 
-		[ngStyle]="{'height': rightSidebarConfig?.height + 'px'}"
-		[@sidebar-resize]="leftSidebarConfig?.state.isCollapsed">
+		id="right-side-panel"
+		[@collapseWidth]="rightSidebarConfig?.state?.isCollapsed">
 		<sccl-right-menu-bar
 			[sidebarConfig]="rightSidebarConfig"
 			[isLoggedIn]="isLoggedIn">
 		</sccl-right-menu-bar>
 	</aside>
 </section>
+
+<!--
+	[ngStyle]="{'height': rightSidebarConfig?.height + 'px'}"
+-->

@@ -8,7 +8,6 @@ import {
     } from './scclHeader';
 import {
     ScclBodyComponent,
-    ScclContentSectionComponent,
     ScclRightMenuBarComponent,
     ScclWidgetBarComponent,
     ScclLeftMenuBarComponent,
@@ -19,39 +18,30 @@ import {
 import { ScclTechnicalPanelModule } from './scclTechnicalPanel/scclTechnicalPanel.module';
 import { ScclLayoutDirective } from './scclLayoutDirectives';
 import {
-    ScclViewResolverService,
-    ScclLayoutService,
-    ScclPanelControlService
+    ScclLayoutService
 } from './scclLayoutServices';
 import { ScclUXComponentsModule } from '../scclUXComponents/scclUXComponents.module';
-import { ScclAsideBarService } from './scclBody/sidebars/sccl-aside-bar.service';
-import { ScclAsidebar } from './scclBody/sidebars/sccl-aside-bar';
+import { ScclWeatherWidgetComponent } from './scclBody/sidebars/scclRightMenuBar/scclWidgetBar/scclWeatherWidget';
 
 
-const SCCL_LAYOUT_COMPONENTS =
-    [
-         ScclLayoutComponent,
-         ScclHeaderComponent,
-         ScclBodyComponent,
-         ScclContentSectionComponent,
-         ScclLeftMenuBarComponent,
-         ScclRightMenuBarComponent,
-         ScclWidgetBarComponent,
-         ScclMidHeadComponent,
-         ScclTopHeadComponent,
-         ScclUserContactsComponent
+const SCCL_LAYOUT_COMPONENTS = [
+        ScclLayoutComponent,
+        ScclHeaderComponent,
+        ScclBodyComponent,
+        ScclLeftMenuBarComponent,
+        ScclRightMenuBarComponent,
+        ScclWidgetBarComponent,
+        ScclMidHeadComponent,
+        ScclTopHeadComponent,
+        ScclUserContactsComponent,
+        ScclWeatherWidgetComponent
      ];
-const SCCL_LAYOUT_DIRECTIVES =
-    [
-         ScclSidebarDirective,
-         ScclLayoutDirective
+const SCCL_LAYOUT_DIRECTIVES = [
+        ScclSidebarDirective,
+        ScclLayoutDirective
     ];
-const SCCL_LAYOUT_SERVICE =
-    [
-        ScclViewResolverService,
-        ScclLayoutService,
-        ScclAsideBarService,
-        {provide: ScclPanelControlService, useClass: ScclAsideBarService}
+const SCCL_LAYOUT_SERVICE = [
+        ScclLayoutService
     ];
 
 

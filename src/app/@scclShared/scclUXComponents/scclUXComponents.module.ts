@@ -50,7 +50,7 @@ export class ScclUXComponentsModule {
         return <ModuleWithProviders> {
           ngModule: ScclUXComponentsModule,
           providers: [
-               SCCL_SHARED_SERVICE,
+               SCCL_SHARED_SERVICE
           ],
         };
       }

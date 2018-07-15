@@ -1,10 +1,12 @@
 @import '../../../../scclCommon/scclComponents/scclDropDownMenu/scclDropDownMenu';
 @import '../../../../scclCommon/scclComponents/scclButtons/scclButtonB/scclButtonB';
 @import '../../../../scclCommon/scclComponents/scclButtons/scclLinkButton/scclLinkButton';
-@import '../../../../scclUXComponents/scclMessage/scclMessageDropDown/scclMessageDropDown';
 
 @mixin sccl-mid-head($theme) {
 	$secondColor: map-get($theme, 'sccl-header-secondary');
+	$dropdown-menu-width: 200px;
+	$dropdown-menu-height: 300px;
+	$dropdown-menu-top: 8 - $sccl-main-head-height;
 	> nav {
 		@include set_height($sccl-main-head-height);
 		>.nav-wrapper {
@@ -23,18 +25,22 @@
 					@include set_height($sccl-main-head-height);
 					width: 55px;
 					> sccl-dropdown-menu#user-menu {
-						@include sccl-drop-down-menu() {
+						@include sccl-drop-down-menu($theme) {
 							> a {
 								@include set_height($sccl-main-head-height);
 							}
 							> ul {
+								width: $dropdown-menu-width;
+								> div.dropdown-menu-container {
+									max-height: $dropdown-menu-height;
+								} 
 								&::before {
 									@include sccl-caret() {
 										content: $fa-var-caret-up;
-										font-size: 30px;
-										color: gold;
-										top: 15 - $sccl-main-head-height;
+										top: $dropdown-menu-top;
+										height: $sccl-main-head-height;
 										left: 17px;
+										border: 1px solid red;
 									} 
 								}
 							}
@@ -87,10 +93,14 @@
 			> div#head-right {
 				@include set_height($sccl-main-head-height);
 				@include display-flex(space-between, center);
+
+				/* USER LOGGED IN DROP DOWN MENU*/
 				> div.user-LoggedIn-menu {
+					@include set_height($sccl-main-head-height);
 					> sccl-dropdown-menu#user-LoggedIn-menu {
-						@include sccl-drop-down-menu() {
+						@include sccl-drop-down-menu($theme) {
 							> a {
+								@include set_height($sccl-main-head-height);
 								> span.avatar {
 									padding-right: 5px;
 									@include respond-to(sm) {
@@ -119,23 +129,28 @@
 									> i {
 										color: $secondColor;
 										padding: 0 20px 0 0;
+										@include respond-to(md) {
+											padding: 0;
+										}
 									}
 								}	
 							}
 							> ul {
+								width: $dropdown-menu-width;
+								> div.dropdown-menu-container {
+									max-height: $dropdown-menu-height;
+								}
 								&::before {
 									@include sccl-caret() {
 										content: $fa-var-caret-up;
-										font-size: 30px;
-										color: gold;
-										top: 15 - $sccl-main-head-height;
-										right: 17px;
+										top: $dropdown-menu-top;
+										right: 12px;
 									} 
 								}
 							}
 						}
 					}
-				}
+				} // user logged in drop down menu
 				
 				> div.notifications {
 					width: 55px;
@@ -144,12 +159,48 @@
 						display: block;
 					}
 					> sccl-dropdown-menu {
-						@include sccl-drop-down-menu() {
+						@include sccl-drop-down-menu($theme) {
 							> a {
 								@include set_height($sccl-main-head-height);
 							}
 							> ul {
+								width: $dropdown-menu-width + 150;
+								> div#preloader-small {
+									@include sccl-preloader-small($theme);
+								}
+								> div.dropdown-menu-container {
+									max-height: $dropdown-menu-height + 70;
+								}
 								&::before {
+									@include sccl-caret() {
+										content: $fa-var-caret-up;
+										font-size: 30px;
+										top: $dropdown-menu-top;
+										right: 19px;
+									} 
+								}
+							}
+						}
+					}
+				}
+
+				/* USER DROP DOWN MENU 2 displays only on medium screens*/
+				> div.user-menu-2 {
+					display: none;
+					width: $dropdown-menu-width;
+					background: map-get($theme, 'sccl-default-secondary-button-bg');
+					font-weight: $font-weight;
+					> sccl-dropdown-menu {
+						@include sccl-drop-down-menu($theme) {
+							> a {
+								@include set_height($sccl-main-head-height);
+							}
+							> ul {
+								width: $dropdown-menu-width;
+								> div.dropdown-menu-container {
+									max-height: $dropdown-menu-height;
+								} 
+								/*&::before {
 									@include sccl-caret() {
 										content: $fa-var-caret-up;
 										font-size: 30px;
@@ -157,10 +208,16 @@
 										top: 15 - $sccl-main-head-height;
 										left: 17px;
 									} 
-								}
+								}*/
 							}
 						}
-						
+					}
+
+					@include respond-to(md) {
+						display: block;
+					}
+					@include respond-to(lg) {
+						display: none;
 					}
 				}
 

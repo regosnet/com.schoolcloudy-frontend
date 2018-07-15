@@ -1,9 +1,9 @@
-declare var $:any;
+declare var $: any;
 import { trigger, state, transition, style, animate, query, stagger, keyframes, animation, useAnimation } from '@angular/animations';
 
 export let anim = animation([style({
 
-})])
+})]);
 
 export let fade = trigger('fade', [
     state('void', style({
@@ -17,7 +17,6 @@ export let fade = trigger('fade', [
 
 export let resizeSidePanel = [
     trigger('left-padding', [
-  
         state('notCollapsed', style({
             paddingLeft: 255 + 'px'
         })),
@@ -28,7 +27,6 @@ export let resizeSidePanel = [
         transition('collapsed => notCollapsed', [animate('180ms')])
     ]),
     trigger('right-padding', [
-
         state('notCollapsed', style({
             paddingRight: 255 + 'px'
         })),
@@ -49,9 +47,9 @@ export let resizeSidePanel = [
         transition('notCollapsed => collapsed', [animate('180ms')]),
         transition('collapsed => notCollapsed', [animate('180ms')]),
     ])
-]
+];
 export let resizebodyLeft = trigger('body-resize', [
-  
+
     state('notCollapsed', style({
         paddingLeft: 255 + 'px'
     })),
@@ -63,7 +61,7 @@ export let resizebodyLeft = trigger('body-resize', [
 ]);
 
 export let resizebodyRight = trigger('body-resize', [
-  
+
     state('notCollapsed', style({
         paddingRight: 255 + 'px'
     })),
@@ -88,80 +86,3 @@ export const staggering = trigger('listAnimation', [
         ]), {optional: true})
     ])
 ]);
-
-
-/* state('void', style({
-        width: 70 + 'px',
-        backgroundColor: 'red'
-    })),
-    
-    state('notCollapsed', style({
-        width: 250 + 'px',
-        backgroundColor: 'red'
-    })),
-    state('collapsed', style({
-        width: 70 + 'px',
-    })),
-    transition('void => collapsed', [animate('180ms')]),
-    transition('notCollapsed => collapsed', [animate('180ms')]),
-    transition('collapsed => notCollapsed', [animate('120ms')]),
-
-
-
-
-    animations: [
-        trigger('resize-left-sidebar', [
-            state('collapsed', style({
-                width: 70 + 'px',
-            })),
-            transition('notCollapsed => collapsed', [
-                query('#left-side-panel', [
-                    animate(1000, style({
-                        width: 70 + 'px',
-                        backgroundColor: 'red'
-                    }))
-                  ])
-            ]),
-            transition('collapsed => notCollapsed', [
-                query('#left-side-panel', [
-                    animate(1000, style({
-                        width: 250 + 'px',
-                        backgroundColor: 'red'
-                    }))
-                  ])
-            ])
-        ])
-    ]
-})
-
-
-
-
-animations: [
-        trigger('resize-sidebar', [
-            transition('notCollapsed => collapsed', [
-                query('#left-side-panel', [
-                    animate(1000, style({
-                        width: 70 + 'px',
-                        backgroundColor: 'red'
-                    }))
-                  ])
-            ]),
-            transition('collapsed => notCollapsed', [
-                query('#left-side-panel', [
-                    animate(1000, style({
-                        width: 250 + 'px',
-                        backgroundColor: 'red'
-                    }))
-                  ])
-            ])
-        ]),
-        trigger('left-sidebar', [
-
-        ]),
-        trigger('right-sidebar', [
-
-        ])
-    ]
-
-*/

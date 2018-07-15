@@ -7,7 +7,7 @@
         <div *ngIf="sidebarConfig?.menuBarItems">
             <sccl-tab 
                 [tab]="scclTab" 
-                [height]="sidebarConfig?.state.height - sidebarConfig?.footer?.height">
+                [height]="(sidebarConfig?.state.height - 70) - sidebarConfig?.footer?.height">
             </sccl-tab>
         </div>
         <div *ngIf="sidebarConfig?.resolvedComponent" 

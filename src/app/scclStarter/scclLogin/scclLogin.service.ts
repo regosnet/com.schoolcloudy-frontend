@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScclAuthenticationService, ScclGlobalService } from '../../@scclShared/scclCommon/scclServices';
 import { scclContants } from '../../@scclShared/scclCommon/scclContants/sccl.constants';
@@ -8,22 +8,26 @@ import { scclContants } from '../../@scclShared/scclCommon/scclContants/sccl.con
 @Injectable()
 export class ScclLoginService {
 
-    constructor(private scclAuthService: ScclAuthenticationService,
-                private scclGlobalService: ScclGlobalService,
-                private _route: Router) {
+    constructor(
+        private scclAuthService: ScclAuthenticationService,
+        private scclGlobalService: ScclGlobalService,
+        private _route: Router) {
             this.logoutUser();
-            this.loadLoginComponentOnSmallScreen();
-
-            this.scclGlobalService.subscribe('screen-dimension', (windowSize) => {
-                if(windowSize.width > 1200) {
-                    if (this._route.url === '/login') {
-                        this._route.navigate(['']);
-                    }
-                }
-            })
+            this.loginBtnListener();
     }
 
-    displayLoginForm() {
+    /* Displays login form on main route */
+    loginBtnListener() {
+        this.scclGlobalService.subscribe('login-btn', (e) => {
+            this.displayLogin('login');
+        })
+    }
+
+    displayLogin(path: string) {
+        this._route.navigate([path]);
+    }
+
+    getFormElements() {
         return [
             {
                 formElements: [
@@ -69,15 +73,7 @@ export class ScclLoginService {
     }
 
     private notifyUserIsLoggedIn(tc_u) {
-        console.log('Login checking');
         localStorage.setItem(scclContants.usr_key, tc_u);
         localStorage.setItem('isLoggedIn', 'loggedIn');
     }
-
-    loadLoginComponentOnSmallScreen() {
-        this.scclGlobalService.subscribe('login-btn', (e) => {
-            this._route.navigate(['login']);
-        })
-    }
-
 }

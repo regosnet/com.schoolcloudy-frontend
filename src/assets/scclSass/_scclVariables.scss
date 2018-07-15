@@ -1,6 +1,7 @@
 
 $font-size: 1em;
 $font-weight: 600;
+$font-sm-size: $font-size - .2;
 
 $breakpoints: (
   'xs':  $small-screen-up - 200,
