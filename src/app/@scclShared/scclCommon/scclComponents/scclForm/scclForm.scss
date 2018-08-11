@@ -4,7 +4,10 @@
 @mixin sccl-form($theme) {
 	$_2nd-color: map-get($theme, 'sccl-secondary'); 
 	$foreColor: map-get($theme, 'sccl-form-primary-deep-darken');
+<<<<<<< HEAD
 	$_2nd-bgColor: map-get($theme, 'sccl-default-secondary-button-bg');
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 	> div {
 		sccl-card {
 			@include sccl-card($theme);
@@ -21,6 +24,7 @@
 					input {
 						border-bottom: $sccl-form-input-border solid map-get($theme, 'sccl-form-text-darken');
 						font-size: $font-size + .3;
+<<<<<<< HEAD
 						margin-bottom: 10%;
 						height: 30px;
 						color: white;
@@ -32,13 +36,31 @@
      					position: absolute;
 						top: 9px;
 						left: 3%; 
+=======
+						margin-bottom: 30px;
+						height: 30px;
+						color: white;
+						padding-left:  24px;//**
+						width: 93%; //**
+					}
+					> i {
+     					color: map-get($theme, 'sccl-default-secondary-button-bg');
+     					font-size: $font-size + .7;
+     					position: absolute;
+						top: 9px;
+						left: -2px; 
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
    					}
 				}
 		 		.input-field input[type] + label {
 		 			line-height: 20px;
 		 			height: 30px;
     			 	color: map-get($theme, 'sccl-form-text-darken');
+<<<<<<< HEAD
     			 	padding-left: 7%; //**
+=======
+    			 	padding-left:  24px; //**
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
    				}
    				.input-field input[type]:focus + label {
      				color: $_2nd-color;
@@ -54,7 +76,13 @@
    			
    				.form-action {
 					sccl-button-b {
+<<<<<<< HEAD
 						@include sccl-button-b($_2nd-bgColor, white, $sccl-button-height + 20);
+=======
+						@include sccl-button-b(
+						$theme, map-get($theme, 'sccl-default-secondary-button-bg'), white, $sccl-button-height + 20, 0,
+						$sccl-button-padding-y, 0, 0, 100%);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 					}
 				}	
    				

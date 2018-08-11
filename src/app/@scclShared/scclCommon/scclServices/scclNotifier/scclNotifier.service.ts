@@ -3,7 +3,11 @@ import { IScclInstantMessage, IScclNotificationMessage, IScclInboxMessage } from
 
 
 @Injectable()
+<<<<<<< HEAD:src/app/@scclShared/scclCommon/scclServices/scclNotifier/scclNotifier.service.ts
 export class ScclNotifierService {
+=======
+export class ScclMessageService {
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904:src/app/@scclShared/scclCommon/scclServices/scclMessage/scclMessage.service.ts
     instantMessages: IScclInstantMessage[];
     notificationMessages: IScclNotificationMessage[];
     inboxMessages: IScclInboxMessage[];
@@ -198,7 +202,10 @@ export class ScclNotifierService {
                             },
                             text: 'Thank  you for the reply',
                             time: '6 mins ago',
+<<<<<<< HEAD:src/app/@scclShared/scclCommon/scclServices/scclNotifier/scclNotifier.service.ts
                             title: 'Message received!',
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904:src/app/@scclShared/scclCommon/scclServices/scclMessage/scclMessage.service.ts
                             typeIcon: '',
                             isRead: true,
                             route: this.notification_messages_route
@@ -210,7 +217,10 @@ export class ScclNotifierService {
                             },
                             text: 'Hello Administrator, please could tell me what documents...',
                             time: '6 mins ago',
+<<<<<<< HEAD:src/app/@scclShared/scclCommon/scclServices/scclNotifier/scclNotifier.service.ts
                             title: 'Document Information',
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904:src/app/@scclShared/scclCommon/scclServices/scclMessage/scclMessage.service.ts
                             typeIcon: '',
                             isRead: true,
                             route: this.notification_messages_route
@@ -219,7 +229,12 @@ export class ScclNotifierService {
                         {
                             sender: {
                                 firstName: 'Nick',
+<<<<<<< HEAD:src/app/@scclShared/scclCommon/scclServices/scclNotifier/scclNotifier.service.ts
                                 lastName: ' Matthew'
+=======
+                                lastName: ' Matthew',
+                                username: 'nick.matthew'
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904:src/app/@scclShared/scclCommon/scclServices/scclMessage/scclMessage.service.ts
                             },
                             text: 'I would like to inform you about the freshers form...',
                             title: 'New Students',
@@ -236,7 +251,11 @@ export class ScclNotifierService {
                             text: 'Thank  you for the reply',
                             title: 'Confirmation',
                             time: '6 mins ago',
+<<<<<<< HEAD:src/app/@scclShared/scclCommon/scclServices/scclNotifier/scclNotifier.service.ts
                             typeIcon: 'fa fa-envelope',
+=======
+                            typeIcon: '',
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904:src/app/@scclShared/scclCommon/scclServices/scclMessage/scclMessage.service.ts
                             isRead: false,
                             route: this.notification_messages_route
                         },

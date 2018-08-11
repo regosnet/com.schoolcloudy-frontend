@@ -43,6 +43,7 @@
 	"see_all": "See All",
 	"settings": "Settings",
 	"menu": "Menu",
+<<<<<<< HEAD
 	"schedule": "Schedule",
 	"todos": "Todos",
 	"minimize": "Minimize",
@@ -50,6 +51,9 @@
 	"exit_fullscreen": "Exit Fullscreen",
 	"notifications": "Notifications",
 	"sign_out": "Sign out",
+=======
+	"myschedule": "My Schedule",
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
   	"languages":{
   		"title": "languages",
   		"en": "English",
@@ -102,6 +106,10 @@
 	 "message": {
 	 	"instant": "Messages",
 	 	"inbox": "Inbox",
+<<<<<<< HEAD
+=======
+	 	"notification": "Notifications",
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		 "mark_all_read": "Mark All as Read",
 		 "see_all": "See All"
 	 }

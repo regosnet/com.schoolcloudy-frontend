@@ -13,10 +13,14 @@ export class ScclLanguageService {
                  {title: 'Arabic',  icon: 'eg', value: 'ar'}
              ];
     _opts = [];
+<<<<<<< HEAD
     constructor(private scclGlobalService: ScclGlobalService,
                 private translate: TranslateService) {
         this.translate.use('en');
         console.log('hello')
+=======
+    constructor(private scclGlobalService: ScclGlobalService) {
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 
     getLanguageOptions() {

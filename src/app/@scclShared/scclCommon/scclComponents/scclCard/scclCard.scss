@@ -1,13 +1,24 @@
 @mixin sccl-card($theme) {
 	.card {
+<<<<<<< HEAD
 		background: map-get($theme, 'sccl-card-primary');		
 		margin: 0; padding: 0;
 		padding-bottom: 7%;
+=======
+		background: map-get($theme, 'sccl-card-primary');
+		margin: 0; padding: 0;
+		@include border-radius($border-radius);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		> .card-content {
 			margin: 0; padding: 0;
 			> .card-header > div  {
 				height: $head-height;
 				text-transform: uppercase;
+<<<<<<< HEAD
+=======
+				background: map-get($theme, 'sccl-card-primary-darken');
+				@include border-radius($border-radius, $border-radius, 0, 0);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 				> .card-title {
 					font-weight: $font-weight;
 					font-size: $font-size;

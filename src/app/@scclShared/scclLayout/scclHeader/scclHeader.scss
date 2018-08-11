@@ -10,9 +10,13 @@
 		.nav-wrapper {
 			background: map-get($theme, 'sccl-header-primary');
 			@include sccl-top-head($theme);
+<<<<<<< HEAD
 			sccl-mid-head {
 				@include sccl-mid-head($theme);
 			}
+=======
+			@include sccl-mid-head($theme);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		}
 	}
 } 

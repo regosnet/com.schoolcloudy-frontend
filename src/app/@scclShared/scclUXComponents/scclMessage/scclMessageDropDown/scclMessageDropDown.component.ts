@@ -1,9 +1,13 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IScclInboxMessage, IScclNotificationMessage, IScclInstantMessage } from '../scclMessageModel';
 import { ScclGlobalService } from '../../../scclCommon/scclServices';
+<<<<<<< HEAD
 import { IScclDropDownMenu } from '../../../../scclModels/scclComponents/scclDropDownMenu';
 
 declare var $: any;
+=======
+import { IScclDropDownMenu, IScclDropDownMenuItemsContainer } from '../../../../scclModels/scclComponents/scclDropDownMenu/index.';
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 @Component({
     selector: 'sccl-message-drop-down',
@@ -12,11 +16,20 @@ declare var $: any;
 })
 export class ScclMessageDropDownComponent implements OnChanges, OnInit {
   /* message content are loaded asynchronosly in these boxes */
+<<<<<<< HEAD
     dropDownMenuConfig: IScclDropDownMenu;
     constructor(private scclGlobalService: ScclGlobalService) {
         this.scclGlobalService.subscribe('message.notification', (res) => {
            setTimeout(() => {
             this.dropDownMenuConfig.itemsContainer = [
+=======
+    dropDownMenuConfig: IScclDropDownMenu[];
+    constructor(private scclGlobalService: ScclGlobalService) {
+        this.scclGlobalService.subscribe('message.notification', (res) => {
+           setTimeout(() => {
+            this.dropDownMenuConfig.forEach((data) => {
+                data.itemsContainer = [
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
                  {
                      sender: {
                          firstName: 'Eric',
@@ -90,7 +103,11 @@ export class ScclMessageDropDownComponent implements OnChanges, OnInit {
                     route: '/inbox'
                 },
             ];
+<<<<<<< HEAD
          
+=======
+            });
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
            }, 5000);
         });
     }
@@ -102,8 +119,13 @@ export class ScclMessageDropDownComponent implements OnChanges, OnInit {
     ngOnChanges(): void {
     }
 
+<<<<<<< HEAD
     getMessageMenuConfig(): IScclDropDownMenu {
         return {
+=======
+    getMessageMenuConfig(): IScclDropDownMenu[] {
+        return [{
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
             header: [
                 {
                     title: 'sccl.message.notification',
@@ -129,6 +151,7 @@ export class ScclMessageDropDownComponent implements OnChanges, OnInit {
                     route: '/notifications'
                 }
             ],
+<<<<<<< HEAD
             trigger: {
                 title: 'sccl.message.notification',
                 class: 'notification-dropdown-menu-button',
@@ -143,6 +166,17 @@ export class ScclMessageDropDownComponent implements OnChanges, OnInit {
                 }
             }
         };
+=======
+            buttonConfigs: {
+                title: 'sccl.message.notification',
+                icon: 'notifications',
+                data_activates: 'dd-notification-menu',
+                tool_tip: {
+                    data_placement: 'bottom',
+                }
+            }
+        }];
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 }
 

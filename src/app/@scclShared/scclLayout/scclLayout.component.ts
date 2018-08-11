@@ -4,14 +4,18 @@ import { scclContants } from '../scclCommon/scclContants/sccl.constants';
 import { ScclLayoutService } from './scclLayoutServices/scclLayout.service';
 import { IScclBody, IScclHeader, IScclLayout } from '../../scclModels';
 import { IScclButton } from '../../scclModels/scclComponents';
+<<<<<<< HEAD
 import { IScclTechnicalPanel } from '../../scclModels/scclLayout/scclTechnicalPanel';
 declare var $:any;
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 @Component({
     selector: 'sccl-layout',
     templateUrl: './scclLayout.html',
     styleUrls: ['./scclLayout.scss'],
 })
+<<<<<<< HEAD
 export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
     isLoggedIn: boolean;
     scclTheme: string;
@@ -21,6 +25,16 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
     bodyConfig: IScclBody;
     technicalPanel: IScclTechnicalPanel;
     footer;
+=======
+export class ScclLayoutComponent implements AfterViewInit, OnInit {
+    height: number;
+    resizeWidth: boolean;
+    isTechnicalPanelSlideIn: boolean;
+    bodyConfig: IScclBody;
+    headConfig: IScclHeader;
+    scclTheme = 'sccl-default-theme';
+    slideOutBtn: IScclButton;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
     constructor(private scclGlobalService: ScclGlobalService,
                 private scclLayoutService: ScclLayoutService,
@@ -28,17 +42,28 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
         this.initializeModuleConfigurations();
     }
     ngOnInit(): void {
+<<<<<<< HEAD
         this.setHeightOnWindowResize();
+=======
+        this.setLayoutHeight();
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 
     ngAfterViewInit() {
         this.scclGlobalService.subscribe('selected.theme', (theme) => {
            this.scclTheme = this.switchTheme(theme);
         });
+<<<<<<< HEAD
         this.scclGlobalService.subscribe('isLoggedIn', (isLoggedIn) => {
             this.isLoggedIn = isLoggedIn;
             this.cdRef.detectChanges();
          });
+=======
+
+        this.scclGlobalService.subscribe('isSlideIn', (position) => {
+            this.isTechnicalPanelSlideIn = position.isSlideIn;
+        });
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 
     switchTheme(theme) {
@@ -55,6 +80,7 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
         return this.scclTheme;
     }
 
+<<<<<<< HEAD
 
     initializeModuleConfigurations() {
         this.scclGlobalService.subscribe('module.configurations', (configs: IScclLayout) => {
@@ -78,4 +104,25 @@ export class ScclLayoutComponent implements IScclLayout, AfterViewInit, OnInit {
         console.log(evnt);
     }
     
+=======
+    setLayoutHeight() {
+        this.scclGlobalService.subscribe('screen-dimension', (dimension) => {
+            this.height = dimension.height;
+            this.cdRef.detectChanges();
+        });
+    }
+
+    togglePanel() {
+        this.scclLayoutService.panelSlideToggle();
+    }
+
+    initializeModuleConfigurations() {
+        this.scclGlobalService.subscribe('module.configurations', (configs: IScclLayout) => {
+            this.headConfig = configs.headerConfig;
+            this.bodyConfig = configs.bodyConfig;
+        });
+    }
+
+    closePanel() {}
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 }

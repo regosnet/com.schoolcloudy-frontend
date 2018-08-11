@@ -1,5 +1,6 @@
 
 $font-size: 1em;
+<<<<<<< HEAD
 $font-weight: 600;
 $font-sm-size: $font-size - .2;
 
@@ -17,6 +18,9 @@ $breakpoints-default-feature: min-width;
 
 //======= IMAGE PATH =========
 $logoPath: "/assets/scclgraphics/scclLogo/sccl_logo_sm.png";
+=======
+$font-weight: 400;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 
 //======= GENERIC VARIABLES =========
@@ -37,7 +41,10 @@ $z-index: 1;
 
 //======= SIDE BARS ==================
 $sidebar-width: 250px;
+<<<<<<< HEAD
 $sidebar-padding: 0;
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 $sidebar-font-size: $font-size;
 $sidebar-font-size-sm: $sidebar-font-size - .1;
 $sidebar-collapse-width: $sidebar-width - 170;
@@ -45,9 +52,17 @@ $sidebar-collapse-width: $sidebar-width - 170;
 //======= SCCL HEADER ==================
     $header-z-index: $z-index;
     //======= MAIN HEAD =======================
+<<<<<<< HEAD
     $sccl-main-head-height: 45px;
     $sccl-main-head-min-height: 30px;
     //======= TOP HEAD ======================
+=======
+    $sccl-main-head-height: 55px;
+    $sccl-main-head-min-height: 30px;
+    //======= TOP HEAD ======================
+    //======= FOOT HEAD ======================
+    $foot-head-height: $height;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 //======= HOME PANELS ================
 $max-width: $width + 340;
@@ -70,11 +85,27 @@ $sccl-form-input-border: $sccl-border;
 //======= SCCL CARDS ===============
 $head-height: $height + 12;
 
+<<<<<<< HEAD
+=======
+//======= DROP DOWN MENU  (default settings suite only for the user drop down menu)=============
+$dd-menu-height: 50px;
+$dd-menu-line-height: $dd-menu-height;
+$dd-menu-min-height: $dd-menu-height - 20;
+$dd-menu-width: 20px;
+$dd-menu-width: 20px;
+$dd-menu-x-pos: 0px;
+$dd-menu-y-pos: 54px;
+$dd-menu-font-size: $font-size; 
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 //======= CARET (default settings suite only for the user drop down menu) =============
 $caret-x-pos: 15px;
 $caret-y-pos: -35px;
 $caret-content:$fa-var-caret-up;
+<<<<<<< HEAD
+=======
+$caret-color: green;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 $caret-size: 35px;
 
 //======= SCCL TAB ===============
@@ -86,7 +117,11 @@ $sccl-select-input-border: $sccl-border;
 $sccl-select-items-height: 300px;
 
 //======= SCCL TECHNICAL PANEL ==================
+<<<<<<< HEAD
 $tpanel-z-index: $z-index + 1;
 
 //======= SCCL BODY ==================
 $bodyWidth: 45%;
+=======
+$tpanel-z-index: $z-index + 1;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904

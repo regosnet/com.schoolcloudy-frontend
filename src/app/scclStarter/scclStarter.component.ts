@@ -1,8 +1,12 @@
 import {
     Component,
     AfterViewInit,
+<<<<<<< HEAD
     OnInit,
     ChangeDetectorRef
+=======
+    OnInit
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 } from '@angular/core';
 import {
     SCCL_STARTER_CONFIG
@@ -20,6 +24,9 @@ export class ScclStarterComponent implements OnInit {
     }
 
     ngOnInit(): void {
+<<<<<<< HEAD
         this.scclStarterService.notifyUserStatus();
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 }

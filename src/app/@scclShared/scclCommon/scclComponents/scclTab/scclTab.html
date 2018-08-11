@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="col s12 tab-head-wrapper">
 			<ul class="tabs">
+<<<<<<< HEAD
 				<ng-container *ngFor="let tabh of tab.tabHeader">
 					<li class="tab col {{tabh.class}}">
 						<a #th href="#{{tabh.ref}}" id="{{tabh.id}}">
@@ -14,11 +15,46 @@
 			[scclTabBody]=tb #tb 
 			[scclTabComponent]=tab.tabComponent
 			[scclScrollbar]=tb
+=======
+				<li *ngFor="let tabh of tab.tabHeader" class="tab col {{tabh.class}}">
+					<a #th href="#{{tabh.ref}}" id="{{tabh.id}}">
+					{{tabh.title | translate}}</a>
+				</li>
+			</ul>
+		</div>
+		<div 
+			[ngStyle]="{'height': (winHeight - tab.tabHeight) + 'px'}" [scclTabBody]=tb #tb [scclTabComponent]=tab.tabComponent
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 			*ngFor="let tabb of tab.tabBody" id="{{tabb.id}}"
 			class="col s12 tab-body-wrapper {{tabb.class}}">
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 <!--
 	[scclScrollbar]=tb initializes the scrollbar (see configuration in scclScrollbar.directive.ts)
+=======
+
+<!--
+
+<div class="tab-wrapper" *ngIf="tab !== undefined">
+	<div class="row">
+		<div class="col s12 tab-head-wrapper">
+			<ul class="tabs">
+				<li *ngFor="let tabh of tab.tabHeader" class="tab col {{tabh.class}}">
+					<a [scclTabHead]=th #th href="#{{tabh.ref}}" id="{{tabh.id}}">
+					{{tabh.title | translate}}</a>
+				</li>
+			</ul>
+		</div>
+		<div 
+			[ngStyle]="{'height': (winHeight - tab.tabHeight) + 'px'}" [scclTabBody]=tb #tb
+			*ngFor="let tabb of tab.tabBody" id="{{tabb.id}}"
+			class="col s12 tab-body-wrapper {{tabb.class}}">
+
+			<router-outlet [attr.name]="tabb.id"></router-outlet>
+		</div>
+	</div>
+</div>
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 -->

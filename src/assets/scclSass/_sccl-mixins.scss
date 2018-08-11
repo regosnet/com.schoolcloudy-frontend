@@ -71,14 +71,26 @@
 	}
 }
 
+<<<<<<< HEAD
 @mixin sccl-caret() {
 	font-family: FontAwesome;
 	position: absolute;
 	@content
+=======
+@mixin sccl-caret($x-pos, $y-pos, $content, $color, $size){
+	content: $content;
+	font-family: FontAwesome;
+	position: absolute;
+	color: $color;
+	font-size: $size;
+	top: $y-pos;
+	right: $x-pos;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 }
 
 @mixin sccl-round-b-btn($theme) {
 	background: map-get($theme, 'sccl-header-secondary') !important;
+<<<<<<< HEAD
 	width: 3em;
 	height: 3em;
 	border-radius: 50%;
@@ -118,3 +130,14 @@
 	}
 }
 
+=======
+	width: 26px;
+	height: 26px;
+	> i.material-icons {
+		height: 22px;
+		line-height: 26px;
+		font-size: 18px;
+		color: map-get($theme, 'sccl-button-white');
+	}		
+}
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904

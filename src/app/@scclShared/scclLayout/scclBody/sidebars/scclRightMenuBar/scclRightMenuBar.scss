@@ -1,4 +1,5 @@
 @import '../../../../scclCommon/scclComponents/scclTab/scclTab';
+<<<<<<< HEAD
 @import '../sccl-sidebar-mixins';
 
 @mixin sccl-right-menu-bar($theme){
@@ -29,6 +30,12 @@
 					@include sccl-login($theme);
 				}
 			}
+=======
+@mixin sccl-right-menu-bar($theme){
+	> div {
+		sccl-tab {
+			@include sccl-tab($theme);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		}
 	}
 }

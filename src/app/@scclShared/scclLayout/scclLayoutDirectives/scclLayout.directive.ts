@@ -1,12 +1,31 @@
-import { Directive, HostListener } from '@angular/core';
-
+import { Directive, HostListener, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ScclLayoutService } from '../scclLayoutServices/scclLayout.service';
+import { ScclGlobalService } from '../../scclCommon/scclServices';
 
 @Directive({
-    selector: '[scclLayout]'
+    selector: '[scclLayoutDirective]'
 })
 export class ScclLayoutDirective {
 
 
-    constructor() {
+    constructor(private scclLayoutService: ScclLayoutService,
+      private scclGlobalService: ScclGlobalService) {
+    }
+
+    @HostListener('window:resize')
+    setHeightOnWindowResize() {
+        this.scclLayoutService.notifyScreenDimensionChanged();
+    }
+
+    @HostListener('window:scroll', ['$event'])
+    onScroll(event) {
+        /*if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
+            document.getElementById('navbar-onscroll').style.top = '0';
+            this.scclGlobalService.notifyDataChanged('isSticky', true);
+        }else {
+            document.getElementById('navbar-onscroll').style.top = '-35px';
+            this.scclGlobalService.notifyDataChanged('isSticky', false);
+        }*/
     }
 }

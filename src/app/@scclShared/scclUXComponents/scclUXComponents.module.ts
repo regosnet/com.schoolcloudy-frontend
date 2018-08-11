@@ -50,7 +50,11 @@ export class ScclUXComponentsModule {
         return <ModuleWithProviders> {
           ngModule: ScclUXComponentsModule,
           providers: [
+<<<<<<< HEAD
                SCCL_SHARED_SERVICE
+=======
+               SCCL_SHARED_SERVICE,
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
           ],
         };
       }

@@ -11,11 +11,17 @@ import { ScclAdmininstratorService } from './scclAdministrator.service';
 export class ScclAdministratorComponent implements OnInit, AfterViewInit {
 
     constructor(private scclAdmininstratorService: ScclAdmininstratorService) {
+<<<<<<< HEAD
         this.scclAdmininstratorService.notifyUserStatus();
     }
 
     ngOnInit() {
         
+=======
+    }
+
+    ngOnInit() {
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 
     ngAfterViewInit(): void {

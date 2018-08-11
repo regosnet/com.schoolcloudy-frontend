@@ -26,6 +26,7 @@
 				}
 			}
 			@media #{$medium-and-down} {
+<<<<<<< HEAD
     			> div.nav-wrapper {
 					@include display-flex(space-between, none);
 					>div.sccl-logo {
@@ -36,11 +37,22 @@
 						display: none;
 					}
 				}	
+=======
+    				
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 			}
 		  @media #{$small-and-down} {	
 			> div.nav-wrapper {
 				@include display-flex(space-between, none);
+<<<<<<< HEAD
 				>div.session {
+=======
+				>div.sccl-logo {
+					display: block;
+					@include logo-image()
+				}
+				>div.session, div.last-login {
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 					display: none;
 				}
 			}

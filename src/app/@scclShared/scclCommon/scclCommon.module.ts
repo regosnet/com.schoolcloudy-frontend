@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import 'hammerjs';
+<<<<<<< HEAD
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromEvent';
@@ -14,6 +15,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 import {
     MalihuScrollbarModule,
@@ -29,6 +32,7 @@ import {
 
 import {
     ScclAuthenticationService,
+<<<<<<< HEAD
     ScclGlobalService,
     ScclAuthGuard,
     ScclPanelTogglerService,
@@ -39,11 +43,17 @@ import {
     ScclScrollbar,
     ScclScrollbarDirective,
     ScclScreenDimensionResolverDirective
+=======
+    ScclMessageService,
+    ScclGlobalService,
+    ScclAuthGuard
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 } from './scclServices';
 
 import {
     ScclCardComponent,
     ScclDropDownMenuComponent,
+<<<<<<< HEAD
     ScclMenuComponent,
     ScclFormComponent,
     ScclTabComponent,
@@ -52,15 +62,28 @@ import {
     ScclDropDownMenuDirective,
     ScclTabFilter,
     Menu
+=======
+    ScclAButtonComponent,
+    ScclCollapsibleComponent,
+    ScclFormComponent,
+    ScclTabComponent,
+    ScclSelectComponent,
+    ScclTabDirective
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 } from './scclComponents';
 
 import {
     ScclSlimScrollDirective,
+<<<<<<< HEAD
+=======
+    ScclCollapsibleDirective,
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     ScclSelectDirective,
     ScclHeaderDirective
 } from './scclDirectives';
 import { ScclTranslationModule } from '../scclLayout/scclTechnicalPanel/scclSettings/scclLanguage/translator/scclTranslatingModule';
 import { ScclButtonBComponent } from './scclComponents/scclButtons/scclButtonB';
+<<<<<<< HEAD
 import { ScclFooterComponent } from '../scclLayout/scclFooter';
 import { ScclLinkButtonComponent } from './scclComponents/scclButtons/scclLinkButton';
 import {
@@ -68,6 +91,9 @@ import {
     ScclComponentViewResolverService
 } from './scclServices/scclComponentViewResolver';
 import { ScclMenuDirective } from './scclDirectives/scclMenu';
+=======
+
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 
 
 
@@ -75,16 +101,23 @@ const SCCL_SHARED_SERVICE =
     [
      MalihuScrollbarService,
      ScclAuthenticationService,
+<<<<<<< HEAD
      ScclNotifierService,
      ScclGlobalService,
      ScclAuthGuard,
      ScclPanelToggler,
      {provide: ScclScrollbarSerivce, useClass: ScclScrollbar},
      {provide: ScclComponentViewResolverService, useClass: ScclComponentViewResolver}
+=======
+     ScclMessageService,
+     ScclGlobalService,
+     ScclAuthGuard
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
      ];
 
 const SCCL_DIRECTIVES =
     [
+<<<<<<< HEAD
      ScclSelectDirective,
      ScclHeaderDirective,
      ScclTabDirective,
@@ -93,20 +126,34 @@ const SCCL_DIRECTIVES =
      ScclToolTipDirective,
      ScclScrollbarDirective,
      ScclScreenDimensionResolverDirective
+=======
+     ScclCollapsibleDirective,
+     ScclSelectDirective,
+     ScclHeaderDirective,
+     ScclTabDirective
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
      ];
 
 const SCCL_COMPONENTS =
     [ScclCardComponent,
      ScclDropDownMenuComponent,
+<<<<<<< HEAD
      ScclLinkButtonComponent,
+=======
+     ScclAButtonComponent,
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
      ScclButtonBComponent,
      ScclSlimScrollDirective,
      ScclFormComponent,
      ScclMenuComponent,
      ScclTabComponent,
      ScclSelectComponent,
+<<<<<<< HEAD
      ScclFooterComponent,
      Menu
+=======
+
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
      ];
 
 const SCCL_PIPES =

@@ -16,7 +16,11 @@ export class ScclLoginComponent implements AfterViewInit, OnInit {
     constructor(protected scclLoginService?: ScclLoginService) {}
 
     ngOnInit(): void {
+<<<<<<< HEAD
         this.loginFormConfig = this.scclLoginService.getFormElements();
+=======
+        this.loginFormConfig = this.scclLoginService.displayLoginForm();
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 
     ngAfterViewInit(): void {

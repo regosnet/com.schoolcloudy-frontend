@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { IScclComponentState } from '..';
 
 export interface IScclButton {
@@ -39,5 +40,16 @@ export interface IButton {
         position?: string,
         title?: string,
         html?: boolean
+=======
+export interface IScclButton {
+    title?: string;
+    icon?: string;
+    id?: string;
+    class?: string;
+    data_activates?: string;
+    tool_tip?: {
+        title?: string;
+        data_placement?: string
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     };
 }

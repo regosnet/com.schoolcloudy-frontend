@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { ScclGlobalService, ScclNotifierService } from '../@scclShared/scclCommon/scclServices';
+=======
+import { ScclGlobalService, ScclMessageService } from '../@scclShared/scclCommon/scclServices';
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 import { SCCL_ADMINISTRATOR_CONFIG } from './scclAdministrator.configuration';
 import { ScclLayoutService } from '../@scclShared/scclLayout/scclLayoutServices/scclLayout.service';
 import { IScclUser } from '../scclModels';
@@ -7,10 +11,16 @@ import { IScclUser } from '../scclModels';
 @Injectable()
 export class ScclAdmininstratorService {
 
+<<<<<<< HEAD
     constructor(
         private scclGlobalService: ScclGlobalService,
         private scclLayoutService: ScclLayoutService,
         private scclNotifier: ScclNotifierService) {
+=======
+    constructor(private scclGlobalService: ScclGlobalService,
+                private scclLayoutService: ScclLayoutService,
+                private scclMessageService: ScclMessageService) {
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
                     this.initializeModuleConfigurations();
         this.setCurrentUser();
         this.getUserMessages();
@@ -18,6 +28,10 @@ export class ScclAdmininstratorService {
 
 
     private setCurrentUser() {
+<<<<<<< HEAD
+=======
+        this.scclGlobalService.notifyDataChanged('isLoggedIn', true);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
         this.scclGlobalService.notifyDataChanged('isUser', this.getUser());
     }
 
@@ -33,15 +47,22 @@ export class ScclAdmininstratorService {
     }
 
     getUserMessages() {
+<<<<<<< HEAD
         setTimeout(() => {
             this.scclNotifier.getAllNotification().forEach((msg) => {
                 this.getNotificationContainer().push(msg);
             });
         }, 5000);
+=======
+        this.scclGlobalService.notifyDataChanged('message.instant', this.scclMessageService.getInstantMessages());
+        this.scclGlobalService.notifyDataChanged('message.notification', this.scclMessageService.getNotificationMessages());
+        this.scclGlobalService.notifyDataChanged('message.inbox', this.scclMessageService.getInboxMessages());
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 
     setPageTitle(pageTitle) {
         this.scclLayoutService.setPageTitle(pageTitle);
+<<<<<<< HEAD
     }
 
     notifyUserStatus() {
@@ -54,6 +75,8 @@ export class ScclAdmininstratorService {
                 .mainHeadConfig
                 .notifierConfig
                 .itemsContainer;
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     }
 /*
     public getAdministrator() {

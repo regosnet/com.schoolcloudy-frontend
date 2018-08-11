@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="left-menu-bar" class="default"
   [ngClass]="{'logged-in': isLoggedIn}">
 
@@ -17,3 +18,40 @@
     </sccl-footer>
   </div>
 </div>
+=======
+<div id="left-menu-bar" [ngClass]="{'logged-in': isLoggedIn, 'collapseMenubar': isCollapsed}"> 
+	<ul class="collapsible" data-collapsible="accordion" [ngStyle]="{'height': menuBarHeight + 'px'}">
+    <li *ngFor="let item of sidebarConfig?.menuBarItems">
+      <div *ngIf="!item.children" class="collapsible-header" 
+          [routerLink]="[item.route]" 
+          routerLinkActive="disabled" 
+          #link [routerLinkActiveOptions]="{exact: true}">
+        <i *ngIf="item.icon" class="material-icons">{{item.icon}}</i>
+        <span>{{item.title | translate | uppercase}}</span>
+      </div>
+      <div *ngIf="item.children" class="collapsible-header">
+        <i class="material-icons">{{item.icon}}</i>
+        <span>{{item.title | translate | uppercase}}</span>
+      </div>
+      <div *ngIf="item.children" class="collapsible-body" routerLinkActive="disabled">
+        <div *ngFor="let childitem of item.children" 
+          [routerLink]="[childitem.route]" 
+          routerLinkActive="disabled" 
+          #link [routerLinkActiveOptions]="{exact: true}">
+          <span>{{childitem.title | translate | uppercase}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>  
+</div>
+
+<div id="resolved-component-left"></div>
+
+<!--
+ <li>
+      <div class="collapsible-header"  [routerLink]="['../gallery']" (click)="changeRoute('settings')" routerLinkActive="disabled"><i class="material-icons">filter_drama</i>
+        <span>Settings</span>
+      </div>
+    </li>
+-->
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904

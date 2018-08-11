@@ -13,11 +13,19 @@ declare var $: any;
     styleUrls: ['./scclHeader.scss']
 })
 export class ScclHeaderComponent implements AfterViewInit, OnInit, OnChanges {
+<<<<<<< HEAD
     @Input() isLoggedIn: Boolean;
     @Input() headConfig: IScclHeader;
     mainHeadConfig: IScclMainHeadbar;
     topHeadConfig;
     
+=======
+    isLoggedIn: Boolean;
+    @Input()
+    headConfig: IScclHeader;
+    mainHeadConfig: IScclMainHeadbar;
+    topHeadConfig;
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     ngOnInit(): void {
     }
 
@@ -28,6 +36,7 @@ export class ScclHeaderComponent implements AfterViewInit, OnInit, OnChanges {
     }
 
     ngAfterViewInit(): void {
+<<<<<<< HEAD
     }
 
     ngOnChanges(): void {
@@ -35,4 +44,16 @@ export class ScclHeaderComponent implements AfterViewInit, OnInit, OnChanges {
             this.mainHeadConfig = this.headConfig.mainHeadConfig;
         }
     }
+=======
+        this.scclGlobalService.subscribe('isLoggedIn', (isLoggedIn) => {
+            this.isLoggedIn = isLoggedIn;
+       });
+    }
+
+    ngOnChanges(): void {
+        if (this.headConfig !== undefined) {
+            this.mainHeadConfig = this.headConfig.mainHeadConfig;
+        }
+    }
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 }

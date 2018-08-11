@@ -1,5 +1,6 @@
 @import '../../@scclShared/scclCommon/scclComponents/scclForm/scclForm';
 
+<<<<<<< HEAD
 // 'sccl-login' mixin is included in 'scclRightMenuBar.scss' file.
 @mixin sccl-login($theme) {
 	> div#sccl-login {
@@ -10,6 +11,18 @@
 		}
 		@include respond-to(lg) {
 			margin: 0;
+=======
+@mixin sccl-login($theme) {
+	padding-right:  0%;
+	sccl-form {
+		@include sccl-form($theme);
+		> div {
+			width: 300px;
+			height: 350px;
+			@media screen and (max-width: 1136px) {
+				width: 250px;
+			}
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		}
 	}
 }

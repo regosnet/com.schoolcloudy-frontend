@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div 
     id="right-menu-bar" class="default"
     [ngClass]="{'logged-in': isLoggedIn}" 
@@ -32,3 +33,12 @@
 
     
 -->
+=======
+<div *ngIf="sidebarConfig?.menuBarItems" id="right-menu-bar" [ngStyle]="{'height': menuBarHeight + 'px'}">
+    <sccl-tab [tab]="scclTab"></sccl-tab>
+</div>
+<div *ngIf="sidebarConfig?.resolvedComponent" 
+     id="resolved-component-right" 
+     [scclSidebarComponent]=sidebarConfig?.resolvedComponent.component 
+     [scclSidebar]=sidebar #sidebar></div>
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904

@@ -1,5 +1,6 @@
 @import '../../../../scclCommon/scclComponents/scclDropDownMenu/scclDropDownMenu';
 @import '../../../../scclCommon/scclComponents/scclButtons/scclButtonB/scclButtonB';
+<<<<<<< HEAD
 @import '../../../../scclCommon/scclComponents/scclButtons/scclLinkButton/scclLinkButton';
 
 @mixin sccl-mid-head($theme) {
@@ -63,6 +64,44 @@
 							position: relative;
 							span {
 								color: $secondColor;	
+=======
+@import '../../../../scclUXComponents/scclMessage/scclMessageDropDown/scclMessageDropDown';
+
+@mixin sccl-mid-head($theme) {
+	$secondaryColor: map-get($theme, 'sccl-header-secondary');
+	sccl-mid-head {
+		> nav {
+			min-height: $sccl-main-head-min-height;
+			height: $sccl-main-head-height;
+			>.nav-wrapper {
+				background: map-get($theme, 'sccl-header-primary');
+				@include display-flex(space-between, center);
+				padding: 0 20px;
+				
+				>div#head-left {
+					@include display-flex(none, center);
+					@include flex-width(1);
+					height: $sccl-main-head-height;
+					> div.toggle-sidebar-btn  {
+						sccl-button-b {
+							@include sccl-button-b(
+							$theme, transparent, white, $sccl-main-head-height - 3, 
+							$sccl-button-padding-x + 10, 0, 0, 0,
+							$sccl-button-width + 50);
+						}
+					}
+					.sccl-logo {
+						font-size: 20px;
+						font-weight: bold;
+						margin-left: 9%;
+						height: $sccl-main-head-height - 24;
+						line-height: $sccl-main-head-height - 24;
+						a {
+							text-decoration: none;
+							color: map-get($theme, 'sccl-header-white');
+							span {
+								color: $secondaryColor;	
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 							}
 							&:hover {
 								color: map-get($theme, 'sccl-text-hover');	
@@ -70,6 +109,7 @@
 						}
 						img {
 							width: 25px;
+<<<<<<< HEAD
 							position: absolute;
 							top: -7px;
 							right: -16px;
@@ -133,6 +173,100 @@
 											padding: 0;
 										}
 									}
+=======
+							position: relative;
+							top: -12px;
+							left: -14px;
+						}	
+					}
+	
+					> div.active-page-title {
+						display: none;
+					}
+				} // head-left
+
+				> div#head-right {
+					height: $sccl-main-head-height;
+					@include display-flex(space-between, center);
+					>div.message-drop-down-menu {
+						margin-right: 20px;
+						sccl-message-drop-down {
+							@include sccl-message-drop-down($theme);
+						}
+					}
+					> div.menu-button {
+						height: $sccl-main-head-height;
+						line-height: $sccl-main-head-height;
+						> a#signed-in-menu {
+							height: $sccl-main-head-height;
+							line-height: $sccl-main-head-height;
+							@include display-flex(space-between, none);
+							padding: 0 20px;
+							> .avatar {
+								height: $sccl-main-head-height;
+								margin-right: 5px;
+								> img {
+									width: 45px;
+									height: 45px;
+									position: relative;
+									top: 5px;
+								}	
+							}
+							> .user-name {
+									height: $sccl-main-head-height;
+									line-height: $sccl-main-head-height;
+								> i {
+									padding:0 1px;
+									height: $sccl-main-head-height;
+									line-height: $sccl-main-head-height;
+									color: $secondaryColor;
+								}
+							}	
+						}
+						> a#signed-out-menu {
+							display: none;
+						}
+					}
+					sccl-dropdown-menu {
+						@include sccl-drop-down-menu($theme, 
+						$dd-menu-height,
+						$dd-menu-width, 
+						$dd-menu-x-pos, 
+						$dd-menu-y-pos, 
+						$caret-x-pos, 
+						$caret-y-pos, 
+						$caret-content) 
+					}
+
+					> div.tbar-shortcuts-dd-menu-none {
+						sccl-button-b {
+							@include sccl-button-b(
+							$theme, transparent, white, $sccl-main-head-height - 3, 
+							$sccl-button-padding-x + 10, 0, 0, 0,
+							$sccl-button-width + 50);
+						}
+					}
+				}// head-right
+				 
+				 @media #{$medium-and-down} {
+				 	.sccl-logo {
+						font-size: 19px;
+						img {
+							width: 20px;
+							position: relative;
+							top: -11px;
+							left: -14px;
+						}	
+					}
+				 	.menu-button {
+    					height: 35px;
+    					> a#signed-in-menu {
+    						> .avatar {
+								> img {
+									width: 37px;
+									height: 37px;
+									margin-bottom: -12px;	
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 								}	
 							}
 							> ul {
@@ -147,6 +281,7 @@
 										right: 12px;
 									} 
 								}
+<<<<<<< HEAD
 							}
 						}
 					}
@@ -254,6 +389,47 @@
 					}
 				}
 			}// head-right
+=======
+							}	
+    					}	
+    				}
+  				}
+				 @media #{$small-and-down} {
+    				>div.menu-button {
+    					height: 35px;
+    					> a#signed-in-menu {
+    						> .avatar {
+								> img {
+									width: 35px;
+									height: 35px;
+									margin-bottom: -12px;	
+								}	
+							}
+							> .status {
+								display: none;
+							}	
+						}
+						> a#signed-out-menu {
+							display: block;
+							//@include sccl-round-b-btn($theme);
+						}	
+    				}
+    				.sccl-logo {
+    					>a {
+							display: none;
+						}
+						img {
+							display: none;
+						}	
+					}
+					> div.active-page-title {
+						display: inline-block;
+						height: 35px;
+						line-height: 35px;
+					}
+  				}
+			}
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		}
 	} // NAV
 }

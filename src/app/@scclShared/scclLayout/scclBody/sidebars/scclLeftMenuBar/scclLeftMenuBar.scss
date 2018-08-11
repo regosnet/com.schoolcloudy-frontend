@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import '../../../../scclCommon/scclComponents/scclMenu/scclMenu';
 @import '../sccl-sidebar-mixins';
 
@@ -134,3 +135,127 @@
 	};
 }
 
+=======
+
+@mixin sccl-left-menu-bar($theme) {
+ > div {
+  > ul{
+    background: map-get($theme, 'sccl-sidebar-primary');
+    border: none;
+    margin-top: 0;
+    > li {
+      
+      > div {
+        background: transparent;
+        color: map-get($theme , 'sccl-sidebar-white'); 
+        border: none;
+        font-size: $sidebar-font-size;
+          &.collapsible-header {
+            > span {
+              &:hover{
+                text-decoration: underline;
+                color: map-get($theme, 'sccl-sidebar-secondary');
+              }
+            }
+        }
+        &.disabled {
+          color: map-get($theme, 'sccl-sidebar-secondary') !important;
+          background: map-get($theme , 'sccl-sidebar-primary-darken');
+          border-right: 4px solid map-get($theme, 'sccl-sidebar-secondary');
+          width: 100%;
+          transition: .6s;
+        }
+      }
+      > div.collapsible-body {
+         display: block;
+         background: map-get($theme , 'sccl-sidebar-primary-darken');
+         flex-direction: column;
+         margin: 0;
+         padding: 0;
+         padding-left: 23%;
+         right: 0;
+         font-size: $sidebar-font-size-sm;
+         > div {
+            border-left: 1px map-get($theme , 'sccl-sidebar-primary-lighten') dotted;
+            padding: 2% 9%;
+            margin-top: 1px;
+            &::before {
+               content: $fa-var-circle;
+               font-family: FontAwesome;
+               font-size: 7px;
+               position: relative;
+               top: -2px;
+               left: -20px;
+               color: map-get($theme , 'sccl-sidebar-primary-lighten');
+            }
+         }
+      }
+    }
+  }
+
+  @media #{$medium-and-down} {
+    width: 140px;
+    > ul{
+      width: 140px;
+      >li > div {
+        @include display-flex(flex-end, center);
+        > i{
+          display: none;
+        }
+      }
+    }
+  }
+ }
+  .logged-in {
+    width: $sidebar-width;
+    .disabled {
+        &::after {
+          height: 54.5px; 
+          margin-top: -0.5px;
+        }
+      }
+    > ul {
+      > li {
+      }
+    }
+
+    @media #{$medium-and-down} {
+      > ul {
+        >li > div {
+          > i{
+            display: block;
+          }
+        }
+      }
+    }
+    @media #{$small-and-down} {
+      > ul{
+        >li > div {
+          > i{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .collapseMenubar {
+     > ul {
+      width: 70px;
+      transition: 0.5s;
+      > li {
+        > div {
+          @include display-flex(none, center);
+          flex-direction: column;
+          font-size: $sidebar-font-size-sm - .3;
+          font-weight: 600;
+          > i {
+            margin: 0;
+          }
+          transition: 0.5s;
+        }
+      }
+     }
+  }
+}
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904

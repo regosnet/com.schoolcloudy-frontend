@@ -1,11 +1,42 @@
 @import '../../../scclCommon/scclComponents/scclDropDownMenu/scclDropDownMenu';
 
 @mixin sccl-message-drop-down($theme) {
+<<<<<<< HEAD
    > div {
     > sccl-dropdown-menu   {
         @include sccl-drop-down-menu($theme);
     }
    }
    
+=======
+    > div.message-drop-down-menu-buttons {
+        height: 55px;
+        line-height: 75px;
+        > div {
+            padding-left: 20px;
+        }
+        @include display-flex(flex-end, none);
+        @include flex-width(1);
+        > sccl-dropdown-menu   {
+            &#dd-notification-menu {
+                @include sccl-drop-down-menu($theme, 
+						$dd-menu-height + 6,
+						$dd-menu-width, 
+						$dd-menu-x-pos + 20, 
+						$dd-menu-y-pos, 
+						$caret-x-pos + 9, 
+						$caret-y-pos - 10, 
+						$caret-content) 
+            }
+           /* &#dd-instant-menu {
+               
+            }
+            &#dd-inbox-menu {
+                
+            }*/	
+            width: 500px !important;
+        }
+    }
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 }
 

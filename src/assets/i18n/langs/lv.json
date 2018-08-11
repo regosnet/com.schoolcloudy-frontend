@@ -40,12 +40,16 @@
 	"see_all": "Redzēt visu",
 	"settings": "Iestatījumi",
 	"menu": "Izvēlne",
+<<<<<<< HEAD
 	"schedule": "Grafiks",
 	"todos": "Darāmo",
 	"fullscreen": "Pilnekrāna režīms",
 	"exit_fullscreen": "Iziet pilnekrāna režīmā",
 	"notifications": "Paziņojumi",
 	"sign_out": "Izrakstīties",
+=======
+	"myschedule": "Mans grafiks",
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
   	"languages":{
   		"title": "Valodas",
   		"en": "English",
@@ -97,6 +101,10 @@
 	"message": {
 	 	"instant": "Ziņojumi",
 	 	"inbox": "E-pasts",
+<<<<<<< HEAD
+=======
+	 	"notification": "Paziņojumi",
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 		 "mark_all_read": "Atzīmēt visu kā izlasītu",
 		 "see_all": "Redzēt visu"
 	 }

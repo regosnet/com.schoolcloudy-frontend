@@ -9,7 +9,10 @@ import { ScclLayoutService } from '../../scclLayout/scclLayoutServices/scclLayou
     styleUrls: ['./scclAcademics.scss']
 })
 export class ScclAcademicsComponent {
+<<<<<<< HEAD
     academics = 'Academics';
+=======
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     constructor(private scclLayoutService: ScclLayoutService) {
         this.scclLayoutService.setPageTitle('sccl.academics');
     }

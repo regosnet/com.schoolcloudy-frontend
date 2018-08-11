@@ -3,5 +3,4 @@ export interface IScclTabHeader {
     class: string;
     ref: string;
     id: string;
-    active?: string;
 }

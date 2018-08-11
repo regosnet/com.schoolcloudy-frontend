@@ -9,6 +9,10 @@ import { Subscription } from 'rxjs/Subscription';
 export class ScclPngExtPipe implements PipeTransform {
 
   transform(input: any, ext = 'png'): string {
+<<<<<<< HEAD
+=======
+    console.log(input);
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
     return scclContants.srcUrl.root + input + '.' + ext;
   }
 }

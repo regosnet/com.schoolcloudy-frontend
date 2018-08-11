@@ -1,7 +1,17 @@
 @import './sidebars/scclLeftMenuBar/scclLeftMenuBar';
+<<<<<<< HEAD
+=======
+@import './scclContentSection/scclContentSection';
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
 @import './sidebars/scclRightMenuBar/scclRightMenuBar';
 
 @mixin sccl-body($theme) {
+	sccl-right-menu-bar {
+		@include sccl-right-menu-bar($theme);
+	}
+	sccl-left-menu-bar {
+		@include sccl-left-menu-bar($theme);
+	}
 	$bg: map-get($theme, 'sccl-layout-background');
 	$padding-top: 55px;
 	sccl-right-menu-bar {
@@ -12,6 +22,7 @@
 	}
 	
 	> section {
+<<<<<<< HEAD
 		/* The 'default' css class is active only 
 			when the user is not logged in.
 		*/
@@ -86,3 +97,107 @@
 	}
 }
 
+=======
+		background-color: $bg;
+		>aside {
+			position: fixed;
+			top: 80px;
+			width: 27%;
+		}
+		#main-section-panel{
+			> div {
+				background: map-get($theme, 'sccl-body-primary-lighten');
+			}
+			margin: auto;
+			width: 45%;
+			padding-top: 66px;
+			color: #fff;
+		}
+		> aside#left-side-panel {
+			> div.shift-content-right{
+				float: right;
+			}
+		}
+		> aside#right-side-panel{
+			right: 0;
+		}
+		
+		@media #{$medium-and-down} {
+			> aside#right-side-panel {
+				display: none;
+			}
+			#main-section-panel{
+				width: 60%;
+			}
+			> aside#left-side-panel {
+				width: 19%;
+				> div.shift-content-right{
+					float: right;
+				}
+			}
+		}
+		@media #{$small-and-down} {
+			#main-section-panel{
+				width: 100%;
+			}
+			> aside#left-side-panel {
+				display: none;
+			}
+		}
+	}
+
+	.logged-in {
+		>aside {
+			width: $sidebar-width;
+			border: solid green 1px;
+			font-size: $font-size + .15;
+		}
+		#main-section-panel{
+			$w:$sidebar-width + 10;
+			width: 100%;
+			padding: 53px $w 0 $w;
+		}
+
+		> aside#left-side-panel {
+			> div.shift-content-right{
+				float: left;
+			}
+		}
+
+		@media #{$medium-and-down} {
+			> aside#right-side-panel {
+				display: block;
+			}
+			#main-section-panel{
+				width: 100%;
+			}
+			> aside#left-side-panel {
+				width: $sidebar-width;
+				> div.shift-content-right{
+					float: left;
+				}
+			}
+		}
+	}
+	
+	.collapseRightSidePanel {
+		> aside#left-side-panel {
+			width: 70px;
+		}
+		#main-section-panel{
+			$w:$sidebar-width - 170;
+			padding-left: $w;
+		}
+	}
+	.collapseLeftSidePanel {
+		> aside#right-side-panel {
+			width: 70px;
+		}
+		#main-section-panel{
+			$w:$sidebar-width - 170;
+			padding-right: $w;
+			
+		}
+	}
+}
+>>>>>>> 5539d2f61bba607193bb36cbf255176783dfb904
